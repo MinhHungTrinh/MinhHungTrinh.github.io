@@ -184,6 +184,13 @@
 
           
           <li>
+            <a href="/archive/">Archives</a>
+          </li>
+          
+          
+
+          
+          <li>
             <a href="/about/">About</a>
           </li>
           
@@ -192,13 +199,6 @@
           
           <li>
             <a href="/categories/">Categories</a>
-          </li>
-          
-          
-
-          
-          <li>
-            <a href="/archive/">Archives</a>
           </li>
           
           
@@ -306,11 +306,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">5</span> Minutes
+              Estimated Reading Time <span class="post-count">9</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">932</span> In Total
+              Words <span class="post-count">1.5k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -375,13 +375,13 @@
 <p>Bài viết có tham khảo ngoài Docs của AWS thì còn core và hình ảnh chủ đề từ <a href="https://www.duckbillgroup.com/blog/understanding-data-transfer-in-aws/" target="_blank" rel="noopener">https://www.duckbillgroup.com/blog/understanding-data-transfer-in-aws/</a></p>
 </blockquote>
 <p><img src="banner.jpg" alt="main"></p>
-<h1 id="Tong-hop-lai-cac-loai-Data-Transfer"><a href="#Tong-hop-lai-cac-loai-Data-Transfer" class="headerlink" title="Tổng hợp lại các loại Data Transfer"></a>Tổng hợp lại các loại Data Transfer</h1><p>Mình sẽ đi theo các mô tả vắn tắt từ hình vẽ. Trên hình vẽ, các arrow đại diện cho flow của data transfer. Trong đó:</p>
+<h2 id="Tong-hop-lai-cac-loai-Data-Transfer"><a href="#Tong-hop-lai-cac-loai-Data-Transfer" class="headerlink" title="Tổng hợp lại các loại Data Transfer"></a>Tổng hợp lại các loại Data Transfer</h2><p>Mình sẽ đi theo các mô tả vắn tắt từ hình vẽ. Trên hình vẽ, các arrow đại diện cho flow của data transfer. Trong đó:</p>
 <ul>
 <li>Arrow màu xanh: Inbound Traffic - là những traffic từ ngoài vào (internet hoặc internal service). Bản chất đi từ internet vào là được free. Các Internal Inbound traffic thì được free nhưng không phải tất cả.</li>
 <li>Arrow màu đỏ: Outbound Traffic - bị tính phí, giá phụ thuộc vào từng transmission.</li>
 </ul>
 <p>Mình sẽ đi chi tiết hơn theo 8 mục được liệt kê sau:</p>
-<h2 id="Regional-Data-Transfer-Inbound-Outbound-to-Internet"><a href="#Regional-Data-Transfer-Inbound-Outbound-to-Internet" class="headerlink" title="Regional Data Transfer Inbound/Outbound to Internet."></a>Regional Data Transfer Inbound/Outbound to Internet.</h2><p>Chuyên mục về giá ae có thể tham khảo từ: <a href="https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer" target="_blank" rel="noopener">https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer</a></p>
+<h3 id="1-Regional-Data-Transfer-Inbound-Outbound-to-Internet"><a href="#1-Regional-Data-Transfer-Inbound-Outbound-to-Internet" class="headerlink" title="1.  Regional Data Transfer Inbound/Outbound to Internet."></a>1.  Regional Data Transfer Inbound/Outbound to Internet.</h3><p>Chuyên mục về giá ae có thể tham khảo từ: <a href="https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer" target="_blank" rel="noopener">https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer</a></p>
 <ul>
 <li>Từ Internet truyền vào AWS (Inbound data transfer):</li>
 </ul>
@@ -392,21 +392,37 @@
 <p>Ngược lại với Inbound, việc truyền dữ liệu ra ngoài Internet được tính phí và phụ thuộc theo từng region.</p>
 <p>Cách tính sẽ kiểu từng mức, ví dụ tổng data transfer 10TB đầu tiên thì giá $0.02/GB chẳng hạn. Càng tăng giá sẽ càng được giảm.<br>Mình hay làm việc với region Tokyo nên lấy ví dụ hình dưới:</p>
 <p><img src="pricing1.png" alt="main"></p>
-<h2 id="Region-to-Region-Inter-Region-data-transfer"><a href="#Region-to-Region-Inter-Region-data-transfer" class="headerlink" title="Region to Region (Inter-Region data transfer)"></a>Region to Region (Inter-Region data transfer)</h2><p>Data transfer giữa các Region, bị tính phí dựa vào Region đầu (điểm xuất phát). Đơn giản là bị tính giá theo Outbound của Region.<br>Như trên hình thì $0.02/GB là giá của region us-east-1, us-east-2, trong khi $0.01/GB là giá của Ohio.<br>Nói chung để chính xác và cập nhật mới nhất, ae check <a href="https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer" target="_blank" rel="noopener">https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer</a> phần<br><code>Data Transfer OUT From Amazon EC2 To</code> nhé.</p>
+<h3 id="2-Region-to-Region-Inter-Region-data-transfer"><a href="#2-Region-to-Region-Inter-Region-data-transfer" class="headerlink" title="2.  Region to Region (Inter-Region data transfer)"></a>2.  Region to Region (Inter-Region data transfer)</h3><p>Data transfer giữa các Region, bị tính phí dựa vào Region đầu (điểm xuất phát). Đơn giản là bị tính giá theo Outbound của Region.<br>Như trên hình thì $0.02/GB là giá của region us-east-1, us-east-2, trong khi $0.01/GB là giá của Ohio.<br>Nói chung để chính xác và cập nhật mới nhất, ae check <a href="https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer" target="_blank" rel="noopener">https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer</a> phần<br><code>Data Transfer OUT From Amazon EC2 To</code> nhé.</p>
 <p><img src="pricing2.png" alt="main"></p>
 <p>Một vài ví dụ mình hay gặp là:</p>
 <ul>
-<li>Tạo bản backup của S3 Bucket ở region này sang regionk khác thì bị tính phí. Backup giữa các zone không bị tính phí. </li>
+<li>Tạo bản backup của S3 Bucket ở region này sang region khác thì bị tính phí. Backup giữa các zone không bị tính phí. </li>
 <li>Data transfer giữa các EC2 ở các region khác nhau qua VPC Peering chẳng hạn.</li>
 </ul>
-<h2 id="CloudFront"><a href="#CloudFront" class="headerlink" title="CloudFront"></a>CloudFront</h2><p>Tham khảo từ: <a href="https://aws.amazon.com/cloudfront/pricing/" target="_blank" rel="noopener">https://aws.amazon.com/cloudfront/pricing/</a></p>
+<h3 id="3-CloudFront"><a href="#3-CloudFront" class="headerlink" title="3.  CloudFront"></a>3.  CloudFront</h3><p>Tham khảo từ: <a href="https://aws.amazon.com/cloudfront/pricing/" target="_blank" rel="noopener">https://aws.amazon.com/cloudfront/pricing/</a></p>
 <p>Tức là Data transfer từ các Edge Locations tới AWS Regions.<br><code>Edge Locations</code> là các location được đặt trên khắp thế giới với nhiều mục đích, một trong đó là nơi lưu trữ cache của <code>Amazon CloudFront-CDN</code></p>
 <ul>
 <li>Data transfer từ <code>Origin tới các Edge Location</code> thì được Free</li>
 <li>Data transfer từ <code>Edge Location ra internet</code> (Cloudfront to internet) theo bảng gía dưới:<br><img src="pricing3.png" alt="main"></li>
-<li>Một điều chúng ta ít để ý là, chúng ta có thể Put data lên các Edge location trong AWS CloudFront. Vì vậy, Data transfer từ các <code>Edge Locations trở về Origin</code> sẽ bị tính phí theo Regional Data Transfer Out to Internet.<br><img src="pricing4.png" alt="main"></li>
+<li>Một điều chúng ta ít để ý là, chúng ta có thể Put data lên các Edge location trong AWS CloudFront. Vì vậy, Data transfer từ các <code>Edge Locations trở về Origin</code> sẽ bị tính phí theo Regional Data Transfer Out to Origin.<br><img src="pricing4.png" alt="main"></li>
 </ul>
-<h2 id="Internal-traffic-via-Public-hoac-Elastic-IPs"><a href="#Internal-traffic-via-Public-hoac-Elastic-IPs" class="headerlink" title="Internal traffic via Public hoặc Elastic IPs"></a>Internal traffic via Public hoặc Elastic IPs</h2><h2 id="Du-lieu-truyen-trong-cung-01-region-cua-Amazon-EC2-instance"><a href="#Du-lieu-truyen-trong-cung-01-region-cua-Amazon-EC2-instance" class="headerlink" title="Dữ liệu truyền trong cùng 01 region của Amazon EC2 instance"></a>Dữ liệu truyền trong cùng 01 region của Amazon EC2 instance</h2><h2 id="Du-lieu-truyen-qua-Elastic-Load-Balancing"><a href="#Du-lieu-truyen-qua-Elastic-Load-Balancing" class="headerlink" title="Dữ liệu truyền qua Elastic Load Balancing"></a>Dữ liệu truyền qua Elastic Load Balancing</h2><h2 id="Du-lieu-truyen-ra-ngoai-voi-Nat-Gateway"><a href="#Du-lieu-truyen-ra-ngoai-voi-Nat-Gateway" class="headerlink" title="Dữ liệu truyền ra ngoài với Nat Gateway"></a>Dữ liệu truyền ra ngoài với Nat Gateway</h2><h2 id="Du-lieu-truyen-ra-ngoai-qua-Transit-Gateway"><a href="#Du-lieu-truyen-ra-ngoai-qua-Transit-Gateway" class="headerlink" title="Dữ liệu truyền ra ngoài qua Transit Gateway"></a>Dữ liệu truyền ra ngoài qua Transit Gateway</h2>
+<h3 id="4-Internal-traffic-via-Public-hoac-Elastic-IPs"><a href="#4-Internal-traffic-via-Public-hoac-Elastic-IPs" class="headerlink" title="4.  Internal traffic via Public hoặc Elastic IPs"></a>4.  Internal traffic via Public hoặc Elastic IPs</h3><p>Data Transfer sẽ bị áp dụng phí truyền thống với cả 2 chiều inbound và outbound. Tức là phí Data Trasfer Outbound là $0,01/GB và Data Transfer Inbound là $0,01/GB áp dụng với tất cả Resources ví dụ như: Amazon EC2 instance, Amazon RDS, Amazon Redshift, Amazon DynamoDB, Amazon ElastiCache,…</p>
+<ul>
+<li>Data Transfer giữa các resouces nằm khác Availability Zone.</li>
+<li>Data Transfer giữa các resources khác VPC, phải sử dụng VPC Peering</li>
+</ul>
+<p>Ví dụ: Khi chuyển 100 GB dữ liệu giữa 1 EC2 trong VPC-A và 1 EC2 trong VPC-B, trong cùng một Availability Zone và bạn sẽ bị tính phí $1 khi đi ra từ VPC-A và $1 khi đi vào VPC-B. Áp dụng tương tự cách tính phí với 2 EC khác Availability Zone.</p>
+<h3 id="5-EC2-in-Region"><a href="#5-EC2-in-Region" class="headerlink" title="5.  EC2 in Region"></a>5.  EC2 in Region</h3><ul>
+<li>Data Transfer giữa AWS Classic, Elastic Load Balancer và EC2 trong cùng 1 region là free</li>
+<li>Data Transfer giữa các EC2 cùng Availabitity Zone là free</li>
+<li>Data Transfer giữa các EC2 khác Availability Zone thì bị tinhs phí: $0.01/GB</li>
+</ul>
+<h3 id="6-Elastic-Load-Balancing"><a href="#6-Elastic-Load-Balancing" class="headerlink" title="6.  Elastic Load Balancing"></a>6.  Elastic Load Balancing</h3><p>Classic Load Balancing thì được tính $0.008/GB. Trong khi đó Application và Network Load Balancing tính phí dựa trên LCU (Công suất cân bằng tải) (ALB-$0.008 per LCU-hour, NLB-$0.006 per LCU-hour)<br>Giá tham khảo từ: <a href="https://aws.amazon.com/elasticloadbalancing/pricing/" target="_blank" rel="noopener">https://aws.amazon.com/elasticloadbalancing/pricing/</a></p>
+<h3 id="7-Nat-Gateway"><a href="#7-Nat-Gateway" class="headerlink" title="7.  Nat Gateway"></a>7.  Nat Gateway</h3><p>Data Transfer qua NAT Gateway được quản lý - bất kể điểm đến - sẽ phải tốn thêm $0,045/ GB bên cạnh các chi phí Data Transfer đi qua các resources khác ví dụ các internal transfer (nội bộ) (S3, Kinesis, v.v.) </p>
+<h3 id="8-Transit-Gateway"><a href="#8-Transit-Gateway" class="headerlink" title="8.  Transit Gateway"></a>8.  Transit Gateway</h3><p>Phí xử lý dữ liệu áp dụng cho mỗi GB được gửi đến AWS Transit Gateway - cho dù data đó đến từ 1 VPC, qua Direct Connect hay VPN.<br>Giá sẽ là $0.02/GB</p>
+<p><img src="pricing5.png" alt="main"></p>
+<h2 id="Ket-luan"><a href="#Ket-luan" class="headerlink" title="Kết luận"></a>Kết luận</h2><p>Nói chung sau khi tóm tắt thành từng nhóm thì mình nghĩ chúng ta có thể dễ dàng estimate được sẽ mất phí ở những step nào về Data Transfer. Từ hình banner chúng ta có thể dò ra được Data Transfer của chúng ta nằm ở nhóm nào, có bị tính phí hay không. nghiệm<br>Sau khi làm quen, mình nghĩ chúng ta có thể rút ra được những kinh nghiệm để thiết kế với từng bài toán kiểu như hy sinh phí data transfer nếu data transfer nhỏ hoặc hy sinh infra nếu data transfer lớn hay cân nhắc giữa phí data transfer và vấn đề độ trễ và bảo mật chẳng hạn.<br>Chốt lại vẫn là cảm ơn các bạn đã đọc bài. Rất mong nhận được sự góp ý. :D</p>
+
 
         <hr>
         <!-- Pager -->
@@ -536,7 +552,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Tong-hop-lai-cac-loai-Data-Transfer"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Tổng hợp lại các loại Data Transfer</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Regional-Data-Transfer-Inbound-Outbound-to-Internet"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Regional Data Transfer Inbound&#x2F;Outbound to Internet.</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Region-to-Region-Inter-Region-data-transfer"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Region to Region (Inter-Region data transfer)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CloudFront"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">CloudFront</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Internal-traffic-via-Public-hoac-Elastic-IPs"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Internal traffic via Public hoặc Elastic IPs</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Du-lieu-truyen-trong-cung-01-region-cua-Amazon-EC2-instance"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Dữ liệu truyền trong cùng 01 region của Amazon EC2 instance</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Du-lieu-truyen-qua-Elastic-Load-Balancing"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Dữ liệu truyền qua Elastic Load Balancing</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Du-lieu-truyen-ra-ngoai-voi-Nat-Gateway"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Dữ liệu truyền ra ngoài với Nat Gateway</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Du-lieu-truyen-ra-ngoai-qua-Transit-Gateway"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Dữ liệu truyền ra ngoài qua Transit Gateway</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Tong-hop-lai-cac-loai-Data-Transfer"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Tổng hợp lại các loại Data Transfer</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-Regional-Data-Transfer-Inbound-Outbound-to-Internet"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.  Regional Data Transfer Inbound&#x2F;Outbound to Internet.</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Region-to-Region-Inter-Region-data-transfer"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2.  Region to Region (Inter-Region data transfer)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-CloudFront"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">3.  CloudFront</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-Internal-traffic-via-Public-hoac-Elastic-IPs"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">4.  Internal traffic via Public hoặc Elastic IPs</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-EC2-in-Region"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">5.  EC2 in Region</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-Elastic-Load-Balancing"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">6.  Elastic Load Balancing</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-Nat-Gateway"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">7.  Nat Gateway</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#8-Transit-Gateway"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">8.  Transit Gateway</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Ket-luan"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Kết luận</span></a></li></ol>
         
         </div>
       </aside>
