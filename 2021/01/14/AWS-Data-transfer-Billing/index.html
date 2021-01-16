@@ -184,13 +184,6 @@
 
           
           <li>
-            <a href="/archive/">Archives</a>
-          </li>
-          
-          
-
-          
-          <li>
             <a href="/about/">About</a>
           </li>
           
@@ -198,14 +191,21 @@
 
           
           <li>
-            <a href="/tags/">Tags</a>
+            <a href="/categories/">Categories</a>
           </li>
           
           
 
           
           <li>
-            <a href="/categories/">Categories</a>
+            <a href="/archive/">Archives</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/tags/">Tags</a>
           </li>
           
           
@@ -406,7 +406,7 @@
 <li>Data transfer từ <code>Edge Location ra internet</code> (Cloudfront to internet) theo bảng gía dưới:<br><img src="pricing3.png" alt="main"></li>
 <li>Một điều chúng ta ít để ý là, chúng ta có thể Put data lên các Edge location trong AWS CloudFront. Vì vậy, Data transfer từ các <code>Edge Locations trở về Origin</code> sẽ bị tính phí theo Regional Data Transfer Out to Origin.<br><img src="pricing4.png" alt="main"></li>
 </ul>
-<h3 id="4-Internal-traffic-via-Public-hoac-Elastic-IPs"><a href="#4-Internal-traffic-via-Public-hoac-Elastic-IPs" class="headerlink" title="4.  Internal traffic via Public hoặc Elastic IPs"></a>4.  Internal traffic via Public hoặc Elastic IPs</h3><p>Data Transfer sẽ bị áp dụng phí truyền thống với cả 2 chiều inbound và outbound. Tức là phí Data Trasfer Outbound là $0,01/GB và Data Transfer Inbound là $0,01/GB áp dụng với tất cả Resources ví dụ như: Amazon EC2 instance, Amazon RDS, Amazon Redshift, Amazon DynamoDB, Amazon ElastiCache,…</p>
+<h3 id="4-Internal-traffic-via-Public-hoac-Elastic-IPs"><a href="#4-Internal-traffic-via-Public-hoac-Elastic-IPs" class="headerlink" title="4.  Internal traffic via Public hoặc Elastic IPs"></a>4.  Internal traffic via Public hoặc Elastic IPs</h3><p>Data Transfer cho dù diễn ra public, private hay với Elastic IPv4 hoặc IPv6 đều sẽ bị áp dụng phí truyền thống với cả 2 chiều Inbound và Outbound. Tức là phí Data Trasfer Outbound là $0,01/GB và Data Transfer Inbound là $0,01/GB áp dụng với tất cả Resources ví dụ như: Amazon EC2 instance, Amazon RDS, Amazon Redshift, Amazon DynamoDB, Amazon ElastiCache,… hay gặp các trường hợp như:</p>
 <ul>
 <li>Data Transfer giữa các resouces nằm khác Availability Zone.</li>
 <li>Data Transfer giữa các resources khác VPC, phải sử dụng VPC Peering</li>
