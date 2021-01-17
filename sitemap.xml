@@ -81,14 +81,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Mysql/</loc>
+    <loc>http://yoursite-url/tags/Billing/</loc>
     <lastmod>2021-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Billing/</loc>
+    <loc>http://yoursite-url/tags/Mysql/</loc>
     <lastmod>2021-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

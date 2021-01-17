@@ -310,7 +310,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.6k</span> In Total
+              Words <span class="post-count">1.7k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -370,7 +370,7 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>Anh em làm backend chắc hẳn có va chạm ít nhiều với việc xử lý các <code>queue message</code> bằng <code>Workers</code>. Ở local hay môi trường Test sẽ thật đơn giản khi chỉ chạy single Instance và thiết lập cố định số processes. Vấn đề bắt đầu xảy ra khi lên production, khách hàng yêu cầu 1 hệ thống chạy ổn định, nhưng lại phải tiết kiệm chi phí khi không cần thiết. Vậy là nó cần phải đảm bảo vài cái tính sau: <code>Availability</code>, <code>Reliability</code> và <code>Scalability</code>.</p>
+        <p>Đây là bài mình viết cũng đã trình bày trên blog kaopiz.kipalog của công ty.<br>Anh em làm backend chắc hẳn có va chạm ít nhiều với việc xử lý các <code>queue message</code> bằng <code>Workers</code>. Ở local hay môi trường Test sẽ thật đơn giản khi chỉ chạy single Instance và thiết lập cố định số processes. Vấn đề bắt đầu xảy ra khi lên production, khách hàng yêu cầu 1 hệ thống chạy ổn định, nhưng lại phải tiết kiệm chi phí khi không cần thiết. Vậy là nó cần phải đảm bảo vài cái tính sau: <code>Availability</code>, <code>Reliability</code> và <code>Scalability</code>.</p>
 <p>Có nhiều cách triển khai lắm. Trên AWS chẳng hạn thì có use-cases là sử dụng 1 autoscale group chứa các instance chạy các Workers này. Các worker sẽ pull messages từ Queue và xử lý. Vì có nhiều workers chạy đồng thời trên các instance nên theo lý thuyết là nó đảm bảo 3 tính vừa rồi. Luôn luôn đáp ứng kịp thời mà lại tiết kiệm chi phí khi cần thiết. Cơ mà từ từ đã, chúng ta thử đi sâu vào xem vì sao mình phải customize nó ở bài này nhé.</p>
 <h2 id="Van-de"><a href="#Van-de" class="headerlink" title="Vấn đề"></a>Vấn đề</h2><p>Mình sẽ lấy bài toán default là chúng ta bắn message job lên SQS Standard (1 loại queue của AWS, bạn cũng có thể thay thế nó bằng các loại khác như Redis, RapidMq,… nhưng phải custom metric trên cloudwatch để sử dụng nó cho việc scale). Tiếp theo, Mình sẽ tạo 1 cụm Autoscale Group để launch các instance (min=1, max=6), trong đó các instance chứa code là các workers xử lý message job.</p>
 <p>Với các API server, thường chúng ta scale theo CPU, memory của server. Nhưng với bài toán worker này, Nếu cấu hình là tối ưu thì các Worker phải chạy ở ngưỡng chấp nhận tối đa về CPU, memory trong thời gian dài (long running). Vì vậy nếu scale theo CPU hay memory thì sẽ gây ra hiện tượng tăng liên tục instance do CPU và memory luôn cao ==&gt; lãng phí.</p>

@@ -370,7 +370,7 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>Đây là bài mình viết cũng đã trình bày trên kaopiz.kipalog của công ty.<br>Trong bài viết này mình sẽ giải thích về cách replicate data từ 1 cụm cluster AWS MySQL Aurora tới 1 external database. Ở đây External database này có thể là 1 EC2, 1 Onpremise. Thực chất đây là việc thiết lập replica, kể cả không phải từ Aurora, bạn có thể áp dụng với chính MySQL Database của bạn khi cần tạo Replica thủ công. Còn mình, Aurora đã có thiết lập đầy đủ về primary và replica rồi. Mình thực hiện Replicate data ra 1 external Database với mục đích đặc biệt của dự án là backup, để lấy license.</p>
+        <p>Đây là bài mình viết cũng đã trình bày trên blog kaopiz.kipalog của công ty.<br>Trong bài viết này mình sẽ giải thích về cách replicate data từ 1 cụm cluster AWS MySQL Aurora tới 1 external database. Ở đây External database này có thể là 1 EC2, 1 Onpremise. Thực chất đây là việc thiết lập replica, kể cả không phải từ Aurora, bạn có thể áp dụng với chính MySQL Database của bạn khi cần tạo Replica thủ công. Còn mình, Aurora đã có thiết lập đầy đủ về primary và replica rồi. Mình thực hiện Replicate data ra 1 external Database với mục đích đặc biệt của dự án là backup, để lấy license.</p>
 <p><img src="main.jpg" alt="main"></p>
 <h2 id="Dieu-kien-tien-quyet"><a href="#Dieu-kien-tien-quyet" class="headerlink" title="Điều kiện tiên quyết:"></a>Điều kiện tiên quyết:</h2><ul>
 <li>Ở case này mình lựa chọn MySQL 5.7 (hình như chỉ hỗ trợ từ 5.6 nên mọi người lưu ý nhé)</li>
