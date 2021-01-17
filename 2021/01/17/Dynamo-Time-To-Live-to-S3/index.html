@@ -184,6 +184,13 @@
 
           
           <li>
+            <a href="/about/">About</a>
+          </li>
+          
+          
+
+          
+          <li>
             <a href="/archive/">Archives</a>
           </li>
           
@@ -192,13 +199,6 @@
           
           <li>
             <a href="/categories/">Categories</a>
-          </li>
-          
-          
-
-          
-          <li>
-            <a href="/about/">About</a>
           </li>
           
           
@@ -370,7 +370,8 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>Vẫn là một bài toán với Dynamo. Cơ mà lần này là việc lưu trữ Log. Ở đây theo mình log tới từ nhiều nguồn. Ví dụ như: User action Log, Info Log, Error Log, Monitor Resources Log… Bài toán của dự án mình là lưu log data của hệ thống. Data hiện tại đang được lưu ở DynamoDB. Data này rất đặc thù là phải lưu đầy đủ. Cứ 1 giây là lại lưu data mới rồi. Mục đích lưu lại cũng nhằm để truy vết khi có vấn đề, để phân tích data. Data này lại có đặc thù nếu có bug thì cần truy được luôn, nhưng để lâu thì cũng k đụng đến. Tất nhiên là không được xoá nó đi mất hẳn. Vì khi cần phân tích thì phải tập hợp đó lại. Từ đó mình tìm đến usecase này của AWS (<code>Automatically Archive Items to S3 Using DynamoDB Time to Live (TTL) with AWS Lambda and Amazon Kinesis Firehose</code>) từ đó trong quá trình cấu hình thì có tham khảo từ <a href="https://aws.amazon.com/blogs/database/automatically-archive-items-to-s3-using-dynamodb-time-to-live-with-aws-lambda-and-amazon-kinesis-firehose/" target="_blank" rel="noopener">đây</a>.</p>
+        <p>Đây là bài mình viết cũng đã trình bày trên blog kaopiz.kipalog của công ty.</p>
+<p>Vẫn là một bài toán với Dynamo. Cơ mà lần này là việc lưu trữ Log. Ở đây theo mình log tới từ nhiều nguồn. Ví dụ như: User action Log, Info Log, Error Log, Monitor Resources Log… Bài toán của dự án mình là lưu log data của hệ thống. Data hiện tại đang được lưu ở DynamoDB. Data này rất đặc thù là phải lưu đầy đủ. Cứ 1 giây là lại lưu data mới rồi. Mục đích lưu lại cũng nhằm để truy vết khi có vấn đề, để phân tích data. Data này lại có đặc thù nếu có bug thì cần truy được luôn, nhưng để lâu thì cũng k đụng đến. Tất nhiên là không được xoá nó đi mất hẳn. Vì khi cần phân tích thì phải tập hợp đó lại. Từ đó mình tìm đến usecase này của AWS (<code>Automatically Archive Items to S3 Using DynamoDB Time to Live (TTL) with AWS Lambda and Amazon Kinesis Firehose</code>) từ đó trong quá trình cấu hình thì có tham khảo từ <a href="https://aws.amazon.com/blogs/database/automatically-archive-items-to-s3-using-dynamodb-time-to-live-with-aws-lambda-and-amazon-kinesis-firehose/" target="_blank" rel="noopener">đây</a>.</p>
 <h2 id="1-Solution"><a href="#1-Solution" class="headerlink" title="1. Solution"></a>1. Solution</h2><p><img src="image1.png" alt="main"></p>
 <p>Giải pháp đưa ra là mình sẽ lưu tất cả data log ở trên vào DynamoDB. Có điều mình sẽ set Time To Live với expire là 30 ngày. Khi mình enable Dynamo Stream. thì mỗi record khi đủ 30 ngày sẽ bị xoá (backup trong 24h) và chính data đó cũng được deliver tới Firehose bằng lambda function. Khi data nạp đủ 1 gói (định nghĩa ở firehose, ví dụ là 5MB) hoặc interval qua xx seconds thì Firehose sẽ lưu vào S3.</p>
 <h2 id="2-Practical"><a href="#2-Practical" class="headerlink" title="2. Practical"></a>2. Practical</h2><p>Chúng ta cần thực hành các bước sau:</p>
