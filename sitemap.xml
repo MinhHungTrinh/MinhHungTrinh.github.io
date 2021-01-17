@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite-url/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/</loc>
+    
+    <lastmod>2021-01-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/2021/01/17/Lam-viec-voi-Large-Data/</loc>
     
     <lastmod>2021-01-17</lastmod>
@@ -109,6 +116,20 @@
   </url>
   
   <url>
+    <loc>http://yoursite-url/tags/JWT/</loc>
+    <lastmod>2021-01-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/Security/</loc>
+    <lastmod>2021-01-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/tags/Database/</loc>
     <lastmod>2021-01-17</lastmod>
     <changefreq>daily</changefreq>
@@ -153,7 +174,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/Database/</loc>
+    <loc>http://yoursite-url/categories/Develop/</loc>
     <lastmod>2021-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
