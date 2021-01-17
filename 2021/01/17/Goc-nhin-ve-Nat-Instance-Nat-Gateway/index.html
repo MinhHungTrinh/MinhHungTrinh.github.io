@@ -46,12 +46,12 @@
 
   <!-- Pygments Highlight CSS -->
   
-<link rel="stylesheet" href="../css/highlight.css">
-<link rel="stylesheet" href="../css/widget.css">
-<link rel="stylesheet" href="../css/rocket.css">
-<link rel="stylesheet" href="../css/signature.css">
-<link rel="stylesheet" href="../css/catalog.css">
-<link rel="stylesheet" href="../css/livemylife.css">
+<link rel="stylesheet" href="../../../../css/highlight.css">
+<link rel="stylesheet" href="../../../../css/widget.css">
+<link rel="stylesheet" href="../../../../css/rocket.css">
+<link rel="stylesheet" href="../../../../css/signature.css">
+<link rel="stylesheet" href="../../../../css/catalog.css">
+<link rel="stylesheet" href="../../../../css/livemylife.css">
 
 
   
@@ -112,10 +112,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/categories/">
+  <link rel="canonical" href="http://yoursite-url/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/">
   <title>
     
-    Categories - Minh Hung
+    Góc nhìn về Nat Instance &gt;&lt; Nat Gateway - Minh Hung
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -263,8 +263,8 @@
 
   <style type="text/css">
     header.intro-header {
-       /*page*/
-        background-image: url('/img/header_img/categories_bg.jpg');
+       /*post*/
+        background-image: url('waterfall.jpg');
       
     }
 
@@ -286,10 +286,40 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>Categories</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">Hi , here is Categories ....</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+              
+            </div>
+            <h1>Góc nhìn về Nat Instance &gt;&lt; Nat Gateway</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by MinhHungTrinh on
+              2021-01-17
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">12</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">2k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- 不蒜子统计 start -->
+            <span class="meta">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            <!-- WordCount end -->
+            
+
+
           </div>
           
         </div>
@@ -330,157 +360,267 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-	<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <!-- 标签云 -->
-      <div id='tag_cloud' class="tags">
+	<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <p>Đây là bài mình viết cũng đã trình bày trên blog kaopiz.kipalog của công ty.</p>
+<p>Bài viết hôm nay mình xin nói về sử dụng <code>Nat Instance</code> và <code>Nat Gateway</code> lúc nào thì hợp lý. Tiết kiệm chi phí phù hợp với từng bài toán. Nat Gateway là tốt nhưng không phải lúc nào cũng tuân theo usecase của AWS là luôn dùng Nat Gateway.</p>
+<p>Đầu tiên nói đến bài toán vì sao phải sử dụng Nat Instance hay Nat Gateway. Nếu ai chúng ta làm quen với AWS đều biết tới khái niệm Private Subnet. Và những resources đặt trong nó mục đích đảm bảo bảo mật cho hệ thống. Nếu ở các resource đó, muốn kết nối với internet (ví dụ download software chẳng hạn) thì cần có 1 cầu nối ra ngoài. Từ đó chúng ta phải sử dụng Nat Instance/Nat Gateway. Nhiều dự án ở Kaopiz vì không có nhiều chi phí để tạo thêm Nat nên không tuân theo usecase của AWS, chấp nhận đặt tất cả resources trong Public Subnet và giới hạn bằng cách sử dụng security group. Từ đó, mình thiết nghĩ nên tìm hiểu sâu hơn về cách áp dụng và chi phí để vẫn áp dụng được usecase của AWS và sắm sửa cho hệ thống 1 infra có tâm hồn đẹp :)).</p>
+<p>Vào năm 2015, AWS ra mắt Nat Gateway được coi là 1 service tốt hơn Nat Instance. Quả thực, Nat Gateway có nhiều lợi thế hơn Nat Instance. Bạn có thểm tham khảo bản so sánh từ <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html" target="_blank" rel="noopener">đây</a></p>
+<h2 id="1-Tai-sao-khong-dat-moi-thu-trong-Public-Subnet"><a href="#1-Tai-sao-khong-dat-moi-thu-trong-Public-Subnet" class="headerlink" title="1. Tại sao không đặt mọi thứ trong Public Subnet"></a>1. Tại sao không đặt mọi thứ trong Public Subnet</h2><p>Việc này chúng ta thường xuyên nghe rằng không nên đặt trong public, rằng nên đặt trong private subnet như mình nói ở trên. Nếu chúng ta đặt trong Public Subnet thì đã không có cái vấn đề Nat Gateway hay Nat Instance rồi. Có 2 lý do chính quyết định là:</p>
+<ul>
+<li>Security nên là nhiều layer. Chúng ta không muốn chỉ có 1 cấu hình của 1 layer bị lỗi dẫn tới mọi thứ bị public. Usecase sẽ là perfect <code>Security Group</code> và <code>NACL</code> để đạt được mục đích. Cái này sẽ là tốt nếu tất cả các resource được tách biệt khỏi internet và được bảo mật qua Security Group và NACL.</li>
+<li>Nếu chúng ta hướng tới cấu hình 1 infrastructure as code, ví dụ như sử dụng <code>Terraform</code>, <code>Cloudformation</code>. Các mô hình template đều tuân thủ Usecase của AWS. Chúng ta sẽ dễ dàng viết template và nó mang tính đồng bộ với cộng đồng hơn. Thay vì với kiến trúc đặt tất cả ở Public subnet</li>
+</ul>
+<h2 id="2-Nat-Gateway-va-Nat-Instance-trong-he-thong"><a href="#2-Nat-Gateway-va-Nat-Instance-trong-he-thong" class="headerlink" title="2. Nat Gateway và Nat Instance trong hệ thống"></a>2. Nat Gateway và Nat Instance trong hệ thống</h2><p>Cả Nat Gateway và Instance thường dùng để cung cấp truy cập internet tới các resources trong private subnet (cách thức mà không phải đi trực tiếp từ Internet Gateway tới Resoures và phải qua Nat).<br>Với 1 private subnet sẽ có Route Table như dưới :</p>
+<p><img src="image1.png" alt="main"></p>
+<p>Nghĩa là mọi service sử dụng route table sẽ không thể pull update từ internet, hoặc không thể call API từ tới hệ thống ngoài internet. Với 1 số hệ thống chúng ta chỉ cần connect internet lúc đầu, với 1 số hệ thống thì phải làm nó thường xuyên, như 1 job luôn vậy. Lược đồ sẽ kiểu như thế này :</p>
+<p><img src="image2.png" alt="main"></p>
+<p>Kịch bản như trên là tất cả connect từ bên ngoài tới server đều phải đi qua load balancer. RDS thì chỉ connect được tới các server. Bên ngoài cũng không connect tới được. Từ đó như đã nói ở trên. Ví dụ các server có yêu cầu pull update từ internet. Chúng ta cần sinh ra Nat Gateway/Instance.</p>
+<p><img src="image3.png" alt="main"></p>
+<h2 id="3-Nat-Instance"><a href="#3-Nat-Instance" class="headerlink" title="3. Nat Instance"></a>3. Nat Instance</h2><p>Nếu sử dụng Nat Instance chúng ta cần có Route Table như sau:</p>
+<p><img src="image4.png" alt="main"></p>
+<p>Với ENI là Elastic Network Interface của Nat Instance. 1 Nat Instance thì không khác gì 1 EC2 bình thường, và nó được tạo từ NAT AMI. Mục đích như cái tên của nó NAT (Network Address Translation).</p>
+<h2 id="4-Nat-Gateway"><a href="#4-Nat-Gateway" class="headerlink" title="4. Nat Gateway"></a>4. Nat Gateway</h2><p>Được ra mắt cũng được vài năm mang nhiều ưu điểm. Nat Gateway được quản lý hoàn toàn bởi AWS. Tức là chúng ta không cần quan tâm gì thì nó vẫn sống không Nat Instance bản chất chỉ là 1 server, có thể chết bất cứ lúc nào (cái này cũng hiếm thôi :))). Chính vì vậy Nat Gateway luôn available và scalable. 1 EC2 bình thường sẽ có 1 giới hạn về Network capacity, và nó sẽ không thể scale lên khi cần. Tức là nếu ta dùng 1 Nat Instance có giới hạn Network Performance là 1GBs thì nếu chúng ta cần cao hơn thì nó cũng không thể tăng được. Nó sẽ như 1 bottle neck vậy.<br>Và Nat Gateway thì không thế, nó được tạo dễ dàng và Amazone lo cho chúng ta. 1 Route Table với Nat Gateway sẽ như thế này :</p>
+<p><img src="image5.png" alt="main"></p>
+<h2 id="5-Su-khac-nhau-bai-toan-nen-dung"><a href="#5-Su-khac-nhau-bai-toan-nen-dung" class="headerlink" title="5. Sự khác nhau, bài toán nên dùng"></a>5. Sự khác nhau, bài toán nên dùng</h2><p>Hầu hết các technical từ <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html" target="_blank" rel="noopener">AWS</a> đều khuyên sử dụng Nat Gatway vì các lợi điểm đang nói ở trên. Vậy tại sao có nhiều phrase vẫn sử dụng Nat Instance? Đơn giản là vì <code>Cost</code> . Chúng ta sẽ thấy nhiều môi trường như (Development, Test,…) đặt trên AWS, nếu tuân thủ đặt trong private subnet thì tổng chi phí về server khéo còn nhỏ hơn cái tiền bỏ ra cho nat gateway.<br>Ví dụ Nat Gateway thì chính xác là không được gọi là rẻ. Với region us-east-1 chẳng hạn là 0.048$/hour tức là 35$/month. Gần tương đương con server medium rồi. Mà được mấy server test là medium đâu :))</p>
+<p>Chính vì vậy người ta mới đặt ra chỉ chạy Nat Gateway cho môi trường product. Và Nat Instance cho môi trường (Test). Bởi vì với 1 server Nat Instance, bạn chỉ cần chọn 1 server <code>nano</code> hoặc <code>micro</code> thôi, phiên bản thường có bandwidth là <code>5Gbit/s</code>. Vì nó không cần xử lý gì, nhiệm vụ của nó chỉ là trung gian nhận traffic và route tới internet mà thôi.<br>Thêm nữa 1 Nat Instance cơ bản là 1 server trung gian, vì thế ta cũng có thể sử dụng nó như 1 <code>Basion Host</code> để có thể ssh tới các server bên trong private subnet. Coi như 1 công đôi việc, tiết kiệm đủ đường.</p>
+<p>Nhưng khoan đã, có nhất thiết là chỉ có môi trường Test mới nên sử dụng Nat Instance và Product với Nat Gatway? Thử đánh giá lại xem nhá. Từ giải thích ở trên về Nat Instance, việc download software nhanh hay chậm không phụ thuộc vào server to như thế nào, mà phụ thuộc vào bandwidth của network. Ở đây ví dụ mình dùng server lởm thì là 5Gbit/s. Việc sử dụng Nat Gayway hay Instance sẽ phụ thuộc vào các bài toán như sau:</p>
+<ul>
+<li>Nếu là môi trường Test, trừ phi bạn muốn môi trường giống 100% môi trường product thì mới dùng Nat Gatway, còn không chỉ nên dùng Nat Instance.</li>
+<li>Nếu là môi trường product, nếu bài toán ở đó các server phải thường xuyên hoặc liên tục call API bên ngoài internet, download software, file, v,v,v, thì chúng ta nên sử dụng Nat Gateway. Điểm đặc biệt của nó là scalable và tính ổn đinh. Hơn nữa nếu hệ thống được đặt trên nhiều Availability Zone và thực sự có nhu cầu cao, để tránh hiện tượng bottle neck, tất cả traffic đều đi qua 1 Nat Gateway, thì chúng ta nên tạo cho mỗi zone 1 Nat Gateway nhé.</li>
+<li>Với hệ thống production, bài toán chỉ cần Nat phục vụ cho security. Việc Call API, download … không phải là thường xuyên, hoặc nếu thường xuyên thì nhu cầu đáp ứng về network bandwidth không cần quá cao. Thì hãy nghĩ tới Nat Instance nhé. Và sử dụng nó là Basion Host luôn. Cũng như ý trên thì nếu nhiều zone mà nhu cầu cao trong 1 thời điểm thì nên dùng nhiều Nat Instance. Cân đo đong đếm thì việc dùng nat instance thực sự rẻ hơn nhiều.</li>
+</ul>
+<p>Vậy bạn nghĩ sao với các hệ thống ở của công ty đang không tuân thủ Usecase của AWS. Theo cá nhân mình việc mua thêm 1 con nano hoặc micro phục vụ luôn 2 nhiệm vụ Nat và BasionHost để hệ thống có tâm hồn đẹp hơn thì đâu có tiếc gì nhỉ :D</p>
+<h2 id="6-Tai-lieu-tham-khao"><a href="#6-Tai-lieu-tham-khao" class="headerlink" title="6. Tài liệu tham khảo:"></a>6. Tài liệu tham khảo:</h2><p>Bạn có thể tạo 1 Nat Instance dựa vào các tài liệu sau nhé.<br><a href="https://github.com/coopernurse/vpc-nat-cfn/blob/master/vpc-nat-cfn.yml" target="_blank" rel="noopener">https://github.com/coopernurse/vpc-nat-cfn/blob/master/vpc-nat-cfn.yml</a><br><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html</a><br><a href="https://www.theguild.nl/cost-saving-with-nat-instances/" target="_blank" rel="noopener">https://www.theguild.nl/cost-saving-with-nat-instances/</a><br><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html</a><br><a href="https://www.youtube.com/watch?v=vIGEmrhiuXo" target="_blank" rel="noopener">https://www.youtube.com/watch?v=vIGEmrhiuXo</a></p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/" data-toggle="tooltip" data-placement="top" title="Câu chuyện JWT và Revoke Token">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
         
-        <a href="#DevOps" title="DevOps" rel="4">DevOps</a>
+        <!-- tip start -->
+        <div class="tip">
+          <p>
+            Đây là Blog cá nhân của MinhHungTrinh, nơi mình chia sẻ, lưu giữ kiến thức. Nếu các bạn có góp ý, thắc mắc thì vui lòng comment bên dưới cho mình biết nhé. Kiến thức là biển sâu và mình luôn là người lắng nghe và ham học hỏi. Các vấn đề đặc biệt hoặc tế nhị mọi người có thể gửi email tới minhhungtrinhvn@gmail.com. Cảm ơn Mọi Người đã đọc Blog của mình. Yolo!
+          </p>
+        </div>
+        <!-- tip end -->
         
-        <a href="#Develop" title="Develop" rel="2">Develop</a>
+
         
-        <a href="#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a href="#"  class="social-share-icon icon-facebook">
+        <i class="fa fa-facebook fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=Góc nhìn về Nat Instance &gt;&lt; Nat Gateway&body=Hi,I found this website and thought you might like it http://yoursite-url/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
         
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+
+<!-- 2. gitment comment -->
+
+<!-- gitment start -->
+<!-- Docs:https://github.com/imsun/gitment -->
+
+<div id="blog_comments"></div>
+<!-- <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"> <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'gitment-container gitment-root-container'
+
+      // your custom component
+      container.appendChild(instance.renderSomething(state, instance))
+      container.appendChild(instance.renderHeader(state, instance))
+      container.appendChild(instance.renderEditor(state, instance))
+      container.appendChild(instance.renderComments(state, instance))
+      container.appendChild(instance.renderFooter(state, instance))
+      return container
+    },
+    renderSomething(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'hello_visitor'
+      if (state.user.login) {
+        container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+      }
+      return container
+    }
+  }
+
+  const gitment = new Gitment({
+    id: 'Sun Jan 17 2021 12:07:54 GMT+0700', // optional
+    owner: 'MinhHungTrinh',
+    repo: 'MinhHungTrinh.github.io',
+    oauth: {
+      client_id: 'f23a1a1a678355dff851',
+      client_secret: '5b4c1011ed3613893952bd69fbdab696b32bec3b'
+    },
+    desc: '',
+    perPage: '10',
+    maxCommentHeight: '250',
+    theme: myTheme,
+    // ... For more available options, check out the documentation below
+  })
+
+  gitment.render('blog_comments')
+  // or gitment.render(document.getElementById('comments')) or document.body.appendChild(gitment.render())
+</script>
+
+<!-- gitment end -->
+
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
       </div>
 
-      <!-- 标签列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="DevOps">
-          <span class="tag-text">DevOps</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/14/AWS-Data-transfer-Billing/">
-            <h2 class="post-title">
-              AWS Data transfer Billing
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/">
-            <h2 class="post-title">
-              Replicate AWS MySQL Aurora to External Replica
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/">
-            <h2 class="post-title">
-              AWS Auto Scaling Group based on Queue (Custom metric)
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/">
-            <h2 class="post-title">
-              Góc nhìn về Nat Instance >< Nat Gateway
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Develop">
-          <span class="tag-text">Develop</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/">
-            <h2 class="post-title">
-              Câu chuyện JWT và Revoke Token
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Lam-viec-voi-Large-Data/">
-            <h2 class="post-title">
-              Làm việc với Large Data
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Hexo-Theme-LiveMyLife">
-          <span class="tag-text">Hexo-Theme-LiveMyLife</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2020/04/17/Hexo-Theme-LiveMyLife/">
-            <h2 class="post-title">
-              Hexo-Theme-LiveMyLife
-            </h2>
-            
-            <h3 class="post-subtitle">
-              A succinct hexo theme...
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-Tai-sao-khong-dat-moi-thu-trong-Public-Subnet"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Tại sao không đặt mọi thứ trong Public Subnet</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Nat-Gateway-va-Nat-Instance-trong-he-thong"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. Nat Gateway và Nat Instance trong hệ thống</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Nat-Instance"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. Nat Instance</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Nat-Gateway"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. Nat Gateway</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-Su-khac-nhau-bai-toan-nen-dung"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5. Sự khác nhau, bài toán nên dùng</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-Tai-lieu-tham-khao"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">6. Tài liệu tham khảo:</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a>
+          </li>
+          
+        </ul>
+        
+      </div>
     </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 	<!-- Footer (contains ThemeColor、viewer) -->
