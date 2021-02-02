@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite-url/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/</loc>
+    <lastmod>2021-02-02</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite-url/2021/01/17/Dynamo-Time-To-Live-to-S3/</loc>
     <lastmod>2021-01-17</lastmod>
   </url>
