@@ -2,105 +2,105 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite-url/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/</loc>
+    <loc>https://minhhungtrinh.github.io/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/</loc>
     
     <lastmod>2021-02-02</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2021/01/17/Dynamo-Time-To-Live-to-S3/</loc>
+    <loc>https://minhhungtrinh.github.io/2021/01/17/Dynamo-Time-To-Live-to-S3/</loc>
     
     <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2021/01/17/Real-Time-Replication-From-DynamoDB-to-MongoDB/</loc>
+    <loc>https://minhhungtrinh.github.io/2021/01/17/Real-Time-Replication-From-DynamoDB-to-MongoDB/</loc>
     
     <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/</loc>
+    <loc>https://minhhungtrinh.github.io/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/</loc>
     
     <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/</loc>
+    <loc>https://minhhungtrinh.github.io/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/</loc>
     
     <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2021/01/17/Lam-viec-voi-Large-Data/</loc>
+    <loc>https://minhhungtrinh.github.io/2021/01/17/Lam-viec-voi-Large-Data/</loc>
     
     <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/</loc>
+    <loc>https://minhhungtrinh.github.io/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/</loc>
     
     <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/</loc>
+    <loc>https://minhhungtrinh.github.io/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/</loc>
     
     <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2021/01/14/AWS-Data-transfer-Billing/</loc>
+    <loc>https://minhhungtrinh.github.io/2021/01/14/AWS-Data-transfer-Billing/</loc>
     
     <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/2020/04/17/Hexo-Theme-LiveMyLife/</loc>
+    <loc>https://minhhungtrinh.github.io/2020/04/17/Hexo-Theme-LiveMyLife/</loc>
     
     <lastmod>2021-01-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/about/index.html</loc>
+    <loc>https://minhhungtrinh.github.io/about/index.html</loc>
     
     <lastmod>2021-01-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/index.html</loc>
+    <loc>https://minhhungtrinh.github.io/tags/index.html</loc>
     
     <lastmod>2021-01-13</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/archive/index.html</loc>
+    <loc>https://minhhungtrinh.github.io/categories/index.html</loc>
     
     <lastmod>2021-01-13</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/index.html</loc>
+    <loc>https://minhhungtrinh.github.io/archive/index.html</loc>
     
     <lastmod>2021-01-13</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/404.html</loc>
+    <loc>https://minhhungtrinh.github.io/404.html</loc>
     
     <lastmod>2021-01-13</lastmod>
     
@@ -108,7 +108,7 @@
   
 
   <url>
-    <loc>http://yoursite-url/</loc>
+    <loc>https://minhhungtrinh.github.io/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -116,105 +116,105 @@
 
   
   <url>
-    <loc>http://yoursite-url/tags/AWS/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/AWS/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Billing/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Billing/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Monitoring/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Monitoring/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Mysql/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Mysql/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Optimize/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Optimize/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/JWT/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/JWT/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Security/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Security/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Log/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Log/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Database/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Hexo/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/SQL/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Hexo-Theme-LiveMyLife/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/NoSQL/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Database/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Hexo/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/SQL/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Hexo-Theme-LiveMyLife/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/NoSQL/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/DynamoDB/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/DynamoDB/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/MongoDB/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/MongoDB/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -223,21 +223,21 @@
 
   
   <url>
-    <loc>http://yoursite-url/categories/DevOps/</loc>
+    <loc>https://minhhungtrinh.github.io/categories/DevOps/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/Develop/</loc>
+    <loc>https://minhhungtrinh.github.io/categories/Develop/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/Hexo-Theme-LiveMyLife/</loc>
+    <loc>https://minhhungtrinh.github.io/categories/Hexo-Theme-LiveMyLife/</loc>
     <lastmod>2021-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
