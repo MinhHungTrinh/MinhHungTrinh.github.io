@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://minhhungtrinh.github.io/2021/01/14/AWS-Data-transfer-Billing/</loc>
+    
+    <lastmod>2021-02-19</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://minhhungtrinh.github.io/2021/02/19/AWS-Database-Mo-bat-part-1/</loc>
     
     <lastmod>2021-02-19</lastmod>
@@ -66,13 +73,6 @@
   
   <url>
     <loc>https://minhhungtrinh.github.io/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/</loc>
-    
-    <lastmod>2021-01-17</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/2021/01/14/AWS-Data-transfer-Billing/</loc>
     
     <lastmod>2021-01-17</lastmod>
     
@@ -158,6 +158,13 @@
   </url>
   
   <url>
+    <loc>https://minhhungtrinh.github.io/tags/Optimize/</loc>
+    <lastmod>2021-02-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://minhhungtrinh.github.io/tags/Database/</loc>
     <lastmod>2021-02-19</lastmod>
     <changefreq>daily</changefreq>
@@ -186,7 +193,14 @@
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/Optimize/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Hexo/</loc>
+    <lastmod>2021-02-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/Hexo-Theme-LiveMyLife/</loc>
     <lastmod>2021-02-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -201,20 +215,6 @@
   
   <url>
     <loc>https://minhhungtrinh.github.io/tags/NoSQL/</loc>
-    <lastmod>2021-02-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/Hexo/</loc>
-    <lastmod>2021-02-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/Hexo-Theme-LiveMyLife/</loc>
     <lastmod>2021-02-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

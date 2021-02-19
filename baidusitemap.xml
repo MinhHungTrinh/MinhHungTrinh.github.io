@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://minhhungtrinh.github.io/2021/01/14/AWS-Data-transfer-Billing/</loc>
+    <lastmod>2021-02-19</lastmod>
+  </url>
+  <url>
     <loc>https://minhhungtrinh.github.io/2021/02/19/AWS-Database-Mo-bat-part-1/</loc>
     <lastmod>2021-02-19</lastmod>
   </url>
@@ -38,10 +42,6 @@
   </url>
   <url>
     <loc>https://minhhungtrinh.github.io/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/</loc>
-    <lastmod>2021-01-17</lastmod>
-  </url>
-  <url>
-    <loc>https://minhhungtrinh.github.io/2021/01/14/AWS-Data-transfer-Billing/</loc>
     <lastmod>2021-01-17</lastmod>
   </url>
   <url>
