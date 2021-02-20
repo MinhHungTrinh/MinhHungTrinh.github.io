@@ -184,13 +184,6 @@
 
           
           <li>
-            <a href="/archive/">Archives</a>
-          </li>
-          
-          
-
-          
-          <li>
             <a href="/about/">About</a>
           </li>
           
@@ -198,7 +191,7 @@
 
           
           <li>
-            <a href="/tags/">Tags</a>
+            <a href="/archive/">Archives</a>
           </li>
           
           
@@ -206,6 +199,13 @@
           
           <li>
             <a href="/categories/">Categories</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/tags/">Tags</a>
           </li>
           
           
@@ -337,7 +337,7 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#DevOps" title="DevOps" rel="8">DevOps</a>
+        <a href="#DevOps" title="DevOps" rel="9">DevOps</a>
         
         <a href="#Develop" title="Develop" rel="2">Develop</a>
         
@@ -351,6 +351,21 @@
         <span class="fa fa-tag listing-seperator" id="DevOps">
           <span class="tag-text">DevOps</span>
         </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/02/20/AWS-Database-AWS-RDS-part-2/">
+            <h2 class="post-title">
+              [AWS Database] AWS RDS (part 2)
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
         
         <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
