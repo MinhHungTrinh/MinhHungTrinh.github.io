@@ -372,7 +372,7 @@
 
         <p>Sau bài viết <a href="https://minhhungtrinh.github.io/2021/02/19/AWS-Database-Mo-bat-part-1/">[AWS Database] Mở bát (part 1)</a> tổng quan về database. Ở bài này mình sẽ đi chi tiết vào 1 service trong top phổ biến nhất của AWS là RDS. Nếu bạn phải làm việc với Relational Database, bạn nên tìm hiểu về nó nhé. RDS có nhiều thứ để nói lắm, vì vậy ở bài này mình sẽ nói tổng quan nhất để bạn có thể tiếp cận và có định hướng sử dụng về nó, ở phần sau có lẽ mình sẽ nói chi tiết hơn nữa nhé.</p>
 <p><img src="rds.png" alt="main"></p>
-<h4 id="RDS-Tong-quan"><a href="#RDS-Tong-quan" class="headerlink" title="RDS Tổng quan"></a>RDS Tổng quan</h4><ul>
+<h3 id="RDS-Tong-quan"><a href="#RDS-Tong-quan" class="headerlink" title="RDS Tổng quan"></a>RDS Tổng quan</h3><ul>
 <li>RDS Relational Database Service</li>
 <li>Sử dụng SQL (Structured Query Language)</li>
 <li>Supported Engines: PostgreSQL, MySQL, MariaDB, Oracle, Microsoft SQL Server, Aurora</li>
@@ -386,7 +386,7 @@
 <li>Supports Multi-AZ deployments (Hiểu đơn giản là deploy database trên 2 zone, 1 primary, và 1 backup realtime nằm ở zone còn lại, mục đích đảm bảo High Availability khi con primary có vấn đề)</li>
 </ul>
 <p>Ngó qua có vẻ RDS support tận răng khá nhiều chức năng rồi. Nhưng ở đây mới chỉ là tổng quan thôi.</p>
-<h4 id="Tai-sao-su-dung-RDS"><a href="#Tai-sao-su-dung-RDS" class="headerlink" title="Tại sao sử dụng RDS"></a>Tại sao sử dụng RDS</h4><p>Khi bạn tự host 1 DB, bạn phải tự quản lý mọi thứ:</p>
+<h3 id="Tai-sao-su-dung-RDS"><a href="#Tai-sao-su-dung-RDS" class="headerlink" title="Tại sao sử dụng RDS"></a>Tại sao sử dụng RDS</h3><p>Khi bạn tự host 1 DB, bạn phải tự quản lý mọi thứ:</p>
 <ul>
 <li>Bạn phải quản lý phần cứng (physical infrastructure) </li>
 <li>Bạn phải quản lý software (OS)</li>
@@ -405,7 +405,7 @@
 <li>AWS quản lý ứng dụng (DB) </li>
 </ul>
 <p>Từ đó thấy khi bạn mất thêm chút tiền, AWS với 1 bộ sậu to đùng sẽ chia sẽ trách nhiệm với bạn. Bạn sẽ để thời gian làm việc khác. Về vấn đề lâu dài, nhân sự bản chất là bạn đang đứng trên người khổng lồ, thực ra bạn đang tiết kiệm được nhiều chi phí.</p>
-<h4 id="So-sanh-su-dung-RDS-va-trien-khai-DB-tren-EC2"><a href="#So-sanh-su-dung-RDS-va-trien-khai-DB-tren-EC2" class="headerlink" title="So sánh sử dụng RDS và triển khai DB trên EC2"></a>So sánh sử dụng RDS và triển khai DB trên EC2</h4><p>RDS là một service được quản lý:</p>
+<h3 id="So-sanh-su-dung-RDS-va-trien-khai-DB-tren-EC2"><a href="#So-sanh-su-dung-RDS-va-trien-khai-DB-tren-EC2" class="headerlink" title="So sánh sử dụng RDS và triển khai DB trên EC2"></a>So sánh sử dụng RDS và triển khai DB trên EC2</h3><p>RDS là một service được quản lý:</p>
 <ul>
 <li>Tự động đáp ứng các nhu cầu, tự cập nhật OS</li>
 <li>Liên tục Backup và cho phép restore với chỉ rõ thời gian (point in time recovery)</li>
@@ -417,7 +417,7 @@
 <li>Storage thì sử dụng EBS (gp2 or io1)</li>
 </ul>
 <p><strong>NHƯNG</strong> không thể SSH vào RDS giống như bạn SSH tới các DB Instance.</p>
-<h4 id="Chi-phi-RDS"><a href="#Chi-phi-RDS" class="headerlink" title="Chi phí RDS"></a>Chi phí RDS</h4><p>Có vài lưu ý về chi phí như sau:</p>
+<h3 id="Chi-phi-RDS"><a href="#Chi-phi-RDS" class="headerlink" title="Chi phí RDS"></a>Chi phí RDS</h3><p>Có vài lưu ý về chi phí như sau:</p>
 <ul>
 <li>Khi tạo 1 RDS, cần lựa chọn:<ul>
 <li>Instance type (on-demand and reserved)</li>
@@ -435,7 +435,7 @@
 <li>I/O (per million requests)</li>
 <li>Data transfer</li>
 </ul>
-<h4 id="Lua-chon-Instance-Class"><a href="#Lua-chon-Instance-Class" class="headerlink" title="Lựa chon Instance Class"></a>Lựa chon Instance Class</h4><p>Có vài loaị Instance class types lựa chon khi build RDS, ý nghĩa như tên của nó vậy:</p>
+<h3 id="Lua-chon-Instance-Class"><a href="#Lua-chon-Instance-Class" class="headerlink" title="Lựa chon Instance Class"></a>Lựa chon Instance Class</h3><p>Có vài loaị Instance class types lựa chon khi build RDS, ý nghĩa như tên của nó vậy:</p>
 <ul>
 <li>Standard</li>
 <li>Memory-optimized (memory-intensive, high performance workloads)</li>
@@ -447,7 +447,7 @@
 <li>CPU credits (1 credit = 100% CPU Core utilization 1 minute)</li>
 <li>Bạn sẽ nhận CPU Credit khi bạn không sử dụng CPU để tích luỹ.</li>
 </ul>
-<h4 id="Lua-chon-Storage-Type"><a href="#Lua-chon-Storage-Type" class="headerlink" title="Lựa chon Storage Type"></a>Lựa chon Storage Type</h4><p>General Purpose Storage (=cost-effective SSD storage):</p>
+<h3 id="Lua-chon-Storage-Type"><a href="#Lua-chon-Storage-Type" class="headerlink" title="Lựa chon Storage Type"></a>Lựa chon Storage Type</h3><p>General Purpose Storage (=cost-effective SSD storage):</p>
 <ul>
 <li>Cần lựa chọn storage size</li>
 <li>Bạn sẽ nhận giá trị baseline là 3 IOPS/GB. Đây là thông số liên quan tới khả năng throughput</li>
@@ -464,7 +464,7 @@
 <li>Phù hợp với write-heavy workloads</li>
 </ul>
 <p>Nếu instance chạy hết storage, tự động cấp phát storage.</p>
-<h4 id="Storage-Auto-Scaling-trong-RDS"><a href="#Storage-Auto-Scaling-trong-RDS" class="headerlink" title="Storage Auto Scaling trong RDS"></a>Storage Auto Scaling trong RDS</h4><p><img src="rds-storage-autoscaling.png" alt="main"></p>
+<h3 id="Storage-Auto-Scaling-trong-RDS"><a href="#Storage-Auto-Scaling-trong-RDS" class="headerlink" title="Storage Auto Scaling trong RDS"></a>Storage Auto Scaling trong RDS</h3><p><img src="rds-storage-autoscaling.png" alt="main"></p>
 <ul>
 <li>Cả 2 loại storage types (gp2 &amp; io1) đều support <code>storage autoscaling</code></li>
 <li>Tự động scale up storage dựa trên khối lượng công việc</li>
@@ -602,7 +602,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#RDS-Tong-quan"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">RDS Tổng quan</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Tai-sao-su-dung-RDS"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Tại sao sử dụng RDS</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#So-sanh-su-dung-RDS-va-trien-khai-DB-tren-EC2"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">So sánh sử dụng RDS và triển khai DB trên EC2</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Chi-phi-RDS"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Chi phí RDS</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Lua-chon-Instance-Class"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Lựa chon Instance Class</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Lua-chon-Storage-Type"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Lựa chon Storage Type</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Storage-Auto-Scaling-trong-RDS"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">Storage Auto Scaling trong RDS</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#RDS-Tong-quan"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">RDS Tổng quan</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Tai-sao-su-dung-RDS"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Tại sao sử dụng RDS</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#So-sanh-su-dung-RDS-va-trien-khai-DB-tren-EC2"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">So sánh sử dụng RDS và triển khai DB trên EC2</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Chi-phi-RDS"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Chi phí RDS</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Lua-chon-Instance-Class"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Lựa chon Instance Class</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Lua-chon-Storage-Type"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Lựa chon Storage Type</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Storage-Auto-Scaling-trong-RDS"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">Storage Auto Scaling trong RDS</span></a></li></ol>
         
         </div>
       </aside>
