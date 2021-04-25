@@ -46,12 +46,12 @@
 
   <!-- Pygments Highlight CSS -->
   
-<link rel="stylesheet" href="../css/highlight.css">
-<link rel="stylesheet" href="../css/widget.css">
-<link rel="stylesheet" href="../css/rocket.css">
-<link rel="stylesheet" href="../css/signature.css">
-<link rel="stylesheet" href="../css/catalog.css">
-<link rel="stylesheet" href="../css/livemylife.css">
+<link rel="stylesheet" href="../../../../css/highlight.css">
+<link rel="stylesheet" href="../../../../css/widget.css">
+<link rel="stylesheet" href="../../../../css/rocket.css">
+<link rel="stylesheet" href="../../../../css/signature.css">
+<link rel="stylesheet" href="../../../../css/catalog.css">
+<link rel="stylesheet" href="../../../../css/livemylife.css">
 
 
   
@@ -112,10 +112,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://minhhungtrinh.github.io/categories/">
+  <link rel="canonical" href="https://minhhungtrinh.github.io/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/">
   <title>
     
-    Categories - Minh Hung
+    Collect application logs to AWS Cloudwatch Logs - Minh Hung
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -263,8 +263,8 @@
 
   <style type="text/css">
     header.intro-header {
-       /*page*/
-        background-image: url('/img/header_img/categories_bg.jpg');
+       /*post*/
+        background-image: url('cwl_en_1.png');
       
     }
 
@@ -286,10 +286,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>Categories</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">Hi , here is Categories ....</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+              
+              <a class="tag" href="/tags/#Log" title="Log">Log</a>
+              
+            </div>
+            <h1>Collect application logs to AWS Cloudwatch Logs</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by MinhHungTrinh on
+              2021-04-25
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">9</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">1.5k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- 不蒜子统计 start -->
+            <span class="meta">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            <!-- WordCount end -->
+            
+
+
           </div>
           
         </div>
@@ -330,247 +362,289 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-	<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <!-- 标签云 -->
-      <div id='tag_cloud' class="tags">
+	<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <p>Khi triển khai 1 hệ thống thực ra có nhiều thành phần, và phân tán trên nhiều server. Nên việc tập trung logs lại là cực kỳ quan trọng. Nó giúp cho việc chúng ta debug, theo dõi ứng dụng hoạt động được tốt hơn. </p>
+<p>Một ví dụ đơn giản như bạn có 1 web application sử dụng load balancer với với hơn chục con server (ec2) đằng sau. Bây giờ nếu bạn truy cập vào từng server để đọc logs thì thật vất vả. Hơn nữa hệ thống có thể autoscale server khiến server đó mất đi hoặc vì lý do nào đó (failover) xịt luôn server. Vậy nên bạn cần phải collect log, nó là rất cần thiết.</p>
+<p>Có nhiều giải pháp cho việc này: </p>
+<ul>
+<li>Với open source thì có nhiều, bạn có thể tham khảo ELK stack. Bạn sẽ tốn chi phí về triển khai, quản lý nhưng ngược lại tiết kiệm được chi phí duy trì, (tức là chỉ cần server, các soft quản lý liên quan là free do là open source). Tất nhiên, ELK còn cung cấp rất nhiều tính năng bổ sung. Nhưng bạn cũng phải tự đưa ra giải pháp để backup ELK này để bảm đảm tính bền vững của data. Nói chung ở case 1 này, trách nhiệm của Devops là nhiều khi phải tốn công xây dựng.</li>
+<li>Một giải pháp nữa collect logs là sử dụng S3 để lưu trữ. Giải pháp này giúp tiết kiệm chi phí (build triển khai-không tốn nhiều công triển khai và duy trì- phí service cũng thấp) cũng như giúp việc lưu trữ logs bền bỉ, không lo bị mất. Nhưng nhược điểm là không có GUI để thao tác, đơn thuần chỉ là 1 cloud storage để lưu trữ logs file. Cần check log thì phải download về hoặc import tới ứng dụng khác.</li>
+<li>Với AWS bạn có thể tham khảo Cloudwatch Logs nữa nhé. Và bài này mình sẽ nói về cloudwatch logs. Nói chung nó tận dụng được điểm mạnh về service là đảm bảo logs của bạn an toàn, dễ triển khai. Hơn nữa nó lại có GUI nữa. Nhưng tất nhiên bạn cũng phải bỏ chi phí collect logs trên Cloudwatch. Nói chung với hệ thống lớn thì chi phí Cloudwatch sẽ đắt hơn sử dụng opensource. Nhưng với hệ thống nhỏ và vừa thì chưa chắc. Nên bạn hãy cân nhắc nhé.</li>
+</ul>
+<p>Chi tiết hơn về Cloudwatch Logs:</p>
+<p><img src="cwl_en_1.png" alt="main"><br>3 steps chính để cấu hình stream logs từ EC2 tới Cloudwatch Logs:</p>
+<ul>
+<li>Tạo IAM role cho EC2 để có permission thao tác tới Cloudwatch Logs</li>
+<li>Attach IAM role tới  các EC2 instance cần collect logs</li>
+<li>Install và configure CloudWatch agent</li>
+</ul>
+<h3 id="1-Tao-IAM-Role"><a href="#1-Tao-IAM-Role" class="headerlink" title="1. Tạo IAM Role"></a>1. Tạo IAM Role</h3><p>Để cho phép EC2 có thể thao tác với Cloudwatch, bạn cần tạo 1 IAM Role (mình khuyến khích sử dụng IAM Role thay cho IAM user để đảm bảo security nhé). </p>
+<p> Truy cập Console =&gt; IAM =&gt; Roles =&gt; create</p>
+<p> <img src="image1.png" alt="main"></p>
+<p> Lựa chọn service sử dụng role là EC2 nhé. Tiếp tục thì lựa chọn Permission cho Role:</p>
+<p> Mình sẽ lựa chọn 1 default policy <code>CloudWatchAgentServerPolicy</code> . Các bạn có thể customize lại cũng được nhé, cho nó limit hơn.</p>
+<p><img src="image2.png" alt="main"></p>
+<p>Và tiếp tục là đánh tags, đặt tên và Click Review để tạo Role thôi. </p>
+<h3 id="2-Attach-Role-toi-EC2"><a href="#2-Attach-Role-toi-EC2" class="headerlink" title="2. Attach Role tới EC2"></a>2. Attach Role tới EC2</h3><p>Việc attach tới 1 EC2 có thể làm như sau, truy cập EC2 trên console và thực hiện attach role mới tạo vào EC2.</p>
+<p><img src="image3.png" alt="main"></p>
+<p>và sau đó attach role.<br><img src="image4.png" alt="main"></p>
+<p>Thực tế thì chúng ta thường cần collect log của cả 1 autoscale group chẳng hạn, thì mọi người hãy attach nó ở trong <code>launch config</code> hoặc <code>launch template</code> nhé.</p>
+<h3 id="3-Cai-dat-va-Cau-hinh-AWS-Cloudwatch-Agent"><a href="#3-Cai-dat-va-Cau-hinh-AWS-Cloudwatch-Agent" class="headerlink" title="3. Cài đặt và Cấu hình AWS Cloudwatch Agent"></a>3. Cài đặt và Cấu hình AWS Cloudwatch Agent</h3><p>Chúng ta sẽ cài đặt trên EC2, với autoscale group thì các bạn nhớ tạo trên 1 ec2 rồi tạo AMI cho autoscale group đó nhé.<br>Yêu cầu đầu tiên là EC2 phải có aws-cli. Bạn có thể check với command <code>aws version</code></p>
+<p>Tiếp theo sẽ download cloudwatch agent. (<a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html</a>) mọi người lựa chọn theo OS nhé. Ở đây mình sử dụng ubuntu:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="regexp">//</span>s3.amazonaws.com<span class="regexp">/amazoncloudwatch-agent/u</span>buntu<span class="regexp">/amd64/</span>latest<span class="regexp">/amazon-cloudwatch-agent.deb</span></span><br></pre></td></tr></table></figure>
+
+<p>Cài đặt nhé:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i -E <span class="string">./amazon-cloudwatch-agent.deb</span></span><br></pre></td></tr></table></figure>
+
+<p>OK vậy là đã có cloudwatch agent.</p>
+<p>Tiếp theo sẽ tạo file config, cái mà quyết định bạn sẽ collect folder logs nào.<br>Config file đặt ở: <code>/opt/aws/amazon-cloudwatch-agent/bin/config.json</code><br>Chúng ta thực hiện chỉnh sửa nội dung nhé <code>sudo vim /opt/aws/amazon-cloudwatch-agent/bin/config.json</code> . Ở đây mình sẽ thực hiện collect logs của apache chẳng hạn.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">     <span class="attr">"agent"</span>: &#123;</span><br><span class="line">         <span class="attr">"run_as_user"</span>: <span class="string">"root"</span></span><br><span class="line">     &#125;,</span><br><span class="line">     <span class="attr">"logs"</span>: &#123;</span><br><span class="line">         <span class="attr">"logs_collected"</span>: &#123;</span><br><span class="line">             <span class="attr">"files"</span>: &#123;</span><br><span class="line">                 <span class="attr">"collect_list"</span>: [</span><br><span class="line">                     &#123;</span><br><span class="line">                         <span class="attr">"file_path"</span>: <span class="string">"/var/log/apache2/error.log"</span>,</span><br><span class="line">                         <span class="attr">"log_group_name"</span>: <span class="string">"apache-error-log"</span>,</span><br><span class="line">                         <span class="attr">"log_stream_name"</span>: <span class="string">"&#123;instance_id&#125;"</span></span><br><span class="line">                     &#125;</span><br><span class="line">                 ]</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>The most important part of the config file is file_path. This is the path to the log file on the server that you want to collect data from. /var/log/apache2/error.log is the default error log for Apache on Ubuntu. The log_group_name and log_stream_name options are just used for naming the Log Group and Log Streams respectively in CloudWatch. I’d recommend keeping {instance_id} for the log_stream_name as this helps identify which EC2 instance sent the log data.<br>Một vài thông tin quan trọng như sau. <code>file_path</code> là path tới file bạn bạn cần collect. <code>log_group_name</code> và <code>log_stream_name</code> chính là các namespace được hiển thị trên dịch vụ Cloudwatch Logs. Việc để <code>log_stream_name</code> là instance-id giúp chúng ta phân biệt được logs của server nào, không bị nhầm lẫn.</p>
+<p>Cuối cùng để enable việc collect log, chúng ta cần start <code>winzard</code></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="regexp">/opt/</span>aws<span class="regexp">/amazon-cloudwatch-agent/</span>bin<span class="regexp">/amazon-cloudwatch-agent-config-wizard</span></span><br></pre></td></tr></table></figure>
+
+<p>### Start Agent:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="regexp">/opt/</span>aws<span class="regexp">/amazon-cloudwatch-agent/</span>bin<span class="regexp">/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/</span>opt<span class="regexp">/aws/</span>amazon-cloudwatch-agent<span class="regexp">/bin/</span>config.json -s</span><br></pre></td></tr></table></figure>
+
+<p>Sau khi thực hiện run command, agent được tích hợp vào systemd, vậy nên nó sẽ tự động start nếu bạn có reboot, stop-start.</p>
+<h3 id="View-Logs"><a href="#View-Logs" class="headerlink" title="View Logs"></a>View Logs</h3><p>Truy cập dịch vụ Cloudwatch =&gt; Cloudwatch Logs. Bạn sẽ thấy thông tin như trên nhé.</p>
+<p><img src="image5.png" alt="main"></p>
+<p><img src="image6.png" alt="main"></p>
+<p><img src="image7.png" alt="main"></p>
+<p>Bạn có thể theo dõi logs của application. Bài viết này mình có lấy hình ảnh cũng như tham khảo nội dung các steps để tích hợp Cloudwatch từ <a href="https://www.rapidspike.com/blog/how-to-send-log-files-to-aws-cloudwatch-ubuntu/" target="_blank" rel="noopener">https://www.rapidspike.com/blog/how-to-send-log-files-to-aws-cloudwatch-ubuntu/</a> . Do cũng lười build lại hệ thống. Mục đích cũng nhằm để note lại thôi. Cảm ơn mọi người đã theo dõi bài viết.</p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/2021/02/20/AWS-Database-AWS-RDS-part-2/" data-toggle="tooltip" data-placement="top" title="[AWS Database] AWS RDS (part 2)">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
         
-        <a href="#DevOps" title="DevOps" rel="10">DevOps</a>
+        <!-- tip start -->
+        <div class="tip">
+          <p>
+            Đây là Blog cá nhân của MinhHungTrinh, nơi mình chia sẻ, lưu giữ kiến thức. Nếu các bạn có góp ý, thắc mắc thì vui lòng comment bên dưới cho mình biết nhé. Kiến thức là biển sâu và mình luôn là người lắng nghe và ham học hỏi. Các vấn đề đặc biệt hoặc tế nhị mọi người có thể gửi email tới minhhungtrinhvn@gmail.com. Cảm ơn Mọi Người đã đọc Blog của mình. Yolo!
+          </p>
+        </div>
+        <!-- tip end -->
         
-        <a href="#Develop" title="Develop" rel="2">Develop</a>
+
         
-        <a href="#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a href="#"  class="social-share-icon icon-facebook">
+        <i class="fa fa-facebook fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:minhhungtrinhvn@gmail.com?subject=Collect application logs to AWS Cloudwatch Logs&body=Hi,I found this website and thought you might like it https://minhhungtrinh.github.io/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
         
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+
+<!-- 2. gitment comment -->
+
+<!-- gitment start -->
+<!-- Docs:https://github.com/imsun/gitment -->
+
+<div id="blog_comments"></div>
+<!-- <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"> <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'gitment-container gitment-root-container'
+
+      // your custom component
+      container.appendChild(instance.renderSomething(state, instance))
+      container.appendChild(instance.renderHeader(state, instance))
+      container.appendChild(instance.renderEditor(state, instance))
+      container.appendChild(instance.renderComments(state, instance))
+      container.appendChild(instance.renderFooter(state, instance))
+      return container
+    },
+    renderSomething(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'hello_visitor'
+      if (state.user.login) {
+        container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+      }
+      return container
+    }
+  }
+
+  const gitment = new Gitment({
+    id: 'Sun Apr 25 2021 19:53:11 GMT+0700', // optional
+    owner: 'MinhHungTrinh',
+    repo: 'MinhHungTrinh.github.io',
+    oauth: {
+      client_id: 'f23a1a1a678355dff851',
+      client_secret: '5b4c1011ed3613893952bd69fbdab696b32bec3b'
+    },
+    desc: '',
+    perPage: '10',
+    maxCommentHeight: '250',
+    theme: myTheme,
+    // ... For more available options, check out the documentation below
+  })
+
+  gitment.render('blog_comments')
+  // or gitment.render(document.getElementById('comments')) or document.body.appendChild(gitment.render())
+</script>
+
+<!-- gitment end -->
+
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
       </div>
 
-      <!-- 标签列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="DevOps">
-          <span class="tag-text">DevOps</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/02/20/AWS-Database-AWS-RDS-part-2/">
-            <h2 class="post-title">
-              [AWS Database] AWS RDS (part 2)
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/14/AWS-Data-transfer-Billing/">
-            <h2 class="post-title">
-              AWS Data transfer Billing
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/">
-            <h2 class="post-title">
-              Collect application logs to AWS Cloudwatch Logs
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/">
-            <h2 class="post-title">
-              Installing node_exporter on an EC2 Amazon linux
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/">
-            <h2 class="post-title">
-              AWS Auto Scaling Group based on Queue (Custom metric)
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/02/19/AWS-Database-Mo-bat-part-1/">
-            <h2 class="post-title">
-              [AWS Database] Mở bát (part 1)
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Dynamo-Time-To-Live-to-S3/">
-            <h2 class="post-title">
-              Dynamo Time To Live to S3
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/">
-            <h2 class="post-title">
-              Góc nhìn về Nat Instance >< Nat Gateway
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/">
-            <h2 class="post-title">
-              Replicate AWS MySQL Aurora to External Replica
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Real-Time-Replication-From-DynamoDB-to-MongoDB/">
-            <h2 class="post-title">
-              Real-Time Replication From DynamoDB to MongoDB
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Develop">
-          <span class="tag-text">Develop</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/">
-            <h2 class="post-title">
-              Câu chuyện JWT và Revoke Token
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Lam-viec-voi-Large-Data/">
-            <h2 class="post-title">
-              Làm việc với Large Data
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Hexo-Theme-LiveMyLife">
-          <span class="tag-text">Hexo-Theme-LiveMyLife</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2020/04/17/Hexo-Theme-LiveMyLife/">
-            <h2 class="post-title">
-              Hexo-Theme-LiveMyLife
-            </h2>
-            
-            <h3 class="post-subtitle">
-              A succinct hexo theme...
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-Tao-IAM-Role"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Tạo IAM Role</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Attach-Role-toi-EC2"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. Attach Role tới EC2</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-Cai-dat-va-Cau-hinh-AWS-Cloudwatch-Agent"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. Cài đặt và Cấu hình AWS Cloudwatch Agent</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#View-Logs"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">View Logs</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+            
+            <a class="tag" href="/tags/#Log" title="Log">Log</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a>
+          </li>
+          
+        </ul>
+        
+      </div>
     </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 	<!-- Footer (contains ThemeColor、viewer) -->
