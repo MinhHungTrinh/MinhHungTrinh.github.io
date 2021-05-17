@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://minhhungtrinh.github.io/2021/05/17/AWS-Security-Network-Security/</loc>
+    
+    <lastmod>2021-05-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/2021/05/14/AWS-Application-Load-Balancer-cost-estimation/</loc>
+    
+    <lastmod>2021-05-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://minhhungtrinh.github.io/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/</loc>
     
     <lastmod>2021-04-25</lastmod>
@@ -137,7 +151,7 @@
 
   <url>
     <loc>https://minhhungtrinh.github.io/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -145,105 +159,112 @@
   
   <url>
     <loc>https://minhhungtrinh.github.io/tags/AWS/</loc>
-    <lastmod>2021-04-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/Database/</loc>
-    <lastmod>2021-04-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/Billing/</loc>
-    <lastmod>2021-04-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/Log/</loc>
-    <lastmod>2021-04-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/Monitoring/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://minhhungtrinh.github.io/tags/Optimize/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/JWT/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <loc>https://minhhungtrinh.github.io/tags/Billing/</loc>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/Security/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <loc>https://minhhungtrinh.github.io/tags/Database/</loc>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/SQL/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <loc>https://minhhungtrinh.github.io/tags/Log/</loc>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/NoSQL/</loc>
-    <lastmod>2021-04-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/Hexo/</loc>
-    <lastmod>2021-04-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <loc>https://minhhungtrinh.github.io/tags/Monitoring/</loc>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://minhhungtrinh.github.io/tags/Mysql/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <lastmod>2021-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/Security/</loc>
+    <lastmod>2021-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/Network/</loc>
+    <lastmod>2021-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/JWT/</loc>
+    <lastmod>2021-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/Hexo/</loc>
+    <lastmod>2021-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/Hexo-Theme-LiveMyLife/</loc>
+    <lastmod>2021-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/SQL/</loc>
+    <lastmod>2021-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/NoSQL/</loc>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://minhhungtrinh.github.io/tags/DynamoDB/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://minhhungtrinh.github.io/tags/MongoDB/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -252,21 +273,21 @@
   
   <url>
     <loc>https://minhhungtrinh.github.io/categories/DevOps/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://minhhungtrinh.github.io/categories/Develop/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://minhhungtrinh.github.io/categories/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2021-04-25</lastmod>
+    <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

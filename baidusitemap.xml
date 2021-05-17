@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://minhhungtrinh.github.io/2021/05/17/AWS-Security-Network-Security/</loc>
+    <lastmod>2021-05-17</lastmod>
+  </url>
+  <url>
+    <loc>https://minhhungtrinh.github.io/2021/05/14/AWS-Application-Load-Balancer-cost-estimation/</loc>
+    <lastmod>2021-05-14</lastmod>
+  </url>
+  <url>
     <loc>https://minhhungtrinh.github.io/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/</loc>
     <lastmod>2021-04-25</lastmod>
   </url>
