@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-xxxxxx-xx"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-xxxxxx-xx');
+  </script>
+  
+
+  <!-- Baidu Tongji -->
+  
+
+  <!-- Baidu Push -->
+  
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc" />
+  <meta name="baidu-site-verification" content="PpzM9WxOJU" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="It&#39;s an IT blog..." />
+  <meta name="keyword" content="hungtm,vitiit,minhhungtrinh" />
+  <link rel="shortcut icon" href="/img/avatar/favicon.png" />
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+  <!-- Bootstrap Core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/beantech.min.css" />
+
+  <!-- Pygments Highlight CSS -->
+  
+<link rel="stylesheet" href="../../../../css/highlight.css">
+<link rel="stylesheet" href="../../../../css/widget.css">
+<link rel="stylesheet" href="../../../../css/rocket.css">
+<link rel="stylesheet" href="../../../../css/signature.css">
+<link rel="stylesheet" href="../../../../css/catalog.css">
+<link rel="stylesheet" href="../../../../css/livemylife.css">
+
+
+  
+  <!-- wave start -->
+  <link rel="stylesheet" href="/css/wave.css" />
+  <!-- wave end -->
+  
+
+  
+  <!-- top start (article top hot config) -->
+  <link rel="stylesheet" href="/css/top.css" />
+  <!-- top end -->
+  
+
+  
+  <!-- ThemeColor start -->
+  <link rel="stylesheet" href="/css/scroll.css" />
+  <!-- ThemeColor end -->
+  
+
+  
+  <!-- viewer start (Picture preview) -->
+  <link rel="stylesheet" href="/css/viewer.min.css" />
+  <!-- viewer end -->
+  
+
+  
+  <!-- Search start -->
+  <link rel="stylesheet" href="/css/search.css" />
+  <!-- Search end -->
+  
+
+  
+  <!-- ThemeColor start -->
+  <link rel="stylesheet" href="/css/themecolor.css" />
+  <!-- ThemeColor end -->
+  
+
+  
+  <!-- gitment start -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css" />
+  <!-- gitment end -->
+  
+
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+    href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="https://minhhungtrinh.github.io/2021/01/17/Dynamo-Time-To-Live-to-S3/">
+  <title>
+    
+    Dynamo Time To Live to S3 - Minh Hung
+    
+  </title>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+<body ontouchstart="" class="body--home">
+	<!-- ThemeColor -->
+	
+	<!-- ThemeColor -->
+<!-- <div class="toggle" onclick="document.body.classList.toggle('body--dark')">Switch Color</div> -->
+
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons bright-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+
+	
+
+	<!-- Gitter -->
+	
+	<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'hungtm-live-chat/community'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+	
+
+	<!-- Navigation (contains search)-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<!--       <a class="navbar-brand" href="/"></a> -->
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">Home</a>
+          </li>
+
+          
+
+          
+          
+
+          
+          <li>
+            <a href="/archive/">Archives</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/tags/">Tags</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/categories/">Categories</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/about/">About</a>
+          </li>
+          
+          
+
+          
+          <li><a class="popup-trigger" title="Search"><span class="search-icon"></span>Search</a></li>
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+
+<script>
+  // Drop Bootstarp low-performance Navbar
+  // Use customize navbar with high-quality material design animation
+  // in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+	<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    header.intro-header {
+       /*post*/
+        background-image: url('waterfall.jpg');
+      
+    }
+
+    
+      #signature {/*signature*/
+        background-image: url('/img/signature/me.png');
+      }
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+              
+              <a class="tag" href="/tags/#Log" title="Log">Log</a>
+              
+            </div>
+            <h1>Dynamo Time To Live to S3</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by MinhHungTrinh on
+              2021-01-17
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">12</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">2k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- 不蒜子统计 start -->
+            <span class="meta">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            <!-- WordCount end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+	<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+	<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <p>Đây là bài mình viết cũng đã trình bày trên blog kaopiz.kipalog của công ty.</p>
+<p>Vẫn là một bài toán với Dynamo. Cơ mà lần này là việc lưu trữ Log. Ở đây theo mình log tới từ nhiều nguồn. Ví dụ như: User action Log, Info Log, Error Log, Monitor Resources Log… Bài toán của dự án mình là lưu log data của hệ thống. Data hiện tại đang được lưu ở DynamoDB. Data này rất đặc thù là phải lưu đầy đủ. Cứ 1 giây là lại lưu data mới rồi. Mục đích lưu lại cũng nhằm để truy vết khi có vấn đề, để phân tích data. Data này lại có đặc thù nếu có bug thì cần truy được luôn, nhưng để lâu thì cũng k đụng đến. Tất nhiên là không được xoá nó đi mất hẳn. Vì khi cần phân tích thì phải tập hợp đó lại. Từ đó mình tìm đến usecase này của AWS (<code>Automatically Archive Items to S3 Using DynamoDB Time to Live (TTL) with AWS Lambda and Amazon Kinesis Firehose</code>) từ đó trong quá trình cấu hình thì có tham khảo từ <a href="https://aws.amazon.com/blogs/database/automatically-archive-items-to-s3-using-dynamodb-time-to-live-with-aws-lambda-and-amazon-kinesis-firehose/" target="_blank" rel="noopener">đây</a>.</p>
+<h2 id="1-Solution"><a href="#1-Solution" class="headerlink" title="1. Solution"></a>1. Solution</h2><p><img src="image1.png" alt="main"></p>
+<p>Giải pháp đưa ra là mình sẽ lưu tất cả data log ở trên vào DynamoDB. Có điều mình sẽ set Time To Live với expire là 30 ngày. Khi mình enable Dynamo Stream. thì mỗi record khi đủ 30 ngày sẽ bị xoá (backup trong 24h) và chính data đó cũng được deliver tới Firehose bằng lambda function. Khi data nạp đủ 1 gói (định nghĩa ở firehose, ví dụ là 5MB) hoặc interval qua xx seconds thì Firehose sẽ lưu vào S3.</p>
+<h2 id="2-Practical"><a href="#2-Practical" class="headerlink" title="2. Practical"></a>2. Practical</h2><p>Chúng ta cần thực hành các bước sau:</p>
+<ul>
+<li>Activate TTL and DynamoDB Streams trong các DynamoDB table của bạn.</li>
+<li>Tạo Firehose delivery stream để load data tới S3.</li>
+<li>Tạo Lambda function để poll data từ DynamoDB stream và deliver các records từ streams tới Firehose tạo ở trên.</li>
+<li>Kiểm tra xem ứng dụng hoạt động có ổn định</li>
+</ul>
+<h3 id="2-1-Enable-DynamoDB-TTL-va-DynamoDB-streams"><a href="#2-1-Enable-DynamoDB-TTL-va-DynamoDB-streams" class="headerlink" title="2.1. Enable DynamoDB TTL và DynamoDB streams"></a>2.1. Enable DynamoDB TTL và DynamoDB streams</h3><p>Chắc chắn là bạn đã chuẩn bị sẵn Dynamo table rồi nhé. Mình khuyên bạn lên lựa chọn option on-demand nếu bạn không có plan cụ thể cho Dynamo để cho đỡ tốn xiền. Ngoài lề vậy thôi. giờ tìm tới cái table và bắt đầu nhé.</p>
+<p><img src="image2.png" alt="main"></p>
+<p>Click vào Dynamo Stream để enable stream nhé:<br><img src="image3.png" alt="main"></p>
+<p>Tiếp theo click vào Manage TTL để enable Time To Live nhé.</p>
+<p><img src="image4.png" alt="main"></p>
+<p>Thực ra bạn cũng có thể enable Dynamo Stream ở luôn đây. Mình chon <code>ttl</code> là field để xác định expire time. Ví dụ mình lưu 1 record có <code>ttl</code> là second time của 30 ngày sau. Thì đến 30 ngày sau record sẽ expire.</p>
+<h3 id="2-2-Tao-Firehose-delivery-stream-de-load-data-toi-S3"><a href="#2-2-Tao-Firehose-delivery-stream-de-load-data-toi-S3" class="headerlink" title="2.2. Tạo Firehose delivery stream để load data tới S3."></a>2.2. Tạo Firehose delivery stream để load data tới S3.</h3><p>Trước khi thực hiện bước này bạn phải đảm bảo đã tạo 1 S3 bucket phục vụ việc lưu log data nhé.</p>
+<p>Tiếp theo là tìm tơi <code>Kinesis</code> service của AWS. Ở đây chung ta sẽ tạo <code>Delivery streams</code> (tên gọi khác là Amazon Kinesis Firehose). Có một lưu ý là chúng ta có bao nhiêu table lưu log thì phải tạo bấy nhiêu Deliver Stream. Nhớ tuỳ biến destination lưu trong S3 ở các prefix khác nhau.</p>
+<ul>
+<li>Bắt đầu create Delivery Stream. Nhập tên deliver stream:</li>
+</ul>
+<p><img src="image5.png" alt="main"></p>
+<p>ở đây mình chọn source là <code>Direct PUT or other source</code>. Mình cũng không thực hiện encrypt data vì case của mình không cần thiết.<br><img src="image6.png" alt="main"></p>
+<ul>
+<li>Ở case Process Record, liên quan đến format, convert lại record. ở đây mình k có nhu cầu nên disabled hết. Nếu bạn có nhu cầu hãy tìm hiểu thêm nhé <a href="https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html</a>.</li>
+<li>Chọn Destination. Ở đây mình chọn cái S3 vừa tạo nhé.</li>
+</ul>
+<p><img src="image7.png" alt="main"></p>
+<p><img src="image8.png" alt="main"></p>
+<p>Mỗi table mình sẽ tạo prefix như dưới đây</p>
+<p><img src="image9.png" alt="main"></p>
+<ul>
+<li>Cuối cùng là phần Config setting. Cái này khá quan trọng vì nó liên quan tới file data sẽ lưu trong S3 như thế nào. Có thể các bạn nghĩ việc gì phải sử dụng firehose. Mỗi lần data expire thì dùng lambda function để lưu thẳng s3. Xem nào vậy nếu có 1 triệu record thì sẽ có 1 triệu object ở S3. Việc quản lý log bắt đầu thấy loạn. Từ đó sinh ra Firehose. Nhiệm vụ là stream data để lưu vào S3. Nhưng nó sẽ lưu theo các buffer. Kiểu như mình set ở dưới, khi data expire đủ 5MB hoặc sau 1 khoảng thời gian 300s thì sẽ gom hết các data đó vào 1 buffer rồi lưu vào S3. Vậy là giảm cơ số Object rồi.</li>
+</ul>
+<p><img src="image10.png" alt="main"></p>
+<p>Ngoài ra các object khác mình để default, ví dụ như error log sẽ được enable.</p>
+<p>Phần tạo role attach vào Firehose để tương tác với S3. Có thể để mặc định tự tạo<br><img src="image11.png" alt="main"></p>
+<p>Hoặc bạn có thể tạo role trước để attach.<br><img src="image12.png" alt="main"></p>
+<p>OK và thế là tạo được Deliver Stream.</p>
+<h3 id="2-3-Cau-hinh-Lambda"><a href="#2-3-Cau-hinh-Lambda" class="headerlink" title="2.3. Cấu hình Lambda"></a>2.3. Cấu hình Lambda</h3><p>Code bạn có thể clone về từ đây <a href="https://github.com/awslabs/lambda-streams-to-firehose" target="_blank" rel="noopener">https://github.com/awslabs/lambda-streams-to-firehose</a> , tác giả là lanMeyers. Cái source này có vài advanced features . Nhưng trong bài này chúng ta chỉ sử dụng basic function của nó thôi. Mục đích là lấy tất cả messages từ dynamo stream và forward tới Firehose Delivery Stream.<br>This example uses the lambda-streams-to-firehose project, written by my colleague Ian Meyers, available in this GitHub repository. It contains several advanced features. However, this example uses the base functionality: it takes all messages in the DynamoDB stream and forwards them to the Firehose delivery stream.</p>
+<ul>
+<li>Clone command</li>
+</ul>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/awslabs/lambda-streams-to-firehose.git</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Ok, giờ tìm đến file index.js. update các thông số sau.<br>Update <code>USE_DEFAULT_DELIVERY_STREAMS</code> thành false vì mình không sử dụng default deliver stream.<br>Ở deliveryStreamMapping, mình liệt kê key là các Dynamo table và value là các Deliver Stream tương ứng. Chỉ cần ghi name của nó thôi nhé.</li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * If the source Kinesis Stream's tags or DynamoDB Stream Name don't resolve to</span></span><br><span class="line"><span class="comment"> * an existing Firehose, allow usage of a default delivery stream, or fail with</span></span><br><span class="line"><span class="comment"> * an error.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> USE_DEFAULT_DELIVERY_STREAMS = <span class="literal">false</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Delivery stream mappings can be specified here to overwrite values provided</span></span><br><span class="line"><span class="comment"> * by Kinesis Stream tags or DynamoDB stream name. (Helpful for debugging)</span></span><br><span class="line"><span class="comment"> * Format: DDBStreamName: deliveryStreamName Or: FORWARD_TO_FIREHOSE_STREAM tag</span></span><br><span class="line"><span class="comment"> * value: deliveryStreamName</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> deliveryStreamMapping = &#123;</span><br><span class="line">    <span class="string">'Table-A'</span> : <span class="string">'Table-A-Deliver'</span>,</span><br><span class="line">    <span class="string">'Table-B'</span> : <span class="string">'Table-B-Deliver'</span>,</span><br><span class="line">    <span class="string">'Table-C'</span> : <span class="string">'Table-C-Deliver'</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Thực hiện build code (cài đặt package và compress thành file zip). Access vào root folder của code và thực hiện <code>./build.sh</code>. File zip sẽ được sinh ra ở folder <code>dist/</code>. Nhớ chọn file mới build ra nhé, vì có mấy file build sẵn cẩn thận nhầm :D</p>
+</li>
+<li><p>Tạo Role cho lambda function</p>
+</li>
+</ul>
+<p><img src="image13.png" alt="main"></p>
+<p>Bạn có thể giới hạn lại các policy cho security. Ở đây mình lười nên toàn dùng default.</p>
+<ul>
+<li>Bây giờ thì vào console tạo 1 lambda function với mấy lưu ý sau:</li>
+</ul>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- Chọ<span class="built_in">n</span> NodeJS</span><br><span class="line">- attach role vừa <span class="built_in">t</span>ạo</span><br><span class="line">- Handler =&gt; index.handler</span><br><span class="line">- upload <span class="built_in">code</span> <span class="built_in">t</span>ừ file zip</span><br><span class="line">- cập nhậ<span class="built_in">t</span> timeout, memory cho hợp lý. <span class="built_in">N</span>ếu không cứ để mặc định. Rồi test xem đạ<span class="built_in">t</span> ngưỡng <span class="built_in">n</span>ào rồi thay đổi.</span><br><span class="line">- Thêm trigger là các table bê<span class="built_in">n</span> DynamoDB. Chú ý có <span class="number">1</span> giới hạ<span class="built_in">n</span> là Batch Size mặc định là <span class="number">100</span>. Tuỳ vào luồng xử lý mà update</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-Test"><a href="#2-4-Test" class="headerlink" title="2.4. Test"></a>2.4. Test</h3><ul>
+<li>Đầu tiên cần test Firehose Deliver Stream có hoạt đông. Vào Deliver Stream click Start sending demo data. Bạn sẽ chờ sao cho buffer đủ ngưỡng bạn setting. Ví dụ là 300s hoặc 5MB chẳng hạn. Sau đó vào S3 bucket kiểm tra log data.</li>
+</ul>
+<p><img src="image14.png" alt="main"></p>
+<ul>
+<li>Thêm mới data vào Dynamo table. Nhớ là khi create record cần phải append thêm trường <code>ttl</code> là thời gian expire. Set expire tầm 1 2 phút thôi chẳng hạn. Sau khi tạo hiển thị được như thế này là ok.</li>
+</ul>
+<p><img src="image15.png" alt="main"></p>
+<p>Sau đó đợi xem đến thời gian expire + thời gian buffer. Và vào kiểm tra trong S3 Bucket có log data không.<br>Nếu vẫn không có thì chắc chắn lỗi nằm ở Lambda function. tiếp tục step tiếp theo.</p>
+<ul>
+<li>Kiểm tra CloudwatchLogs của Lambda function xem có lỗi không</li>
+</ul>
+<p><img src="image16.png" alt="main"></p>
+<p>Thực ra với code version mới của repo trên thì việc điển <code>deliveryStreamName</code> ở file index.js là <code>DDBStreamName: deliveryStreamName</code> chứ không còn là <code>DynamoDB Stream Name ARN : Kinesis Firehose Delivery Stream Name</code> như hướng dẫn của aws blog mình tham khảo ở trên nữa. Nên nếu không đọc kỹ thì sẽ có bug xảy ra. Và lúc đó thì chúng ta chỉ cần dựa vào CloudwatchLogs để debug ra vấn đề thôi. :D</p>
+<h2 id="Ket-luan"><a href="#Ket-luan" class="headerlink" title="Kết luận"></a>Kết luận</h2><p>Với giải pháp trên, dự án mình đã giảm tải được lượng log data lưu trữ lớn trên dynamo (cost dynamo khá đắt). Hiện tại lượng lưu trữ trong 1 tháng nên ok. Với việc đẩy các log data tới S3. Khi nào cần sử dụng truy vết có thể dung AWS athena để query. Hoặc khi cần phân tích có thể import đống data đó lên ElasticSearch (Nơi lưu trữ log các thể loại khác nữa) để phân tích chẳng hạn. Cảm ơn mọi người đã đọc tới tận đây :D</p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/" data-toggle="tooltip" data-placement="top" title="Installing node_exporter on an EC2 Amazon linux">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/2021/01/17/Real-Time-Replication-From-DynamoDB-to-MongoDB/" data-toggle="tooltip" data-placement="top" title="Real-Time Replication From DynamoDB to MongoDB">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <div class="tip">
+          <p>
+            Đây là Blog cá nhân của MinhHungTrinh, nơi mình chia sẻ, lưu giữ kiến thức. Nếu các bạn có góp ý, thắc mắc thì vui lòng comment bên dưới cho mình biết nhé. Kiến thức là biển sâu và mình luôn là người lắng nghe và ham học hỏi. Các vấn đề đặc biệt hoặc tế nhị mọi người có thể gửi email tới minhhungtrinhvn@gmail.com. Cảm ơn Mọi Người đã đọc Blog của mình. Yolo!
+          </p>
+        </div>
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a href="#"  class="social-share-icon icon-facebook">
+        <i class="fa fa-facebook fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:minhhungtrinhvn@gmail.com?subject=Dynamo Time To Live to S3&body=Hi,I found this website and thought you might like it https://minhhungtrinh.github.io/2021/01/17/Dynamo-Time-To-Live-to-S3/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+
+<!-- 2. gitment comment -->
+
+<!-- gitment start -->
+<!-- Docs:https://github.com/imsun/gitment -->
+
+<div id="blog_comments"></div>
+<!-- <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"> <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'gitment-container gitment-root-container'
+
+      // your custom component
+      container.appendChild(instance.renderSomething(state, instance))
+      container.appendChild(instance.renderHeader(state, instance))
+      container.appendChild(instance.renderEditor(state, instance))
+      container.appendChild(instance.renderComments(state, instance))
+      container.appendChild(instance.renderFooter(state, instance))
+      return container
+    },
+    renderSomething(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'hello_visitor'
+      if (state.user.login) {
+        container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+      }
+      return container
+    }
+  }
+
+  const gitment = new Gitment({
+    id: 'Sun Jan 17 2021 13:25:28 GMT+0700', // optional
+    owner: 'MinhHungTrinh',
+    repo: 'MinhHungTrinh.github.io',
+    oauth: {
+      client_id: 'f23a1a1a678355dff851',
+      client_secret: '5b4c1011ed3613893952bd69fbdab696b32bec3b'
+    },
+    desc: '',
+    perPage: '10',
+    maxCommentHeight: '250',
+    theme: myTheme,
+    // ... For more available options, check out the documentation below
+  })
+
+  gitment.render('blog_comments')
+  // or gitment.render(document.getElementById('comments')) or document.body.appendChild(gitment.render())
+</script>
+
+<!-- gitment end -->
+
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-Solution"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Solution</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Practical"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. Practical</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-1-Enable-DynamoDB-TTL-va-DynamoDB-streams"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1. Enable DynamoDB TTL và DynamoDB streams</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-Tao-Firehose-delivery-stream-de-load-data-toi-S3"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2. Tạo Firehose delivery stream để load data tới S3.</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-Cau-hinh-Lambda"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">2.3. Cấu hình Lambda</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-4-Test"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">2.4. Test</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Ket-luan"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Kết luận</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+            
+            <a class="tag" href="/tags/#Log" title="Log">Log</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+	<!-- Footer (contains ThemeColor、viewer) -->
+	<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/MinhHungTrinh">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          MinhHungTrinh
+          2021
+          <br>
+          Theme by
+          <a href="http://beantech.org" target="_blank" rel="noopener">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a href="https://v-vincen.life/" target="_blank" rel="noopener">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+<!-- jQuery -->
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/js/jquery.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+<!-- Bootstrap Core JavaScript -->
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script type="text/javascript" src="/js/hux-blog.min.js"></script>
+
+<!-- catalog -->
+<script type="text/javascript" async="true" src="/js/catalog.js?v=1.0.0"></script>
+
+<!-- totop(rocket) -->
+<script type="text/javascript" async="true" src="/js/totop.js?v=1.0.0"></script>
+
+<!-- Busuanzi JavaScript -->
+<script type="text/javascript" async="true" src="/js/busuanzi.pure.mini.js"></script>
+
+
+  <!-- Scroll start -->
+  <script type="text/javascript" src="/js/scroll.js"></script>
+  <!-- Scroll end -->
+
+
+
+  <!-- ThemeColor start -->
+  <script type="text/javascript" src="/js/themecolor.js"></script>
+  <!-- ThemeColor end -->
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  <script type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+  <script type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){ hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if($('#tag_cloud').length !== 0){ async("https://minhhungtrinh.github.io/js/jquery.tagcloud.js",function(){ $.fn.tagcloud.defaults = { //size: {start: 1, end: 1, unit: 'em'}, color: {start:
+'#bbbbee', end: '#0085a1'}, }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+	<!-- Search -->
+	
+	<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/ziploader.js"></script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+	
+
+	<!-- Image to hack wechat -->
+	<!-- <img src="https://minhhungtrinh.github.io/img/icon_wechat.png" width="0" height="0" /> -->
+	<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
