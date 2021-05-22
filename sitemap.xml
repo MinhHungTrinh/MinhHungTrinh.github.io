@@ -172,14 +172,14 @@
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/Database/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Billing/</loc>
     <lastmod>2021-05-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/Billing/</loc>
+    <loc>https://minhhungtrinh.github.io/tags/Database/</loc>
     <lastmod>2021-05-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -214,6 +214,13 @@
   </url>
   
   <url>
+    <loc>https://minhhungtrinh.github.io/tags/Mail/</loc>
+    <lastmod>2021-05-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://minhhungtrinh.github.io/tags/Mysql/</loc>
     <lastmod>2021-05-22</lastmod>
     <changefreq>daily</changefreq>
@@ -235,20 +242,6 @@
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/Hexo/</loc>
-    <lastmod>2021-05-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2021-05-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://minhhungtrinh.github.io/tags/SQL/</loc>
     <lastmod>2021-05-22</lastmod>
     <changefreq>daily</changefreq>
@@ -257,6 +250,20 @@
   
   <url>
     <loc>https://minhhungtrinh.github.io/tags/NoSQL/</loc>
+    <lastmod>2021-05-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/Hexo/</loc>
+    <lastmod>2021-05-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/Hexo-Theme-LiveMyLife/</loc>
     <lastmod>2021-05-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
