@@ -46,12 +46,12 @@
 
   <!-- Pygments Highlight CSS -->
   
-<link rel="stylesheet" href="../../css/highlight.css">
-<link rel="stylesheet" href="../../css/widget.css">
-<link rel="stylesheet" href="../../css/rocket.css">
-<link rel="stylesheet" href="../../css/signature.css">
-<link rel="stylesheet" href="../../css/catalog.css">
-<link rel="stylesheet" href="../../css/livemylife.css">
+<link rel="stylesheet" href="../../../../css/highlight.css">
+<link rel="stylesheet" href="../../../../css/widget.css">
+<link rel="stylesheet" href="../../../../css/rocket.css">
+<link rel="stylesheet" href="../../../../css/signature.css">
+<link rel="stylesheet" href="../../../../css/catalog.css">
+<link rel="stylesheet" href="../../../../css/livemylife.css">
 
 
   
@@ -112,10 +112,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://minhhungtrinh.github.io/categories/Develop/">
+  <link rel="canonical" href="https://minhhungtrinh.github.io/2021/05/22/AWS-Security-How-to-Block-an-IP-Address/">
   <title>
     
-    Minh Hung
+    [AWS Security] How to Block an IP Address - Minh Hung
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -263,8 +263,8 @@
 
   <style type="text/css">
     header.intro-header {
-       /*page*/
-        background-image: url('/img/header_img/archive_bg2.jpg');
+       /*post*/
+        background-image: url('');
       
     }
 
@@ -286,10 +286,44 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1></h1>
-            <!--<hr class="small">-->
-            <span class="subheading">Life isn’t about finding yourself. Life is about creating yourself. ― George Bernard Shaw</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+              
+              <a class="tag" href="/tags/#Security" title="Security">Security</a>
+              
+              <a class="tag" href="/tags/#Network" title="Network">Network</a>
+              
+            </div>
+            <h1>[AWS Security] How to Block an IP Address</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by MinhHungTrinh on
+              2021-05-22
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">10</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">1.6k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- 不蒜子统计 start -->
+            <span class="meta">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            <!-- WordCount end -->
+            
+
+
           </div>
           
         </div>
@@ -330,537 +364,277 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-	<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+	<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-
-      
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            05-22
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/05/22/AWS-Security-How-to-Block-an-IP-Address/" style="color: #0085a1">
-              <span>
-                [AWS Security] How to Block an IP Address
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            05-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/05/17/AWS-Security-Network-Security/" style="color: #0085a1">
-              <span>
-                [AWS Security] Network Security
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            04-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/" style="color: #0085a1">
-              <span>
-                Collect application logs to AWS Cloudwatch Logs
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-20
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/20/AWS-Database-AWS-RDS-part-2/" style="color: #0085a1">
-              <span>
-                [AWS Database] AWS RDS (part 2)
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/19/AWS-Database-Mo-bat-part-1/" style="color: #0085a1">
-              <span>
-                [AWS Database] Mở bát (part 1)
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/03/Prometheus-and-Grafana-Part-1/" style="color: #0085a1">
-              <span>
-                Prometheus and Grafana Part 1
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-02
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/" style="color: #0085a1">
-              <span>
-                Installing node_exporter on an EC2 Amazon linux
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Dynamo-Time-To-Live-to-S3/" style="color: #0085a1">
-              <span>
-                Dynamo Time To Live to S3
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Real-Time-Replication-From-DynamoDB-to-MongoDB/" style="color: #0085a1">
-              <span>
-                Real-Time Replication From DynamoDB to MongoDB
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/" style="color: #0085a1">
-              <span>
-                Góc nhìn về Nat Instance >< Nat Gateway
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/" style="color: #0085a1">
-              <span>
-                Câu chuyện JWT và Revoke Token
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Lam-viec-voi-Large-Data/" style="color: #0085a1">
-              <span>
-                Làm việc với Large Data
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/" style="color: #0085a1">
-              <span>
-                AWS Auto Scaling Group based on Queue (Custom metric)
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/" style="color: #0085a1">
-              <span>
-                Replicate AWS MySQL Aurora to External Replica
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/14/AWS-Data-transfer-Billing/" style="color: #0085a1">
-              <span>
-                AWS Data transfer Billing
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            04-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/04/17/Hexo-Theme-LiveMyLife/" style="color: #0085a1">
-              <span>
-                Hexo-Theme-LiveMyLife
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-        </ul>
-      </div>
-      
-
-
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        
-<!-- <h5>VISITORS</h5> -->
-<h5><a href="/">VISITORS</a></h5>
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
-    
-        <!-- Featured Tags -->
-
-<section>
-  <!-- no hr -->
-  <h5><a href="/tags/">FEATURED TAGS</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#AWS" title="AWS" rel="12">AWS</a>
-    
-    
-    
-    <a href="/tags/#Database" title="Database" rel="3">Database</a>
-    
-    
-    
-    <a href="/tags/#Billing" title="Billing" rel="1">Billing</a>
-    
-    
-    
-    <a href="/tags/#Security" title="Security" rel="3">Security</a>
-    
-    
-    
-    <a href="/tags/#Network" title="Network" rel="2">Network</a>
-    
-    
-    
-    <a href="/tags/#Log" title="Log" rel="2">Log</a>
-    
-    
-    
-    <a href="/tags/#Monitoring" title="Monitoring" rel="1">Monitoring</a>
-    
-    
-    
-    <a href="/tags/#Mysql" title="Mysql" rel="1">Mysql</a>
-    
-    
-    
-    <a href="/tags/#Optimize" title="Optimize" rel="1">Optimize</a>
-    
-    
-    
-    <a href="/tags/#JWT" title="JWT" rel="1">JWT</a>
-    
-    
-    
-    <a href="/tags/#Hexo" title="Hexo" rel="1">Hexo</a>
-    
-    
-    
-    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
-    
-    
-    
-    <a href="/tags/#SQL" title="SQL" rel="1">SQL</a>
-    
-    
-    
-    <a href="/tags/#NoSQL" title="NoSQL" rel="1">NoSQL</a>
-    
-    
-    
-    <a href="/tags/#DynamoDB" title="DynamoDB" rel="1">DynamoDB</a>
-    
-    
-    
-    <a href="/tags/#MongoDB" title="MongoDB" rel="1">MongoDB</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">ABOUT ME</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/fatpeople.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>FullStack Developer.</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/MinhHungTrinh">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        
-<!-- <h5>RECENT POSTS</h5> -->
-<h5><a href="/">RECENT POSTS</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../2021/05/22/AWS-Security-How-to-Block-an-IP-Address/">
-      <li>[AWS Security] How to Block an IP Address</li>
-    </a>
-    
-    <a href="../../2021/05/17/AWS-Security-Network-Security/">
-      <li>[AWS Security] Network Security</li>
-    </a>
-    
-    <a href="../../2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/">
-      <li>Collect application logs to AWS Cloudwatch Logs</li>
-    </a>
-    
-    <a href="../../2021/02/20/AWS-Database-AWS-RDS-part-2/">
-      <li>[AWS Database] AWS RDS (part 2)</li>
-    </a>
-    
-    <a href="../../2021/02/19/AWS-Database-Mo-bat-part-1/">
-      <li>[AWS Database] Mở bát (part 1)</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<!-- <h5>FRIENDS</h5> -->
-<h5><a href="/">FRIENDS</a></h5>
-<ul class="list-inline">
-  
-  <li><a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a></li>
-  
+        <p>Chào mọi người, ở bài viết trước mình có nói qua về một số giải pháp về Network Security (<a href="https://minhhungtrinh.github.io/2021/05/17/AWS-Security-Network-Security/">https://minhhungtrinh.github.io/2021/05/17/AWS-Security-Network-Security/</a>) trên AWS. Hôm nay, mình sẽ trình bày vài cách để block an IP address trên vài mô hình phổ biến trên AWS.</p>
+<h3 id="Blocking-an-IP-address-with-1-EC2"><a href="#Blocking-an-IP-address-with-1-EC2" class="headerlink" title="Blocking an IP address with 1 EC2"></a>Blocking an IP address with 1 EC2</h3><p><img src="img1.png" alt="main"></p>
+<p>Khi ứng dụng của chúng ta là kiến trúc đơn giản chỉ sử dụng 1 EC2. Instance nằm trong Public Subnet. Instance thì có public IP để client có thể access từ internet. Chúng ta có thể sử dụng các firewalls như mình đã nói ở bài viết trước (<a href="https://minhhungtrinh.github.io/2021/05/17/AWS-Security-Network-Security/#Network-Security">https://minhhungtrinh.github.io/2021/05/17/AWS-Security-Network-Security/#Network-Security</a>), như sau:</p>
+<ul>
+<li>NACL (Subnet Firewall)</li>
+<li>Security Group (Instance firewall)</li>
+<li>Firewall Software trong EC2 (Cái này là optional, bạn có thể enable)</li>
+</ul>
+<p>Ở trường hợp này khi muốn block 1 IP address nào đó, thì use case tốt nhất là sử dụng NACL (được attach vào subnet chức EC2) để Deny. Ưu điểm là:</p>
+<ul>
+<li>Cung cấp console để quản lý dễ dàng hơn, cung cấp action để thực hiện Allow và Deny nhanh chóng, hiệu quả.</li>
+<li>Việc allow và deny với inbound và outbound là độc lập.</li>
+<li>Chi phí rẻ, tức là chúng ta không cần trả phí</li>
+</ul>
+<p>Ở trường hợp này người ta không dùng <code>Security Group</code> bởi vì nó không có <code>Deny Rule</code>, và việc nó là <code>stateful</code> nên chỉ cần allow inbound thì outbound sẽ ok. Vậy nên Security Group phù hợp cho trường hợp ta muốn Allow 1 IP nào đó chứ không dành cho việc Block IP nào đó.</p>
+<p>Ở trường hợp này cũng không nên sử dụng <code>firewall software</code> để block IP. Bản chất Firewall Software cài đặt trên EC2.  Nếu có request tới EC2, thì sẽ phải sử dụng tài nguyên của EC2 để firewall software <code>allow</code> hay <code>block</code> IP. Vậy tất nhiên là sẽ tốn tài nguyên của EC2, nó sẽ là vấn đề khi lượng request spam lớn. Hơn nữa, việc quản lý nó chúng ta phải access vào EC2 để quản lý, sẽ bất tiện và cũng như khi EC2 bị hết tài nguyên thì chúng ta cũng không thể thực hiện bất kỳ action nào.</p>
+<p>Vậy nên bạn hãy nhớ khi cần allow thì dùng security group, khi cần deny thì dùng NACL. Vì các service này xử lý độc lập không liên quan tới EC2 nên sẽ không bị ảnh hưởng bởi vấn đề tài nguyên của EC2</p>
+<h3 id="Blocking-an-IP-address-with-ALB-NLB"><a href="#Blocking-an-IP-address-with-ALB-NLB" class="headerlink" title="Blocking an IP address with - ALB, NLB"></a>Blocking an IP address with - ALB, NLB</h3><h3 id="ALB"><a href="#ALB" class="headerlink" title="ALB"></a>ALB</h3><p><img src="img2.png" alt="main"></p>
+<p>Mô hình này sẽ gồm dịch vụ <code>Elastic Load Balancer</code> (ở đây ví dụ sử dụng <code>ALB</code>) ở Public Subnet, các behind server là <code>EC2</code> chỉ cần private IP (tốt nhất là nằm trong private subnet) để giao tiếp private với nhau và với ALB.</p>
+<p>Client sẽ giao tiếp với Server bằng service trung gian là ALB. Và ALB sẽ có nhiệm vụ phân tải request tới các EC2.</p>
+<p>Có 1 điều nên nhớ, các EC2 sẽ detect được IP request tới là IP của ALB chứ không phải Client. Vậy nên trong case này, Security group của các EC2 sẽ chỉ cần allow security group của ALB thôi. Khi thiết lập như thế, bạn sẽ không thể truy cập trực tiếp vào EC2 được mà phải qua ALB.<br>Đó cũng là lý do việc <code>Allow</code> hay <code>Deny</code> truy cập phải thao tác ở Network của <code>ALB</code>.<br>Ví dụ muốn block IP thì bạn phải thực hiện <code>Deny</code> IP đó ở <code>NACL</code>, và NACL này được gán vào Subnet chứa ALB.</p>
+<h3 id="NLB"><a href="#NLB" class="headerlink" title="NLB"></a>NLB</h3><p>Một sự khác biệt với NLB:<br><img src="img3.png" alt="main"></p>
+<p>NLB thì cũng có nhiệm vụ phân tải giống ALB thôi. Khác biệt 1 chút là nó làm việc ở Layer4 còn ALB làm việc ở layer7. Các bạn tìm hiểu thêm nhé, vì nó không thuộc scope bài này.</p>
+<p>Sự khác biệt ở chỗ khi Client request tới NLB, thì NLB sẽ forward request tới EC2. Và IP mà EC2 nhận được từ request sẽ là IP của Client chứ không phải IP của NLB (Khi sử dụng ALB thì sẽ là IP của ALB).<br>Điều đó liên quan đến việc Security Group của các EC2 phải allow địa chỉ IP của Client thì Client mới thực hiện request tới hệ thống được.<br>Điều đó đồng nghĩa với lý do NLB nó không sử dụng Security Group. Nên việc <code>Allow</code> thì phải allow ở Security Group của các EC2.<br>Tất nhiên giải thích lan man thế thôi nhưng việc Block IP thì vẫn sử dụng NACL như ALB nhé. :))</p>
+<h3 id="Blocking-an-IP-address-with-ALB-WAF"><a href="#Blocking-an-IP-address-with-ALB-WAF" class="headerlink" title="Blocking an IP address with - ALB + WAF"></a>Blocking an IP address with - ALB + WAF</h3><p><img src="img4.png" alt="main"><br>Giống hệt mô hình ở trên, chỉ khác là chúng ta có tích hợp WEF vào Load Balancer thôi. WAF là gì thì bạn tham khảo bài viết này nhé (<a href="https://minhhungtrinh.github.io/2021/05/17/AWS-Security-Network-Security/#AWS-WAF-Web-Application-Firewall">https://minhhungtrinh.github.io/2021/05/17/AWS-Security-Network-Security/#AWS-WAF-Web-Application-Firewall</a>)</p>
+<p>Tất nhiên vì nó là 1 firewall service chúng ta tích hợp vào chứ không phải có sẵn ở ALB nên chúng ta sẽ phải mất phí cho các rules của nó.</p>
+<p>Trường hợp này chúng ta có thể sử dụng chức năng WAF filter IP Addrress để block IP. WAF có thể tạo các filter phức tạp với IP address của request cũng như thiết lập các rules như kiểu đếm số requests để ngăn chặn các request giống nhau từ clients (mục đích spam chẳng hạn), tất nhiên là còn nhiều rules nữa. Vậy nên chúng ta sẽ có nhiều cách để đảm bảo về security trên ALB.</p>
+<p>WAF không phải là 1 service trung gian đứng ở giữa Client và ALB. Mà nó là service chúng ta tích hợp trên ALB và thiết lập các rules. Vậy nên ở mô hình này, sử dụng WAF giúp bổ sung thêm cho chúng ta 1 layer bảo mật nữa.</p>
+<h3 id="Blocking-an-IP-address-witth-ALB-Cloudfront-WAF"><a href="#Blocking-an-IP-address-witth-ALB-Cloudfront-WAF" class="headerlink" title="Blocking an IP address witth - ALB, Cloudfront + WAF"></a>Blocking an IP address witth - ALB, Cloudfront + WAF</h3><p><img src="img5.png" alt="main"></p>
+<p> Đây là mô hình tương tự với mô hình ở trên. Khác ở chỗ chúng ta sử dụng Cloudfront đứng trước ALB. Cloudfront là global service vậy nên nó nằm bên ngoài VPC của bạn.</p>
+<p> Ở đây, Security Group của ALB cần allow tất cả các public IP của Cloudfront edge location. Lý do vì khi có request tới, ALB sẽ không nhìn thấy các client IP, nó chỉ nhìn thấy IP của Cloudfront edge location thôi. Và từ đó chúng ta cũng thấy việc sử dụng NACL (được attach vào subnet của ALB) để block IP ở đây không còn tác dụng nữa.</p>
+<p> Vậy chúng ta sẽ có những giải pháp để Block IP với trường hợp này như sau:</p>
+<ul>
+<li>Nếu sử dụng Cloudfront, chúng ta sử dụng geo-restriction feature để giới hạn IP đang truy cập. Tức là xác định IP đó ở vị trí địa lý nào, thì mình giới hạn không cho tất cả các clients ở khu vực đó. =&gt; Cách này sẽ làm ảnh hưởng các users khác, nên có vẻ không hiệu quả</li>
+<li>Sử dụng <code>WAF</code> giống như cách trên. Tức là thay vì tích hợp <code>WAF</code> vào <code>ALB</code>thì chúng ta tích hợp nó vào 1 thành phần đứng trước ALB là Cloudfront. Và việc Block IP bằng cách filter IP cũng giống như các ở trên thôi.</li>
 </ul>
 
 
         <hr>
-    
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/2021/05/17/AWS-Security-Network-Security/" data-toggle="tooltip" data-placement="top" title="[AWS Security] Network Security">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
         
-    <!-- <h5>ARCHIVES</h5> -->
-    <h5><a href="/archives/">ARCHIVES</a></h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">May 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li></ul>
-    </div>
+        <!-- tip start -->
+        <div class="tip">
+          <p>
+            Đây là Blog cá nhân của MinhHungTrinh, nơi mình chia sẻ, lưu giữ kiến thức. Nếu các bạn có góp ý, thắc mắc thì vui lòng comment bên dưới cho mình biết nhé. Kiến thức là biển sâu và mình luôn là người lắng nghe và ham học hỏi. Các vấn đề đặc biệt hoặc tế nhị mọi người có thể gửi email tới minhhungtrinhvn@gmail.com. Cảm ơn Mọi Người đã đọc Blog của mình. Yolo!
+          </p>
+        </div>
+        <!-- tip end -->
+        
 
-
-        <hr>
-    
-        <!-- Categories -->
-
-<!-- <h5>categories</h5> -->
-<h5><a href="/categories/">CATEGORIES</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#DevOps">
-      <li>DevOps</li>
-    </a>
-    
-    <a href="/categories/#Develop">
-      <li>Develop</li>
-    </a>
-    
-    <a href="/categories/#Hexo-Theme-LiveMyLife">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a href="#"  class="social-share-icon icon-facebook">
+        <i class="fa fa-facebook fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:minhhungtrinhvn@gmail.com?subject=[AWS Security] How to Block an IP Address&body=Hi,I found this website and thought you might like it https://minhhungtrinh.github.io/2021/05/22/AWS-Security-How-to-Block-an-IP-Address/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
   </ul>
 </div>
 
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
+        <!-- Sharing End -->
+        
         <hr>
-    
-</div>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+
+<!-- 2. gitment comment -->
+
+<!-- gitment start -->
+<!-- Docs:https://github.com/imsun/gitment -->
+
+<div id="blog_comments"></div>
+<!-- <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"> <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'gitment-container gitment-root-container'
+
+      // your custom component
+      container.appendChild(instance.renderSomething(state, instance))
+      container.appendChild(instance.renderHeader(state, instance))
+      container.appendChild(instance.renderEditor(state, instance))
+      container.appendChild(instance.renderComments(state, instance))
+      container.appendChild(instance.renderFooter(state, instance))
+      return container
+    },
+    renderSomething(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'hello_visitor'
+      if (state.user.login) {
+        container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+      }
+      return container
+    }
+  }
+
+  const gitment = new Gitment({
+    id: 'Sat May 22 2021 17:50:58 GMT+0700', // optional
+    owner: 'MinhHungTrinh',
+    repo: 'MinhHungTrinh.github.io',
+    oauth: {
+      client_id: 'f23a1a1a678355dff851',
+      client_secret: '5b4c1011ed3613893952bd69fbdab696b32bec3b'
+    },
+    desc: '',
+    perPage: '10',
+    maxCommentHeight: '250',
+    theme: myTheme,
+    // ... For more available options, check out the documentation below
+  })
+
+  gitment.render('blog_comments')
+  // or gitment.render(document.getElementById('comments')) or document.body.appendChild(gitment.render())
+</script>
+
+<!-- gitment end -->
+
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
     
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Blocking-an-IP-address-with-1-EC2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Blocking an IP address with 1 EC2</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Blocking-an-IP-address-with-ALB-NLB"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Blocking an IP address with - ALB, NLB</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ALB"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">ALB</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#NLB"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">NLB</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Blocking-an-IP-address-with-ALB-WAF"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Blocking an IP address with - ALB + WAF</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Blocking-an-IP-address-witth-ALB-Cloudfront-WAF"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Blocking an IP address witth - ALB, Cloudfront + WAF</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+            
+            <a class="tag" href="/tags/#Security" title="Security">Security</a>
+            
+            <a class="tag" href="/tags/#Network" title="Network">Network</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 	<!-- Footer (contains ThemeColor、viewer) -->
