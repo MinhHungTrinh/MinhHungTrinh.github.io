@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://minhhungtrinh.github.io/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/</loc>
+    <lastmod>2021-07-30</lastmod>
+  </url>
+  <url>
     <loc>https://minhhungtrinh.github.io/2021/07/30/File-type-validation/</loc>
     <lastmod>2021-07-30</lastmod>
   </url>
@@ -58,10 +62,6 @@
   </url>
   <url>
     <loc>https://minhhungtrinh.github.io/2021/01/17/Lam-viec-voi-Large-Data/</loc>
-    <lastmod>2021-01-17</lastmod>
-  </url>
-  <url>
-    <loc>https://minhhungtrinh.github.io/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/</loc>
     <lastmod>2021-01-17</lastmod>
   </url>
   <url>
