@@ -184,13 +184,6 @@
 
           
           <li>
-            <a href="/about/">About</a>
-          </li>
-          
-          
-
-          
-          <li>
             <a href="/archive/">Archives</a>
           </li>
           
@@ -206,6 +199,13 @@
           
           <li>
             <a href="/tags/">Tags</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/about/">About</a>
           </li>
           
           
@@ -370,8 +370,8 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>Bài viết được lấy từ blog cá nhân để đăng lên kipalog công ty ().<br>Mình thấy có nhiều bạn có sự nhầm lẫn giữa các AWS S3 Access Control là IAM Policies, Bucket Policies, ACLs. Nhiều bạn còn thắc mắc tại sao lại sinh ra cái này vì đã có cái kia. Mình cũng từng dành khá khá time để giải thích cho đồng nghiệp nhưng có vẻ do không note ra rõ dàng, do nói chay nên vấn đề diễn đạt trở nên khó hiểu.<br>Tiện thể thấy video của bác <strong>Neal Davis</strong> publish thấy rất clear. <a href="https://www.youtube.com/watch?v=xFzJw6wJ8eY" target="_blank" rel="noopener">https://www.youtube.com/watch?v=xFzJw6wJ8eY</a> . Ngày trước, mình rất hay xem những khoá học của Bác, giảng rất chi tiết và clear, hỗ trợ rất tốt cho người mới bắt đầu hoặc có 1 chút kinh nghiệm. Mình suggest ae nên mua khoá học của Bác nhé :D<br>Ae nào lười xem video thì có thể đọc notes của mình nhé. Ngoài ra mình cũng bổ sung một số nội dung để clear hơn vài khái niệm.</p>
-<h3 id="1-What"><a href="#1-What" class="headerlink" title="1. What?"></a>1. What?</h3><h4 id="a-IAM-Policies"><a href="#a-IAM-Policies" class="headerlink" title="a. IAM Policies:"></a>a. IAM Policies:</h4><p><img src="/uploads/014a/d390/image.png" alt="alt text"></p>
+        <p>Bài viết được lấy từ blog cá nhân để đăng lên kipalog công ty ().<br>Mình thấy có nhiều bạn có sự nhầm lẫn giữa các AWS S3 Access Control là IAM Policies, Bucket Policies, ACLs. Nhiều bạn còn thắc mắc tại sao lại sinh ra cái này vì đã có cái kia. Mình cũng từng dành khá khá time để giải thích cho đồng nghiệp nhưng có vẻ do không note ra rõ dàng, do nói chay nên vấn đề diễn đạt trở nên khó hiểu.<br>Tiện thể thấy video của bác <strong>Neal Davis</strong> publish thấy rất clear. <a href="https://www.youtube.com/watch?v=xFzJw6wJ8eY" target="_blank" rel="noopener">https://www.youtube.com/watch?v=xFzJw6wJ8eY</a> . Ngày trước, mình rất hay xem những khoá học của Bác, giảng rất chi tiết và clear, hỗ trợ rất tốt cho người mới bắt đầu hoặc có 1 chút kinh nghiệm. Mình suggest ae nên mua khoá học của Bác nhé :D<br>Trong link có cả thực hành khá là chi tiết đấy. Ae nào lười xem video thì có thể đọc notes của mình nhé. Ngoài ra mình cũng bổ sung một số nội dung để clear hơn vài khái niệm.</p>
+<h3 id="1-What"><a href="#1-What" class="headerlink" title="1. What?"></a>1. What?</h3><h4 id="a-IAM-Policies"><a href="#a-IAM-Policies" class="headerlink" title="a. IAM Policies:"></a>a. IAM Policies:</h4><p><img src="image_1.png" alt="main"></p>
 <ul>
 <li>IAM Policies =&gt; identity-based policies</li>
 <li>Viết bằng JSON, bằng access policy language</li>
@@ -379,7 +379,7 @@
 <li>Principal element  không sử dụng khi gán policies cho IAM User hoặc Group, Roles. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html</a></li>
 <li>Chỉ rõ các actions được cho phép thao tác gì trên AWS Resources nào</li>
 </ul>
-<h4 id="b-Bucket-Policies"><a href="#b-Bucket-Policies" class="headerlink" title="b. Bucket Policies:"></a>b. Bucket Policies:</h4><p><img src="/uploads/7324/0931/image.png" alt="alt text"></p>
+<h4 id="b-Bucket-Policies"><a href="#b-Bucket-Policies" class="headerlink" title="b. Bucket Policies:"></a>b. Bucket Policies:</h4><p><img src="image_2.png" alt="main"></p>
 <ul>
 <li>Bucket Policies =&gt; Resource-based policies</li>
 <li>Chỉ có thể attach tới AWS S3 Buckets</li>
@@ -403,13 +403,13 @@
 <li>IAM policies đang bị giới hạn size limits (Ở đây có thể hiểu là việc attach policies đã đạt tới 10 rồi, hoặc custom policies của bạn đã viết dài quá 4096 ký tự)</li>
 <li>Bạn thích quản lý control access bằng dịch vụ S3</li>
 </ul>
-<h3 id="3-Authorization-Process"><a href="#3-Authorization-Process" class="headerlink" title="3. Authorization Process"></a>3. Authorization Process</h3><p>Vậy khi chúng ta sử dụng cả Bucket Policies và IAM Policies thì nó sẽ kết hợp như thế nào? Vì việc cấp permission có thể khác nhau.<br>Chỗ này các bạn có thể tham khảo: <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics" target="_blank" rel="noopener">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics</a><br>Như các bạn thấy thì IAM Policies và Bucket Policies có tính cộng:<br><img src="/uploads/f5a0/5498/image.png" alt="alt text"></p>
+<h3 id="3-Authorization-Process"><a href="#3-Authorization-Process" class="headerlink" title="3. Authorization Process"></a>3. Authorization Process</h3><p>Vậy khi chúng ta sử dụng cả Bucket Policies và IAM Policies thì nó sẽ kết hợp như thế nào? Vì việc cấp permission có thể khác nhau.<br>Chỗ này các bạn có thể tham khảo: <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics" target="_blank" rel="noopener">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics</a><br>Như các bạn thấy thì IAM Policies và Bucket Policies có tính cộng:<br><img src="image_3.png" alt="main"></p>
 <p>Để rõ ràng hơn thì ae cần hiểu rõ hơn về explicit deny và implicit deny, cụ thể:<br><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#AccessPolicyLanguage_Interplay" target="_blank" rel="noopener">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#AccessPolicyLanguage_Interplay</a></p>
 <ul>
 <li>Explicit deny (deny rõ ràng) khi bạn viết các rule deny trực tiếp permissions nào đó</li>
 <li>Implicit deny (deny ngầm) hay explicit allow được hiểu khi bạn allow permissions nào đó thì thực ra bạn đang deny ngầm các permission còn lại.</li>
 </ul>
-<p>Vậy tính cộng của IAM policies và Bucket Policies là cộng tất cả các explicit deny và implicit deny của cả 2.<br>Như flow dưới, Explicit deny thì ưu tiên hơn implicit deny (explicit allow).<br><img src="/uploads/3137/1def/image.png" alt="alt text"></p>
+<p>Vậy tính cộng của IAM policies và Bucket Policies là cộng tất cả các explicit deny và implicit deny của cả 2.<br>Như flow dưới, Explicit deny thì ưu tiên hơn implicit deny (explicit allow).<br><img src="image_4.png" alt="main"></p>
 <ul>
 <li>Bắt đầu với việc deny</li>
 <li>Đánh giá tất cả các policies của cả IAM Policies và Bucket Polies</li>
