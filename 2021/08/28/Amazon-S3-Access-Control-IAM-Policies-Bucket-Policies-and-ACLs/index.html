@@ -46,12 +46,12 @@
 
   <!-- Pygments Highlight CSS -->
   
-<link rel="stylesheet" href="../../../css/highlight.css">
-<link rel="stylesheet" href="../../../css/widget.css">
-<link rel="stylesheet" href="../../../css/rocket.css">
-<link rel="stylesheet" href="../../../css/signature.css">
-<link rel="stylesheet" href="../../../css/catalog.css">
-<link rel="stylesheet" href="../../../css/livemylife.css">
+<link rel="stylesheet" href="../../../../css/highlight.css">
+<link rel="stylesheet" href="../../../../css/widget.css">
+<link rel="stylesheet" href="../../../../css/rocket.css">
+<link rel="stylesheet" href="../../../../css/signature.css">
+<link rel="stylesheet" href="../../../../css/catalog.css">
+<link rel="stylesheet" href="../../../../css/livemylife.css">
 
 
   
@@ -112,10 +112,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://minhhungtrinh.github.io/archives/2021/08/">
+  <link rel="canonical" href="https://minhhungtrinh.github.io/2021/08/28/Amazon-S3-Access-Control-IAM-Policies-Bucket-Policies-and-ACLs/">
   <title>
     
-    Minh Hung
+    Amazon S3 Access Control - IAM Policies, Bucket Policies and ACLs - Minh Hung
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -263,8 +263,8 @@
 
   <style type="text/css">
     header.intro-header {
-       /*page*/
-        background-image: url('/img/header_img/archive_bg2.jpg');
+       /*post*/
+        background-image: url('');
       
     }
 
@@ -286,10 +286,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1></h1>
-            <!--<hr class="small">-->
-            <span class="subheading">Life isn’t about finding yourself. Life is about creating yourself. ― George Bernard Shaw</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+              
+              <a class="tag" href="/tags/#S3" title="S3">S3</a>
+              
+            </div>
+            <h1>Amazon S3 Access Control - IAM Policies, Bucket Policies and ACLs</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by MinhHungTrinh on
+              2021-08-28
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">7</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">1.2k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- 不蒜子统计 start -->
+            <span class="meta">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            <!-- WordCount end -->
+            
+
+
           </div>
           
         </div>
@@ -330,617 +362,287 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-	<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+	<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-
-      
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            08-28
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/08/28/Amazon-S3-Access-Control-IAM-Policies-Bucket-Policies-and-ACLs/" style="color: #0085a1">
-              <span>
-                Amazon S3 Access Control - IAM Policies, Bucket Policies and ACLs
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            08-28
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/08/28/S3-Performance-Design-Patterns/" style="color: #0085a1">
-              <span>
-                S3 Performance Design Patterns
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            07-30
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/07/30/File-type-validation/" style="color: #0085a1">
-              <span>
-                File type validation
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            05-22
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/05/22/SES-Request-move-out-sandbox/" style="color: #0085a1">
-              <span>
-                SES Request move out sandbox
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            05-22
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/05/22/AWS-Security-How-to-Block-an-IP-Address/" style="color: #0085a1">
-              <span>
-                [AWS Security] How to Block an IP Address
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            05-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/05/17/AWS-Security-Network-Security/" style="color: #0085a1">
-              <span>
-                [AWS Security] Network Security
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            04-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/" style="color: #0085a1">
-              <span>
-                Collect application logs to AWS Cloudwatch Logs
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-20
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/20/AWS-Database-AWS-RDS-part-2/" style="color: #0085a1">
-              <span>
-                [AWS Database] AWS RDS (part 2)
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/19/AWS-Database-Mo-bat-part-1/" style="color: #0085a1">
-              <span>
-                [AWS Database] Mở bát (part 1)
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/03/Prometheus-and-Grafana-Part-1/" style="color: #0085a1">
-              <span>
-                Prometheus and Grafana Part 1
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-02
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/" style="color: #0085a1">
-              <span>
-                Installing node_exporter on an EC2 Amazon linux
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Dynamo-Time-To-Live-to-S3/" style="color: #0085a1">
-              <span>
-                Dynamo Time To Live to S3
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Real-Time-Replication-From-DynamoDB-to-MongoDB/" style="color: #0085a1">
-              <span>
-                Real-Time Replication From DynamoDB to MongoDB
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/" style="color: #0085a1">
-              <span>
-                Góc nhìn về Nat Instance >< Nat Gateway
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/" style="color: #0085a1">
-              <span>
-                Câu chuyện JWT và Revoke Token
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Lam-viec-voi-Large-Data/" style="color: #0085a1">
-              <span>
-                Làm việc với Large Data
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/" style="color: #0085a1">
-              <span>
-                AWS Auto Scaling Group based on Queue (Custom metric)
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/" style="color: #0085a1">
-              <span>
-                Replicate AWS MySQL Aurora to External Replica
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/14/AWS-Data-transfer-Billing/" style="color: #0085a1">
-              <span>
-                AWS Data transfer Billing
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            04-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/04/17/Hexo-Theme-LiveMyLife/" style="color: #0085a1">
-              <span>
-                Hexo-Theme-LiveMyLife
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-        </ul>
-      </div>
-      
-
-
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        
-<!-- <h5>VISITORS</h5> -->
-<h5><a href="/">VISITORS</a></h5>
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
-    
-        <!-- Featured Tags -->
-
-<section>
-  <!-- no hr -->
-  <h5><a href="/tags/">FEATURED TAGS</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#AWS" title="AWS" rel="15">AWS</a>
-    
-    
-    
-    <a href="/tags/#Optimize" title="Optimize" rel="1">Optimize</a>
-    
-    
-    
-    <a href="/tags/#Database" title="Database" rel="3">Database</a>
-    
-    
-    
-    <a href="/tags/#Security" title="Security" rel="3">Security</a>
-    
-    
-    
-    <a href="/tags/#Network" title="Network" rel="2">Network</a>
-    
-    
-    
-    <a href="/tags/#Billing" title="Billing" rel="1">Billing</a>
-    
-    
-    
-    <a href="/tags/#S3" title="S3" rel="2">S3</a>
-    
-    
-    
-    <a href="/tags/#JWT" title="JWT" rel="1">JWT</a>
-    
-    
-    
-    <a href="/tags/#Log" title="Log" rel="2">Log</a>
-    
-    
-    
-    <a href="/tags/#File" title="File" rel="1">File</a>
-    
-    
-    
-    <a href="/tags/#Validation" title="Validation" rel="1">Validation</a>
-    
-    
-    
-    <a href="/tags/#Hexo" title="Hexo" rel="1">Hexo</a>
-    
-    
-    
-    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
-    
-    
-    
-    <a href="/tags/#Monitoring" title="Monitoring" rel="1">Monitoring</a>
-    
-    
-    
-    <a href="/tags/#SQL" title="SQL" rel="1">SQL</a>
-    
-    
-    
-    <a href="/tags/#NoSQL" title="NoSQL" rel="1">NoSQL</a>
-    
-    
-    
-    <a href="/tags/#DynamoDB" title="DynamoDB" rel="1">DynamoDB</a>
-    
-    
-    
-    <a href="/tags/#MongoDB" title="MongoDB" rel="1">MongoDB</a>
-    
-    
-    
-    <a href="/tags/#Mysql" title="Mysql" rel="1">Mysql</a>
-    
-    
-    
-    <a href="/tags/#Mail" title="Mail" rel="1">Mail</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">ABOUT ME</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/fatpeople.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>FullStack Developer.</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/MinhHungTrinh">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        
-<!-- <h5>RECENT POSTS</h5> -->
-<h5><a href="/">RECENT POSTS</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../../2021/08/28/Amazon-S3-Access-Control-IAM-Policies-Bucket-Policies-and-ACLs/">
-      <li>Amazon S3 Access Control - IAM Policies, Bucket Policies and ACLs</li>
-    </a>
-    
-    <a href="../../../2021/08/28/S3-Performance-Design-Patterns/">
-      <li>S3 Performance Design Patterns</li>
-    </a>
-    
-    <a href="../../../2021/07/30/File-type-validation/">
-      <li>File type validation</li>
-    </a>
-    
-    <a href="../../../2021/05/22/SES-Request-move-out-sandbox/">
-      <li>SES Request move out sandbox</li>
-    </a>
-    
-    <a href="../../../2021/05/22/AWS-Security-How-to-Block-an-IP-Address/">
-      <li>[AWS Security] How to Block an IP Address</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<!-- <h5>FRIENDS</h5> -->
-<h5><a href="/">FRIENDS</a></h5>
-<ul class="list-inline">
-  
-  <li><a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a></li>
-  
+        <p>Bài viết được lấy từ blog cá nhân để đăng lên kipalog công ty ().<br>Mình thấy có nhiều bạn có sự nhầm lẫn giữa các AWS S3 Access Control là IAM Policies, Bucket Policies, ACLs. Nhiều bạn còn thắc mắc tại sao lại sinh ra cái này vì đã có cái kia. Mình cũng từng dành khá khá time để giải thích cho đồng nghiệp nhưng có vẻ do không note ra rõ dàng, do nói chay nên vấn đề diễn đạt trở nên khó hiểu.<br>Tiện thể thấy video của bác <strong>Neal Davis</strong> publish thấy rất clear. <a href="https://www.youtube.com/watch?v=xFzJw6wJ8eY" target="_blank" rel="noopener">https://www.youtube.com/watch?v=xFzJw6wJ8eY</a> . Ngày trước, mình rất hay xem những khoá học của Bác, giảng rất chi tiết và clear, hỗ trợ rất tốt cho người mới bắt đầu hoặc có 1 chút kinh nghiệm. Mình suggest ae nên mua khoá học của Bác nhé :D<br>Ae nào lười xem video thì có thể đọc notes của mình nhé. Ngoài ra mình cũng bổ sung một số nội dung để clear hơn vài khái niệm.</p>
+<h3 id="1-What"><a href="#1-What" class="headerlink" title="1. What?"></a>1. What?</h3><h4 id="a-IAM-Policies"><a href="#a-IAM-Policies" class="headerlink" title="a. IAM Policies:"></a>a. IAM Policies:</h4><p><img src="/uploads/014a/d390/image.png" alt="alt text"></p>
+<ul>
+<li>IAM Policies =&gt; identity-based policies</li>
+<li>Viết bằng JSON, bằng access policy language</li>
+<li>IAM Policies được attach tới IAM Identity: users, groups, roles</li>
+<li>Principal element  không sử dụng khi gán policies cho IAM User hoặc Group, Roles. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html</a></li>
+<li>Chỉ rõ các actions được cho phép thao tác gì trên AWS Resources nào</li>
 </ul>
+<h4 id="b-Bucket-Policies"><a href="#b-Bucket-Policies" class="headerlink" title="b. Bucket Policies:"></a>b. Bucket Policies:</h4><p><img src="/uploads/7324/0931/image.png" alt="alt text"></p>
+<ul>
+<li>Bucket Policies =&gt; Resource-based policies</li>
+<li>Chỉ có thể attach tới AWS S3 Buckets</li>
+<li>Cũng sử dụng AWS access policy language</li>
+<li>Có thể thấy Bucket Policy có chỉ rõ pricinpal là ai, vậy nên phải được cho phép ở principal thì mới thao tác được các permissions đã allow.</li>
+</ul>
+<h4 id="c-S3-Access-Control-Lists-ACLs"><a href="#c-S3-Access-Control-Lists-ACLs" class="headerlink" title="c. S3 Access Control Lists (ACLs)"></a>c. S3 Access Control Lists (ACLs)</h4><ul>
+<li>Kiểm soát truy cập, cái này có trước IAM</li>
+<li>AWS thường recommends sử dụng S3 Bucket policies hoặc IAM policies hơn là ACLs</li>
+<li>Có thể attach tới bucket hoặc trực tiếp 1 object nào đó.</li>
+<li>Bị giới hạn về việc cấp phát grantees hay Permission. Ví dụ như chỉ giới hạn cấp cho Account nào, Read, Write, Delete. =&gt; hạn chế</li>
+</ul>
+<h3 id="2-Usecase"><a href="#2-Usecase" class="headerlink" title="2. Usecase"></a>2. Usecase</h3><h4 id="a-S3-Access-Control-Lists-ACLs"><a href="#a-S3-Access-Control-Lists-ACLs" class="headerlink" title="a. S3 Access Control Lists (ACLs)"></a>a. S3 Access Control Lists (ACLs)</h4><p>ACLs thì không được recommend để sử dụng nữa và cũng vì nhưng hạn chế của nó khi thao tác control access. Nên mình sẽ bỏ qua </p>
+<h4 id="b-When-use-IAM-Policies"><a href="#b-When-use-IAM-Policies" class="headerlink" title="b. When use IAM Policies:"></a>b. When use IAM Policies:</h4><ul>
+<li>Bạn cần control access tới các AWS Services khác ngoài việc chỉ control access S3. Chúng ta có thể viết 1 policy cho phép thao tác cùng lúc tới nhiều services như: S3, EC2, RDS,…</li>
+<li>Bạn có vài S3 Buckets và muốn có các permission khác nhau. IAM Policies dễ dàng quản lý nó.</li>
+<li>Bạn thích kiểm soát access control policies trong dịch vụ IAM</li>
+</ul>
+<h4 id="c-When-use-Bucket-Policies"><a href="#c-When-use-Bucket-Policies" class="headerlink" title="c. When use Bucket Policies:"></a>c. When use Bucket Policies:</h4><ul>
+<li>Bạn muốn đơn giản việc cấp quyền truy cập cross-account access  tới môi trường S3 mà không cần IAM Roles</li>
+<li>IAM policies đang bị giới hạn size limits (Ở đây có thể hiểu là việc attach policies đã đạt tới 10 rồi, hoặc custom policies của bạn đã viết dài quá 4096 ký tự)</li>
+<li>Bạn thích quản lý control access bằng dịch vụ S3</li>
+</ul>
+<h3 id="3-Authorization-Process"><a href="#3-Authorization-Process" class="headerlink" title="3. Authorization Process"></a>3. Authorization Process</h3><p>Vậy khi chúng ta sử dụng cả Bucket Policies và IAM Policies thì nó sẽ kết hợp như thế nào? Vì việc cấp permission có thể khác nhau.<br>Chỗ này các bạn có thể tham khảo: <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics" target="_blank" rel="noopener">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics</a><br>Như các bạn thấy thì IAM Policies và Bucket Policies có tính cộng:<br><img src="/uploads/f5a0/5498/image.png" alt="alt text"></p>
+<p>Để rõ ràng hơn thì ae cần hiểu rõ hơn về explicit deny và implicit deny, cụ thể:<br><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#AccessPolicyLanguage_Interplay" target="_blank" rel="noopener">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#AccessPolicyLanguage_Interplay</a></p>
+<ul>
+<li>Explicit deny (deny rõ ràng) khi bạn viết các rule deny trực tiếp permissions nào đó</li>
+<li>Implicit deny (deny ngầm) hay explicit allow được hiểu khi bạn allow permissions nào đó thì thực ra bạn đang deny ngầm các permission còn lại.</li>
+</ul>
+<p>Vậy tính cộng của IAM policies và Bucket Policies là cộng tất cả các explicit deny và implicit deny của cả 2.<br>Như flow dưới, Explicit deny thì ưu tiên hơn implicit deny (explicit allow).<br><img src="/uploads/3137/1def/image.png" alt="alt text"></p>
+<ul>
+<li>Bắt đầu với việc deny</li>
+<li>Đánh giá tất cả các policies của cả IAM Policies và Bucket Polies</li>
+<li>Kiểm tra xem có explicit deny nào không? nếu có thì quyết định cuối cùng là deny</li>
+<li>Kiểm tra xem có vi phạm implicit deny, tức là explicit allow có allow permissions đó không? nếu có thì quyết định cuối cùng là cho phép</li>
+<li>Mặc định nếu không khớp policies nào thì sẽ Default Deny</li>
+</ul>
+<h3 id="4-Ket"><a href="#4-Ket" class="headerlink" title="4. Kết"></a>4. Kết</h3><p>Đa số các trường hợp mình đề sử dụng IAM Policies cho việc truy cập S3. Kể cả việc truy cập Cross Account tới S3 thì sử dụng Bucket Policies thì làm đơn giản hoá. Nhưng thực sự mình quen thao tác tập trung việc phân quyền trên IAM rồi, mình không muốn phân tán ra thì sẽ khó quản lý, nhất là với hệ thống lớn quá nhiều resources mình còn chẳng nhớ đã cấu hình S3 những gì và rất lười kiểm tra từng cái. Và IAM Policies thực sự linh động cho việc cấu hình permissions đó.<br>Mọi người hãy đưa ra đánh giá bổ sung nhé!</p>
 
 
         <hr>
-    
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/2021/08/28/S3-Performance-Design-Patterns/" data-toggle="tooltip" data-placement="top" title="S3 Performance Design Patterns">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
         
-    <!-- <h5>ARCHIVES</h5> -->
-    <h5><a href="/archives/">ARCHIVES</a></h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="">August 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../07/">July 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../02/">February 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2020/04/">April 2020</a><span class="archive-list-count">1</span></li></ul>
-    </div>
+        <!-- tip start -->
+        <div class="tip">
+          <p>
+            Đây là Blog cá nhân của MinhHungTrinh, nơi mình chia sẻ, lưu giữ kiến thức. Nếu các bạn có góp ý, thắc mắc thì vui lòng comment bên dưới cho mình biết nhé. Kiến thức là biển sâu và mình luôn là người lắng nghe và ham học hỏi. Các vấn đề đặc biệt hoặc tế nhị mọi người có thể gửi email tới minhhungtrinhvn@gmail.com. Cảm ơn Mọi Người đã đọc Blog của mình. Yolo!
+          </p>
+        </div>
+        <!-- tip end -->
+        
 
-
-        <hr>
-    
-        <!-- Categories -->
-
-<!-- <h5>categories</h5> -->
-<h5><a href="/categories/">CATEGORIES</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#DevOps">
-      <li>DevOps</li>
-    </a>
-    
-    <a href="/categories/#Develop">
-      <li>Develop</li>
-    </a>
-    
-    <a href="/categories/#Development">
-      <li>Development</li>
-    </a>
-    
-    <a href="/categories/#Hexo-Theme-LiveMyLife">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a href="#"  class="social-share-icon icon-facebook">
+        <i class="fa fa-facebook fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:minhhungtrinhvn@gmail.com?subject=Amazon S3 Access Control - IAM Policies, Bucket Policies and ACLs&body=Hi,I found this website and thought you might like it https://minhhungtrinh.github.io/2021/08/28/Amazon-S3-Access-Control-IAM-Policies-Bucket-Policies-and-ACLs/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
   </ul>
 </div>
 
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
+        <!-- Sharing End -->
+        
         <hr>
-    
-</div>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+
+<!-- 2. gitment comment -->
+
+<!-- gitment start -->
+<!-- Docs:https://github.com/imsun/gitment -->
+
+<div id="blog_comments"></div>
+<!-- <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"> <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'gitment-container gitment-root-container'
+
+      // your custom component
+      container.appendChild(instance.renderSomething(state, instance))
+      container.appendChild(instance.renderHeader(state, instance))
+      container.appendChild(instance.renderEditor(state, instance))
+      container.appendChild(instance.renderComments(state, instance))
+      container.appendChild(instance.renderFooter(state, instance))
+      return container
+    },
+    renderSomething(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'hello_visitor'
+      if (state.user.login) {
+        container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+      }
+      return container
+    }
+  }
+
+  const gitment = new Gitment({
+    id: 'Sat Aug 28 2021 23:19:34 GMT+0700', // optional
+    owner: 'MinhHungTrinh',
+    repo: 'MinhHungTrinh.github.io',
+    oauth: {
+      client_id: 'f23a1a1a678355dff851',
+      client_secret: '5b4c1011ed3613893952bd69fbdab696b32bec3b'
+    },
+    desc: '',
+    perPage: '10',
+    maxCommentHeight: '250',
+    theme: myTheme,
+    // ... For more available options, check out the documentation below
+  })
+
+  gitment.render('blog_comments')
+  // or gitment.render(document.getElementById('comments')) or document.body.appendChild(gitment.render())
+</script>
+
+<!-- gitment end -->
+
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
     
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-What"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. What?</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a-IAM-Policies"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">a. IAM Policies:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#b-Bucket-Policies"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">b. Bucket Policies:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#c-S3-Access-Control-Lists-ACLs"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">c. S3 Access Control Lists (ACLs)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Usecase"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. Usecase</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a-S3-Access-Control-Lists-ACLs"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">a. S3 Access Control Lists (ACLs)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#b-When-use-IAM-Policies"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">b. When use IAM Policies:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#c-When-use-Bucket-Policies"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">c. When use Bucket Policies:</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-Authorization-Process"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. Authorization Process</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-Ket"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. Kết</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
+            
+            <a class="tag" href="/tags/#S3" title="S3">S3</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 	<!-- Footer (contains ThemeColor、viewer) -->
