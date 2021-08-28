@@ -184,13 +184,6 @@
 
           
           <li>
-            <a href="/categories/">Categories</a>
-          </li>
-          
-          
-
-          
-          <li>
             <a href="/about/">About</a>
           </li>
           
@@ -198,14 +191,21 @@
 
           
           <li>
-            <a href="/tags/">Tags</a>
+            <a href="/archive/">Archives</a>
           </li>
           
           
 
           
           <li>
-            <a href="/archive/">Archives</a>
+            <a href="/categories/">Categories</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/tags/">Tags</a>
           </li>
           
           
@@ -371,7 +371,7 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
         <p>Bài viết được lấy từ blog cá nhân của mình để đăng lên kipalog công ty.<br>Sau khi support mấy dự án, mình thấy có vài vấn đề liên quan đến việc các bạn trong team chưa sử dụng một vài tối ưu của AWS S3 service. Nên hôm nay mình cũng note lại ở đây coi như tổng hợp lại.<br>Tham khảo AWS Docs:<br><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html</a><br>Trong link có khá nhiều giải pháp, nhưng mình sẽ chỉ nói tới một vài giải pháp trong docs mà mình đang làm việc thôi, các giải pháp khác đọc thì đọc nhiều rồi nhưng khi nào có cơ hội làm việc  thực tế thì sẽ bổ sung tiếp vào bài này nhé.</p>
-<h3 id="1-Prefix"><a href="#1-Prefix" class="headerlink" title="1. Prefix"></a>1. Prefix</h3><h3 id="1-1-Prefix-vs-Folder"><a href="#1-1-Prefix-vs-Folder" class="headerlink" title="1.1. Prefix vs Folder"></a>1.1. Prefix vs Folder</h3><p>Cái này tưởng chừng là quá rõ nhưng 1 số ít vẫn đang nhầm lẫn prefix và folder, mình cũng muốn nhắc lại để liên quan đến mục 2.<br><a href="https://aws.amazon.com/premiumsupport/knowledge-center/s3-prefix-nested-folders-difference/" target="_blank" rel="noopener">https://aws.amazon.com/premiumsupport/knowledge-center/s3-prefix-nested-folders-difference/</a><br>Với 1 object trong S3 bucket có path là <code>BucketName/Project/WordFiles/123.txt</code>:</p>
+<h3 id="1-Prefix"><a href="#1-Prefix" class="headerlink" title="1. Prefix"></a>1. Prefix</h3><h4 id="1-1-Prefix-vs-Folder"><a href="#1-1-Prefix-vs-Folder" class="headerlink" title="1.1. Prefix vs Folder"></a>1.1. Prefix vs Folder</h4><p>Cái này tưởng chừng là quá rõ nhưng 1 số ít vẫn đang nhầm lẫn prefix và folder, mình cũng muốn nhắc lại để liên quan đến mục 2.<br><a href="https://aws.amazon.com/premiumsupport/knowledge-center/s3-prefix-nested-folders-difference/" target="_blank" rel="noopener">https://aws.amazon.com/premiumsupport/knowledge-center/s3-prefix-nested-folders-difference/</a><br>Với 1 object trong S3 bucket có path là <code>BucketName/Project/WordFiles/123.txt</code>:</p>
 <ul>
 <li>Prefix sẽ là: BucketName/Project/WordFiles/. Tức là sẽ là path mà k chứa object key.</li>
 <li>Folder sẽ là: BucketName, Project, WordFiles. Tức là các thành phần phân tách bằng /.</li>
@@ -528,7 +528,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-Prefix"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Prefix</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-1-Prefix-vs-Folder"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">1.1. Prefix vs Folder</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-Prefix-with-performance"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">1.2. Prefix with performance</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Object-key"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">2. Object key</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-Caching-for-Frequenly-Access-Content"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">3. Caching for Frequenly Access Content.</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-1-Cloudfront"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">3.1. Cloudfront</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-Elasticache-Redis"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">3.2. Elasticache Redis</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-S3-Presign-URL"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">4. S3 Presign URL</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-PUT-GET-Large-file"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">5. PUT&#x2F;GET Large file</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-1-PUT"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">5.1. PUT</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-2-GET"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">5.2 GET</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Ket"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">Kết</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-Prefix"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Prefix</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-Prefix-vs-Folder"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.1. Prefix vs Folder</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-Prefix-with-performance"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.2. Prefix with performance</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Object-key"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. Object key</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-Caching-for-Frequenly-Access-Content"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. Caching for Frequenly Access Content.</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-1-Cloudfront"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. Cloudfront</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-Elasticache-Redis"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. Elasticache Redis</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-S3-Presign-URL"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. S3 Presign URL</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-PUT-GET-Large-file"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5. PUT&#x2F;GET Large file</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-1-PUT"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">5.1. PUT</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-2-GET"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">5.2 GET</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Ket"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Kết</span></a></li></ol>
         
         </div>
       </aside>
