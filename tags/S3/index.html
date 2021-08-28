@@ -46,12 +46,12 @@
 
   <!-- Pygments Highlight CSS -->
   
-<link rel="stylesheet" href="../../../../css/highlight.css">
-<link rel="stylesheet" href="../../../../css/widget.css">
-<link rel="stylesheet" href="../../../../css/rocket.css">
-<link rel="stylesheet" href="../../../../css/signature.css">
-<link rel="stylesheet" href="../../../../css/catalog.css">
-<link rel="stylesheet" href="../../../../css/livemylife.css">
+<link rel="stylesheet" href="../../css/highlight.css">
+<link rel="stylesheet" href="../../css/widget.css">
+<link rel="stylesheet" href="../../css/rocket.css">
+<link rel="stylesheet" href="../../css/signature.css">
+<link rel="stylesheet" href="../../css/catalog.css">
+<link rel="stylesheet" href="../../css/livemylife.css">
 
 
   
@@ -112,10 +112,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://minhhungtrinh.github.io/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/">
+  <link rel="canonical" href="https://minhhungtrinh.github.io/tags/S3/">
   <title>
     
-    AWS Auto Scaling Group based on Queue (Custom metric) - Minh Hung
+    Minh Hung
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -263,8 +263,8 @@
 
   <style type="text/css">
     header.intro-header {
-       /*post*/
-        background-image: url('waterfall.jpg');
+       /*page*/
+        background-image: url('/img/header_img/archive_bg2.jpg');
       
     }
 
@@ -286,42 +286,10 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="post-heading">
-            <div class="tags">
-              
-              <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
-              
-              <a class="tag" href="/tags/#Optimize" title="Optimize">Optimize</a>
-              
-            </div>
-            <h1>AWS Auto Scaling Group based on Queue (Custom metric)</h1>
-            <h2 class="subheading"></h2>
-            <span class="meta">
-              Posted by MinhHungTrinh on
-              2021-01-17
-            </span>
-
-
-            
-            <!-- WordCount start -->
-            <div class="blank_box"></div>
-            <span class="meta">
-              Estimated Reading Time <span class="post-count">10</span> Minutes
-            </span>
-            <div class="blank_box"></div>
-            <span class="meta">
-              Words <span class="post-count">1.7k</span> In Total
-            </span>
-            <div class="blank_box"></div>
-            <!-- 不蒜子统计 start -->
-            <span class="meta">
-              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
-            </span>
-            <!-- 不蒜子统计 end -->
-            <!-- WordCount end -->
-            
-
-
+          <div class="site-heading">
+            <h1></h1>
+            <!--<hr class="small">-->
+            <span class="subheading">Life isn’t about finding yourself. Life is about creating yourself. ― George Bernard Shaw</span>
           </div>
           
         </div>
@@ -362,265 +330,602 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-	<!-- Modify by Yu-Hsuan Yen -->
-<!-- Post Content -->
-<article>
-  <div class="container">
-    <div class="row">
-      <!-- Post Container -->
-      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+	<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    
 
-        <p>Đây là bài mình viết cũng đã trình bày trên blog kaopiz.kipalog của công ty.<br>Anh em làm backend chắc hẳn có va chạm ít nhiều với việc xử lý các <code>queue message</code> bằng <code>Workers</code>. Ở local hay môi trường Test sẽ thật đơn giản khi chỉ chạy single Instance và thiết lập cố định số processes. Vấn đề bắt đầu xảy ra khi lên production, khách hàng yêu cầu 1 hệ thống chạy ổn định, nhưng lại phải tiết kiệm chi phí khi không cần thiết. Vậy là nó cần phải đảm bảo vài cái tính sau: <code>Availability</code>, <code>Reliability</code> và <code>Scalability</code>.</p>
-<p>Có nhiều cách triển khai lắm. Trên AWS chẳng hạn thì có use-cases là sử dụng 1 autoscale group chứa các instance chạy các Workers này. Các worker sẽ pull messages từ Queue và xử lý. Vì có nhiều workers chạy đồng thời trên các instance nên theo lý thuyết là nó đảm bảo 3 tính vừa rồi. Luôn luôn đáp ứng kịp thời mà lại tiết kiệm chi phí khi cần thiết. Cơ mà từ từ đã, chúng ta thử đi sâu vào xem vì sao mình phải customize nó ở bài này nhé.</p>
-<h2 id="Van-de"><a href="#Van-de" class="headerlink" title="Vấn đề"></a>Vấn đề</h2><p>Mình sẽ lấy bài toán default là chúng ta bắn message job lên SQS Standard (1 loại queue của AWS, bạn cũng có thể thay thế nó bằng các loại khác như Redis, RapidMq,… nhưng phải custom metric trên cloudwatch để sử dụng nó cho việc scale). Tiếp theo, Mình sẽ tạo 1 cụm Autoscale Group để launch các instance (min=1, max=6), trong đó các instance chứa code là các workers xử lý message job.</p>
-<p>Với các API server, thường chúng ta scale theo CPU, memory của server. Nhưng với bài toán worker này, Nếu cấu hình là tối ưu thì các Worker phải chạy ở ngưỡng chấp nhận tối đa về CPU, memory trong thời gian dài (long running). Vì vậy nếu scale theo CPU hay memory thì sẽ gây ra hiện tượng tăng liên tục instance do CPU và memory luôn cao ==&gt; lãng phí.</p>
-<p>Thường thì bài toán này người ta scale theo số lượng message job. Vậy scale policy mặc định mình sẽ chọn là khi tổng số lượng messages trong queue (SQS có cung cấp default metric cho phép chúng ta theo dõi số lựng message job) đạt 1 ngưỡng nào đó thì mình sẽ tăng hoặc giảm 1 instance<br>=&gt; OK có vẻ nó đảm bảo được <code>Availability</code>, <code>Reliability</code>. Vậy còn <code>Scalability</code> có vẻ mình thấy nó vẫn chưa hợp lý. Mình sẽ diễn giải như sau.</p>
-<p>Cấu hình autoscale với mấy thông số cơ bản kiểu:</p>
-<ul>
-<li>Hiện tại có Autoscale group của bạn có 1 instance</li>
-<li>Bạn đặt ngưỡng TotalMessage để scale là 200 messages chẳng hạn</li>
-<li>Health check 1 phút/1 lần. Chạm ngưỡng 2 lần thì scale =&gt; 2 phút.</li>
-</ul>
-<p>Vấn đề mình thấy chưa tối ưu ở chỗ khi scale out tăng 1 instance. Cùng 1 thời điểm bạn nhận được 400 messages vào queue (do lượng người dùng tăng bất chợt). Sau đó Autoscale nhận thấy TotalMessage &gt; 200 ==&gt; nó sẽ thêm 1 instance vào.<br>Khoảng 2 phút sau, số message vẫn trên 200, và lại tăng thêm nữa. Ví dụ sau 10 phút, lượng TotalMessage bắt đầu &lt;= 200 chúng ta sẽ có 6 instance.<br>Sau 10 phút tiếp theo, Số message bị xử lý hết, về 0. Scale In thực hiện, chúng ta lại tắt chỉ giữ lại 1 instance =&gt; bị tính phí thêm 5hours sử dụng cho lần scale này.</p>
-<p>Vậy là việc tăng số lượng instance quá nhiều như thế này có vẻ không cần thiết. Nhất là tùy vào yêu cầu bài toán như 1 message phải được xử lý trong 10 phút hay 1 giờ hay 6 giờ chẳng hạn. Thì với cấu hình như ở trên chúng ta k thể đánh giá được.</p>
-<h2 id="Giai-phap"><a href="#Giai-phap" class="headerlink" title="Giải pháp"></a>Giải pháp</h2><p>Với bài toán ở trên nếu muốn tối ưu mình nghĩ cần định hướng việc scale từ totalmessage thành Backlog Message per instance. Tức là vào 1 thời điểm thì 1 instance dự đoán sẽ phải có bao nhiêu message nằm trong backlog của nó. Như bài toán ở trên nếu yêu cầu là thì ví dụ:</p>
-<p>Có 200 messages và có 2 instance =&gt; BacklogMessagePerInstance = 100. Vẫn cần tăng thêm<br>Có 200 messages và có 5 instance =&gt; BacklogMessagePerInstance = 40. Không cần tăng nữa<br>Từ con số BacklogMessagePerInstance bạn có thể đánh giá được sau thời gian bao lâu thì message sẽ được xử lý xong. Từ đó áp dụng với yêu cầu bổ sung của dự án.</p>
-<p>BacklogMessagePerInstance thì không có sẵn trong các cloudwatch metric. Vậy tức là chúng ta cần custom metric này. Mình sẽ chọn 1 instance nhỏ tí (t2 micro là quá nhiều) để thực hiện logic này. Tạo 1 file shell script với nội dung dưới. Mình xin cung cấp source của script tính BacklogMessagePerInstance, mọi người nên customize để phù hợp với bài toán của mình hơn:</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">        # Please update below variables as per your production setup</span><br><span class="line">        <span class="attribute">REGION</span>=<span class="variable">$&#123;AWS::Region&#125;</span></span><br><span class="line">        <span class="attribute">WEB_DIR</span>=<span class="string">"/home/ubuntu"</span></span><br><span class="line">        <span class="attribute">SERVICE_ASG</span>=Service-asg</span><br><span class="line">        <span class="attribute">ACCOUNT_ID</span>=<span class="variable">$&#123;AWS::AccountId&#125;</span></span><br><span class="line">        <span class="attribute">QueueURL</span>=<span class="variable">$&#123;QueueURL&#125;</span></span><br><span class="line">        <span class="attribute">MetricName</span>=BacklogPerInstance</span><br><span class="line">        <span class="attribute">Namespace</span>=ServiceGroup</span><br><span class="line"></span><br><span class="line">        cd <span class="variable">$WEB_DIR</span></span><br><span class="line"></span><br><span class="line">        #<span class="builtin-name">Get</span> messages number <span class="keyword">in</span> SQS</span><br><span class="line">        <span class="attribute">ApproximateNumberOfMessages</span>=$(aws sqs get-queue-attributes --region <span class="variable">$REGION</span> --queue-url <span class="variable">$QueueURL</span>   --attribute-names ApproximateNumberOfMessages | jq -r <span class="string">'.Attributes.ApproximateNumberOfMessages'</span>)</span><br><span class="line">        <span class="attribute">ApproximateNumberOfMessagesNotVisible</span>=$(aws sqs get-queue-attributes --region <span class="variable">$REGION</span> --queue-url <span class="variable">$QueueURL</span>   --attribute-names ApproximateNumberOfMessagesNotVisible | jq -r <span class="string">'.Attributes.ApproximateNumberOfMessagesNotVisible'</span>)</span><br><span class="line">        <span class="attribute">ApproximateNumberOfMessagesDelayed</span>=$(aws sqs get-queue-attributes --region <span class="variable">$REGION</span> --queue-url <span class="variable">$QueueURL</span>   --attribute-names ApproximateNumberOfMessagesDelayed | jq -r <span class="string">'.Attributes.ApproximateNumberOfMessagesDelayed'</span>)</span><br><span class="line">        <span class="attribute">NumberOfMessages</span>=$(($ApproximateNumberOfMessages+$ApproximateNumberOfMessagesNotVisible+$ApproximateNumberOfMessagesDelayed))</span><br><span class="line">        echo <span class="string">"NumberOfMessages: "</span> <span class="variable">$NumberOfMessages</span></span><br><span class="line"></span><br><span class="line">        #<span class="builtin-name">Get</span> instances number <span class="keyword">in</span> autoscalegroup</span><br><span class="line">        <span class="attribute">InstancesNumber</span>=$(aws autoscaling describe-auto-scaling-groups --region <span class="variable">$REGION</span> --auto-scaling-group-names <span class="variable">$SERVICE_ASG</span>  --query <span class="string">"AutoScalingGroups[0]"</span> | jq <span class="string">'.Instances | length'</span>)</span><br><span class="line">        echo <span class="string">"InstancesNumber: "</span> <span class="variable">$InstancesNumber</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$InstancesNumber</span> -eq 0  -a  <span class="variable">$NumberOfMessages</span> -eq 0 ]</span><br><span class="line">        then</span><br><span class="line">          echo <span class="string">"Insufficient Data"</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">          #<span class="builtin-name">Set</span><span class="built_in"> default </span>InstancesNumber</span><br><span class="line">          <span class="keyword">if</span> [ <span class="variable">$InstancesNumber</span> -eq 0 ]</span><br><span class="line">          then</span><br><span class="line">            echo <span class="string">"set default is 1"</span>;</span><br><span class="line">            <span class="attribute">InstancesNumber</span>=1</span><br><span class="line">          fi</span><br><span class="line"></span><br><span class="line">          #Caculate Backlog per Instance</span><br><span class="line">          <span class="attribute">ServiceBacklogPerWorker</span>=$((($NumberOfMessages / <span class="variable">$InstancesNumber</span>) + (<span class="variable">$NumberOfMessages</span> % <span class="variable">$InstancesNumber</span> &gt; 0)))</span><br><span class="line">          echo <span class="string">"MyBacklogPerWorker: "</span> <span class="variable">$ServiceBacklogPerWorker</span></span><br><span class="line"></span><br><span class="line">          #Put <span class="keyword">to</span> Cloudwatch</span><br><span class="line">          aws cloudwatch put-metric-data --region <span class="variable">$REGION</span> --metric-name <span class="variable">$MetricName</span> --namespace <span class="variable">$Namespace</span> --unit Count --value <span class="variable">$ServiceBacklogPerWorker</span> --dimensions <span class="attribute">SQS-Queue</span>=CustomQueue</span><br><span class="line">        fi</span><br></pre></td></tr></table></figure>
-<p>Sau đó hãy thêm nó vào cronjob để bắn metric lên cloudwatch nhé.</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"* * * * * ubuntu <span class="variable">$WEB_DIR</span>/<span class="variable">$SERVICE_SCRIPT_NAME</span>.sh &gt; /dev/null 2&gt;&amp;1"</span> &gt;&gt; <span class="variable">$WEB_DIR</span>/ec2schedule</span><br><span class="line">chmod 0600 <span class="variable">$WEB_DIR</span>/ec2schedule</span><br><span class="line">mv <span class="variable">$WEB_DIR</span>/ec2schedule /etc/cron.d/</span><br><span class="line">service cron restart</span><br></pre></td></tr></table></figure>
+    <!-- USE SIDEBAR -->
+    <!-- Post Container -->
+    <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
 
-<p>OK. vây là custom metric sẽ được tạo. Nếu bạn vào cloudwatch sẽ thấy nó hiện mới. Hãy sử dụng metric này cho worker autoscale group của mình nhé.</p>
-<h2 id="Ket-luan"><a href="#Ket-luan" class="headerlink" title="Kết luận"></a>Kết luận</h2><p>Thực ra bài toán chỉ là 1 ví dụ nhỏ, mục đích mình muốn nói về việc mình tự custom metric và tạo 1 scale policy theo ý mình muốn cho autoscale group. Ví dụ mình tạo custom metric từ 1 thông số trời ơi đất hỡi nào cũng được, thay vì lấy từ SQS thì lấy từ Redis hoặc lấy data từ database ,…<br>Sau khi viết xong bài này mình cũng thấy có vài bài viết con chi tiết hơn, thiết nghĩ ngại dịch lại nên thôi suggest thêm, biết đâu đọc dễ hiểu:<br>AWS Docs: <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html</a><br>Example với ECS cluster: <a href="https://allaboutaws.com/how-to-auto-scale-aws-ecs-containers-sqs-queue-metrics" target="_blank" rel="noopener">https://allaboutaws.com/how-to-auto-scale-aws-ecs-containers-sqs-queue-metrics</a><br>Blog chủ đề về scale, có thể mình sẽ viết thêm các bài khác tham khảo từ đây chẳng hạn: <a href="https://aws.amazon.com/blogs/aws/category/auto-scaling/" target="_blank" rel="noopener">https://aws.amazon.com/blogs/aws/category/auto-scaling/</a></p>
+      
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
+      <!-- 归档列表 -->
 
+      
 
-        <hr>
-        <!-- Pager -->
-        <ul class="pager">
+      <!-- 归档列表 -->
+
+      
+      <div class="one-tag-list">
+        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
+          <span class="tag-text">2021</span>
+        </span>
+        <ul>
           
-          <li class="previous">
-            <a href="/2021/01/17/Lam-viec-voi-Large-Data/" data-toggle="tooltip" data-placement="top" title="Làm việc với Large Data">&larr; Previous Post</a>
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            08-28
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/08/28/S3-Performance-Design-Patterns/" style="color: #0085a1">
+              <span>
+                S3 Performance Design Patterns
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
           </li>
           
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            07-30
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/07/30/File-type-validation/" style="color: #0085a1">
+              <span>
+                File type validation
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
           
-          <li class="next">
-            <a href="/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/" data-toggle="tooltip" data-placement="top" title="Replicate AWS MySQL Aurora to External Replica">Next Post &rarr;</a>
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            05-22
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/05/22/SES-Request-move-out-sandbox/" style="color: #0085a1">
+              <span>
+                SES Request move out sandbox
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            05-22
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/05/22/AWS-Security-How-to-Block-an-IP-Address/" style="color: #0085a1">
+              <span>
+                [AWS Security] How to Block an IP Address
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            05-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/05/17/AWS-Security-Network-Security/" style="color: #0085a1">
+              <span>
+                [AWS Security] Network Security
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            04-25
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/" style="color: #0085a1">
+              <span>
+                Collect application logs to AWS Cloudwatch Logs
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            02-20
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/02/20/AWS-Database-AWS-RDS-part-2/" style="color: #0085a1">
+              <span>
+                [AWS Database] AWS RDS (part 2)
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            02-19
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/02/19/AWS-Database-Mo-bat-part-1/" style="color: #0085a1">
+              <span>
+                [AWS Database] Mở bát (part 1)
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            02-03
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/02/03/Prometheus-and-Grafana-Part-1/" style="color: #0085a1">
+              <span>
+                Prometheus and Grafana Part 1
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            02-02
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/" style="color: #0085a1">
+              <span>
+                Installing node_exporter on an EC2 Amazon linux
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            01-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/01/17/Dynamo-Time-To-Live-to-S3/" style="color: #0085a1">
+              <span>
+                Dynamo Time To Live to S3
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            01-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/01/17/Real-Time-Replication-From-DynamoDB-to-MongoDB/" style="color: #0085a1">
+              <span>
+                Real-Time Replication From DynamoDB to MongoDB
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            01-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/" style="color: #0085a1">
+              <span>
+                Góc nhìn về Nat Instance >< Nat Gateway
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            01-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/" style="color: #0085a1">
+              <span>
+                Câu chuyện JWT và Revoke Token
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            01-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/01/17/Lam-viec-voi-Large-Data/" style="color: #0085a1">
+              <span>
+                Làm việc với Large Data
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            01-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/" style="color: #0085a1">
+              <span>
+                AWS Auto Scaling Group based on Queue (Custom metric)
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            01-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/" style="color: #0085a1">
+              <span>
+                Replicate AWS MySQL Aurora to External Replica
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            01-14
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2021/01/14/AWS-Data-transfer-Billing/" style="color: #0085a1">
+              <span>
+                AWS Data transfer Billing
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
           </li>
           
         </ul>
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
+          <span class="tag-text">2020</span>
+        </span>
+        <ul>
+          
+          <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+          <li>
+            04-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/2020/04/17/Hexo-Theme-LiveMyLife/" style="color: #0085a1">
+              <span>
+                Hexo-Theme-LiveMyLife
+              </span>
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+          </li>
+          
+        </ul>
+      </div>
+      
 
-        
-        <!-- tip start -->
-        <div class="tip">
-          <p>
-            Đây là Blog cá nhân của MinhHungTrinh, nơi mình chia sẻ, lưu giữ kiến thức. Nếu các bạn có góp ý, thắc mắc thì vui lòng comment bên dưới cho mình biết nhé. Kiến thức là biển sâu và mình luôn là người lắng nghe và ham học hỏi. Các vấn đề đặc biệt hoặc tế nhị mọi người có thể gửi email tới minhhungtrinhvn@gmail.com. Cảm ơn Mọi Người đã đọc Blog của mình. Yolo!
-          </p>
-        </div>
-        <!-- tip end -->
-        
 
+    </div>
+  </div>
+</div>
+
+
+      <!-- 如果开启评论功能 -->
+      
+    </div>
+
+    <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
         
-        <!-- Sharing Srtart -->
-        <!-- Social Social Share Post -->
-<!-- Docs:https://github.com/overtrue/share.js -->
-<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,diandian" data-wechat-qrcode-helper="" align="center">
-  <ul class="list-inline text-center social-share-ul">
-    <li class="social-share-li">
-      <a href="#"  class="social-share-icon icon-facebook">
-        <i class="fa fa-facebook fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:minhhungtrinhvn@gmail.com?subject=AWS Auto Scaling Group based on Queue (Custom metric)&body=Hi,I found this website and thought you might like it https://minhhungtrinh.github.io/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/">
-        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
+<!-- <h5>VISITORS</h5> -->
+<h5><a href="/">VISITORS</a></h5>
+<div class="widget">
+  <span>
+    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
+  </span>
+  <br />
+  <span>
+    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
+  </span>
+</div>
+
+
+        <hr>
+    
+        <!-- Featured Tags -->
+
+<section>
+  <!-- no hr -->
+  <h5><a href="/tags/">FEATURED TAGS</a></h5>
+  <div class="tags">
+    
+    
+    <a href="/tags/#AWS" title="AWS" rel="14">AWS</a>
+    
+    
+    
+    <a href="/tags/#Optimize" title="Optimize" rel="1">Optimize</a>
+    
+    
+    
+    <a href="/tags/#Billing" title="Billing" rel="1">Billing</a>
+    
+    
+    
+    <a href="/tags/#Database" title="Database" rel="3">Database</a>
+    
+    
+    
+    <a href="/tags/#Security" title="Security" rel="3">Security</a>
+    
+    
+    
+    <a href="/tags/#Network" title="Network" rel="2">Network</a>
+    
+    
+    
+    <a href="/tags/#JWT" title="JWT" rel="1">JWT</a>
+    
+    
+    
+    <a href="/tags/#Log" title="Log" rel="2">Log</a>
+    
+    
+    
+    <a href="/tags/#File" title="File" rel="1">File</a>
+    
+    
+    
+    <a href="/tags/#Validation" title="Validation" rel="1">Validation</a>
+    
+    
+    
+    <a href="/tags/#Monitoring" title="Monitoring" rel="1">Monitoring</a>
+    
+    
+    
+    <a href="/tags/#SQL" title="SQL" rel="1">SQL</a>
+    
+    
+    
+    <a href="/tags/#NoSQL" title="NoSQL" rel="1">NoSQL</a>
+    
+    
+    
+    <a href="/tags/#DynamoDB" title="DynamoDB" rel="1">DynamoDB</a>
+    
+    
+    
+    <a href="/tags/#MongoDB" title="MongoDB" rel="1">MongoDB</a>
+    
+    
+    
+    <a href="/tags/#S3" title="S3" rel="1">S3</a>
+    
+    
+    
+    <a href="/tags/#Mysql" title="Mysql" rel="1">Mysql</a>
+    
+    
+    
+    <a href="/tags/#Mail" title="Mail" rel="1">Mail</a>
+    
+    
+    
+    <a href="/tags/#Hexo" title="Hexo" rel="1">Hexo</a>
+    
+    
+    
+    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
+    
+    
+  </div>
+</section>
+
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+  <h5><a href="/about/">ABOUT ME</a></h5>
+  <div class="short-about">
+
+    
+    <img id="avatar_pic" src="/img/avatar/fatpeople.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
+    
+
+    
+    <p>FullStack Developer.</p>
+    
+
+    <!-- SNS Link -->
+    <ul class="list-inline">
+      
+
+      
+      <li>
+        <a target="_blank" href="https://github.com/MinhHungTrinh">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+    </ul>
+  </div>
+</section>
+
+        <hr>
+    
+        
+<!-- <h5>RECENT POSTS</h5> -->
+<h5><a href="/">RECENT POSTS</a></h5>
+<div class="widget">
+  <ul>
+    
+    <a href="../../2021/08/28/S3-Performance-Design-Patterns/">
+      <li>S3 Performance Design Patterns</li>
+    </a>
+    
+    <a href="../../2021/07/30/File-type-validation/">
+      <li>File type validation</li>
+    </a>
+    
+    <a href="../../2021/05/22/SES-Request-move-out-sandbox/">
+      <li>SES Request move out sandbox</li>
+    </a>
+    
+    <a href="../../2021/05/22/AWS-Security-How-to-Block-an-IP-Address/">
+      <li>[AWS Security] How to Block an IP Address</li>
+    </a>
+    
+    <a href="../../2021/05/17/AWS-Security-Network-Security/">
+      <li>[AWS Security] Network Security</li>
+    </a>
+    
   </ul>
 </div>
 
-<!-- css & js -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
-<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
-        <!-- Sharing End -->
-        
         <hr>
-
-        <!-- comments start -->
-        <!-- 1. gitalk comment -->
-
-
-
-<!-- 2. gitment comment -->
-
-<!-- gitment start -->
-<!-- Docs:https://github.com/imsun/gitment -->
-
-<div id="blog_comments"></div>
-<!-- <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"> <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> -->
-
-<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
-
-<script>
-  const myTheme = {
-    render(state, instance) {
-      const container = document.createElement('div')
-      container.lang = "en-US"
-      container.className = 'gitment-container gitment-root-container'
-
-      // your custom component
-      container.appendChild(instance.renderSomething(state, instance))
-      container.appendChild(instance.renderHeader(state, instance))
-      container.appendChild(instance.renderEditor(state, instance))
-      container.appendChild(instance.renderComments(state, instance))
-      container.appendChild(instance.renderFooter(state, instance))
-      return container
-    },
-    renderSomething(state, instance) {
-      const container = document.createElement('div')
-      container.lang = "en-US"
-      container.className = 'hello_visitor'
-      if (state.user.login) {
-        container.innerText = `Hello ${state.user.login}, Welcome to comment system`
-      }
-      return container
-    }
-  }
-
-  const gitment = new Gitment({
-    id: 'Sun Jan 17 2021 11:16:45 GMT+0700', // optional
-    owner: 'MinhHungTrinh',
-    repo: 'MinhHungTrinh.github.io',
-    oauth: {
-      client_id: 'f23a1a1a678355dff851',
-      client_secret: '5b4c1011ed3613893952bd69fbdab696b32bec3b'
-    },
-    desc: '',
-    perPage: '10',
-    maxCommentHeight: '250',
-    theme: myTheme,
-    // ... For more available options, check out the documentation below
-  })
-
-  gitment.render('blog_comments')
-  // or gitment.render(document.getElementById('comments')) or document.body.appendChild(gitment.render())
-</script>
-
-<!-- gitment end -->
-
-
-
-<!-- 3. disqus comment -->
-
-
-        <!-- comments end -->
-        <hr>
-
-      </div>
-
-      <!-- Catalog: Tabe of Content -->
-      <!-- Table of Contents -->
-
     
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Van-de"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vấn đề</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Giai-phap"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Giải pháp</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Ket-luan"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Kết luận</span></a></li></ol>
-        
-        </div>
-      </aside>
-    
-
-
-      <!-- Sidebar Container -->
-      <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-        <!-- Featured Tags -->
-        
-        <section>
-          <!-- no hr -->
-          <h5>
-            <a href="/tags/">FEATURED TAGS</a>
-          </h5>
-          <div class="tags">
-            
-            <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
-            
-            <a class="tag" href="/tags/#Optimize" title="Optimize">Optimize</a>
-            
-          </div>
-        </section>
-        
-
         <!-- Friends Blog -->
-        
+
+<!-- <h5>FRIENDS</h5> -->
+<h5><a href="/">FRIENDS</a></h5>
+<ul class="list-inline">
+  
+  <li><a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a></li>
+  
+</ul>
+
+
         <hr>
-        <h5>FRIENDS</h5>
-        <ul class="list-inline">
-
-          
-          <li>
-            <a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a>
-          </li>
-          
-        </ul>
+    
         
-      </div>
+    <!-- <h5>ARCHIVES</h5> -->
+    <h5><a href="/archives/">ARCHIVES</a></h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li></ul>
     </div>
+
+
+        <hr>
+    
+        <!-- Categories -->
+
+<!-- <h5>categories</h5> -->
+<h5><a href="/categories/">CATEGORIES</a></h5>
+<div class="widget">
+  <ul>
+    
+    <a href="/categories/#DevOps">
+      <li>DevOps</li>
+    </a>
+    
+    <a href="/categories/#Develop">
+      <li>Develop</li>
+    </a>
+    
+    <a href="/categories/#Development">
+      <li>Development</li>
+    </a>
+    
+    <a href="/categories/#Hexo-Theme-LiveMyLife">
+      <li>Hexo-Theme-LiveMyLife</li>
+    </a>
+    
+  </ul>
+</div>
+
+
+        <hr>
+    
+</div>
+
+    
   </div>
-</article>
-
-
-
-<!-- anchorjs start -->
-<!-- async load function -->
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script type="text/javascript">
-  // async load function
-  function async (u, c) {
-    var d = document,
-      t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) {
-      o.addEventListener('load', function(e) {
-        c(null, e);
-      }, false);
-    }
-    s.parentNode.insertBefore(o, s);
-  };
-</script>
-<script type="text/javascript">
-  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
-  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
-    anchors.options = {
-      visible: 'hover',
-      placement: 'left',
-      // icon: 'ℬ'
-      icon: '❡'
-    };
-    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-  });
-</script>
-<style>
-  /* place left on bigger screen */
-  @media all and (min-width: 800px) {
-    .anchorjs-link {
-      position: absolute;
-      left: -0.75em;
-      font-size: 1.1em;
-      margin-top: -0.1em;
-    }
-  }
-</style>
-
-<!-- anchorjs end -->
-
+</div>
 
 
 	<!-- Footer (contains ThemeColor、viewer) -->
