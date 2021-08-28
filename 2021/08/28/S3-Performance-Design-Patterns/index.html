@@ -46,12 +46,12 @@
 
   <!-- Pygments Highlight CSS -->
   
-<link rel="stylesheet" href="../../../css/highlight.css">
-<link rel="stylesheet" href="../../../css/widget.css">
-<link rel="stylesheet" href="../../../css/rocket.css">
-<link rel="stylesheet" href="../../../css/signature.css">
-<link rel="stylesheet" href="../../../css/catalog.css">
-<link rel="stylesheet" href="../../../css/livemylife.css">
+<link rel="stylesheet" href="../../../../css/highlight.css">
+<link rel="stylesheet" href="../../../../css/widget.css">
+<link rel="stylesheet" href="../../../../css/rocket.css">
+<link rel="stylesheet" href="../../../../css/signature.css">
+<link rel="stylesheet" href="../../../../css/catalog.css">
+<link rel="stylesheet" href="../../../../css/livemylife.css">
 
 
   
@@ -112,10 +112,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://minhhungtrinh.github.io/archives/2021/05/">
+  <link rel="canonical" href="https://minhhungtrinh.github.io/2021/08/28/S3-Performance-Design-Patterns/">
   <title>
     
-    Minh Hung
+    S3 Performance Design Patterns - Minh Hung
     
   </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -263,8 +263,8 @@
 
   <style type="text/css">
     header.intro-header {
-       /*page*/
-        background-image: url('/img/header_img/archive_bg2.jpg');
+       /*post*/
+        background-image: url('');
       
     }
 
@@ -286,10 +286,38 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1></h1>
-            <!--<hr class="small">-->
-            <span class="subheading">Life isn’t about finding yourself. Life is about creating yourself. ― George Bernard Shaw</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+            </div>
+            <h1>S3 Performance Design Patterns</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by MinhHungTrinh on
+              2021-08-28
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">13</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">2.2k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- 不蒜子统计 start -->
+            <span class="meta">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            <!-- WordCount end -->
+            
+
+
           </div>
           
         </div>
@@ -330,598 +358,267 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-	<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+	<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-
-      
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            08-28
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/08/28/S3-Performance-Design-Patterns/" style="color: #0085a1">
-              <span>
-                S3 Performance Design Patterns
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            07-30
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/07/30/File-type-validation/" style="color: #0085a1">
-              <span>
-                File type validation
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            05-22
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/05/22/SES-Request-move-out-sandbox/" style="color: #0085a1">
-              <span>
-                SES Request move out sandbox
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            05-22
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/05/22/AWS-Security-How-to-Block-an-IP-Address/" style="color: #0085a1">
-              <span>
-                [AWS Security] How to Block an IP Address
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            05-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/05/17/AWS-Security-Network-Security/" style="color: #0085a1">
-              <span>
-                [AWS Security] Network Security
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            04-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/" style="color: #0085a1">
-              <span>
-                Collect application logs to AWS Cloudwatch Logs
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-20
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/20/AWS-Database-AWS-RDS-part-2/" style="color: #0085a1">
-              <span>
-                [AWS Database] AWS RDS (part 2)
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/19/AWS-Database-Mo-bat-part-1/" style="color: #0085a1">
-              <span>
-                [AWS Database] Mở bát (part 1)
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/03/Prometheus-and-Grafana-Part-1/" style="color: #0085a1">
-              <span>
-                Prometheus and Grafana Part 1
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            02-02
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/" style="color: #0085a1">
-              <span>
-                Installing node_exporter on an EC2 Amazon linux
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Dynamo-Time-To-Live-to-S3/" style="color: #0085a1">
-              <span>
-                Dynamo Time To Live to S3
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Real-Time-Replication-From-DynamoDB-to-MongoDB/" style="color: #0085a1">
-              <span>
-                Real-Time Replication From DynamoDB to MongoDB
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Goc-nhin-ve-Nat-Instance-Nat-Gateway/" style="color: #0085a1">
-              <span>
-                Góc nhìn về Nat Instance >< Nat Gateway
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/" style="color: #0085a1">
-              <span>
-                Câu chuyện JWT và Revoke Token
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Lam-viec-voi-Large-Data/" style="color: #0085a1">
-              <span>
-                Làm việc với Large Data
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/" style="color: #0085a1">
-              <span>
-                AWS Auto Scaling Group based on Queue (Custom metric)
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/" style="color: #0085a1">
-              <span>
-                Replicate AWS MySQL Aurora to External Replica
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            01-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2021/01/14/AWS-Data-transfer-Billing/" style="color: #0085a1">
-              <span>
-                AWS Data transfer Billing
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-          <li>
-            04-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/04/17/Hexo-Theme-LiveMyLife/" style="color: #0085a1">
-              <span>
-                Hexo-Theme-LiveMyLife
-              </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-          </li>
-          
-        </ul>
-      </div>
-      
-
-
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        
-<!-- <h5>VISITORS</h5> -->
-<h5><a href="/">VISITORS</a></h5>
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
-    
-        <!-- Featured Tags -->
-
-<section>
-  <!-- no hr -->
-  <h5><a href="/tags/">FEATURED TAGS</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#AWS" title="AWS" rel="13">AWS</a>
-    
-    
-    
-    <a href="/tags/#Optimize" title="Optimize" rel="1">Optimize</a>
-    
-    
-    
-    <a href="/tags/#Database" title="Database" rel="3">Database</a>
-    
-    
-    
-    <a href="/tags/#Security" title="Security" rel="3">Security</a>
-    
-    
-    
-    <a href="/tags/#Network" title="Network" rel="2">Network</a>
-    
-    
-    
-    <a href="/tags/#JWT" title="JWT" rel="1">JWT</a>
-    
-    
-    
-    <a href="/tags/#Billing" title="Billing" rel="1">Billing</a>
-    
-    
-    
-    <a href="/tags/#Log" title="Log" rel="2">Log</a>
-    
-    
-    
-    <a href="/tags/#File" title="File" rel="1">File</a>
-    
-    
-    
-    <a href="/tags/#Validation" title="Validation" rel="1">Validation</a>
-    
-    
-    
-    <a href="/tags/#Hexo" title="Hexo" rel="1">Hexo</a>
-    
-    
-    
-    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
-    
-    
-    
-    <a href="/tags/#Monitoring" title="Monitoring" rel="1">Monitoring</a>
-    
-    
-    
-    <a href="/tags/#SQL" title="SQL" rel="1">SQL</a>
-    
-    
-    
-    <a href="/tags/#NoSQL" title="NoSQL" rel="1">NoSQL</a>
-    
-    
-    
-    <a href="/tags/#DynamoDB" title="DynamoDB" rel="1">DynamoDB</a>
-    
-    
-    
-    <a href="/tags/#MongoDB" title="MongoDB" rel="1">MongoDB</a>
-    
-    
-    
-    <a href="/tags/#Mysql" title="Mysql" rel="1">Mysql</a>
-    
-    
-    
-    <a href="/tags/#Mail" title="Mail" rel="1">Mail</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">ABOUT ME</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/fatpeople.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>FullStack Developer.</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/MinhHungTrinh">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        
-<!-- <h5>RECENT POSTS</h5> -->
-<h5><a href="/">RECENT POSTS</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../../2021/08/28/S3-Performance-Design-Patterns/">
-      <li>S3 Performance Design Patterns</li>
-    </a>
-    
-    <a href="../../../2021/07/30/File-type-validation/">
-      <li>File type validation</li>
-    </a>
-    
-    <a href="../../../2021/05/22/SES-Request-move-out-sandbox/">
-      <li>SES Request move out sandbox</li>
-    </a>
-    
-    <a href="../../../2021/05/22/AWS-Security-How-to-Block-an-IP-Address/">
-      <li>[AWS Security] How to Block an IP Address</li>
-    </a>
-    
-    <a href="../../../2021/05/17/AWS-Security-Network-Security/">
-      <li>[AWS Security] Network Security</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<!-- <h5>FRIENDS</h5> -->
-<h5><a href="/">FRIENDS</a></h5>
-<ul class="list-inline">
-  
-  <li><a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a></li>
-  
+        <p>Bài viết được lấy từ blog cá nhân của mình để đăng lên kipalog công ty.<br>Sau khi support mấy dự án, mình thấy có vài vấn đề liên quan đến việc các bạn trong team chưa sử dụng một vài tối ưu của AWS S3 service. Nên hôm nay mình cũng note lại ở đây coi như tổng hợp lại.<br>Tham khảo AWS Docs:<br><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html</a><br>Trong link có khá nhiều giải pháp, nhưng mình sẽ chỉ nói tới một vài giải pháp trong docs mà mình đang làm việc thôi, các giải pháp khác đọc thì đọc nhiều rồi nhưng khi nào có cơ hội làm việc  thực tế thì sẽ bổ sung tiếp vào bài này nhé.</p>
+<h3 id="1-Prefix"><a href="#1-Prefix" class="headerlink" title="1. Prefix"></a>1. Prefix</h3><h3 id="1-1-Prefix-vs-Folder"><a href="#1-1-Prefix-vs-Folder" class="headerlink" title="1.1. Prefix vs Folder"></a>1.1. Prefix vs Folder</h3><p>Cái này tưởng chừng là quá rõ nhưng 1 số ít vẫn đang nhầm lẫn prefix và folder, mình cũng muốn nhắc lại để liên quan đến mục 2.<br><a href="https://aws.amazon.com/premiumsupport/knowledge-center/s3-prefix-nested-folders-difference/" target="_blank" rel="noopener">https://aws.amazon.com/premiumsupport/knowledge-center/s3-prefix-nested-folders-difference/</a><br>Với 1 object trong S3 bucket có path là <code>BucketName/Project/WordFiles/123.txt</code>:</p>
+<ul>
+<li>Prefix sẽ là: BucketName/Project/WordFiles/. Tức là sẽ là path mà k chứa object key.</li>
+<li>Folder sẽ là: BucketName, Project, WordFiles. Tức là các thành phần phân tách bằng /.</li>
 </ul>
+<p>Prefix liên quan đến khái niệm Partitions của S3 hay còn gọi là phân vùng dữ liệu. Ví dụ bạn có 2 file: BucketName/Project1/123.txt và BucketName/Project2/123.txt thì bạn đã có 2 prefix tức là có 2 partitions đó.<br>Việc partitions này không áp dụng cho object key, nó chỉ áp dụng cho prefix nhé. Ví dụ BucketName/Project/123.txt và BucketName/Project/345.txt thì chỉ có 1 prefix là BucketName/Project/ thôi nhé.<br>Khái niệm partitions này sẽ ảnh hưởng tới việc bucket có khả năng request/s ở mức nào. </p>
+<p>####1.2. Prefix with performance</p>
+<p>Vấn đề đầu tiên có lẽ là việc mọi người dùng prefix. Mình thấy các dự án hoặc là không dùng prefix luôn hoặc là dùng thì chỉ có đúng 1 prefix. OK, nếu dự án bạn không có nhu cầu về việc scale traffic hoặc bạn không dùng hết giới hạn mặc định tới S3 bucket của bạn thì hãy bỏ qua nhé.</p>
+<p>Nhiều bạn cũng hiểu nhầm việc sử dụng S3 service thì vì nó là service mà nên chả phải lo lắng gì nữa. Và luôn nghĩ nó là unlimited. Điều này đúng nhưng khoan đã nhé, khi bắt đầu có nhiều traffic tới S3 bucket thì bạn nên cân nhắc sử dụng như thế nào. Mình sẽ giải thích như sau:</p>
+<p>Ứng dụng sẽ có thể có hàng ngàn transactions trên giây tới S3 bucket (upload hoặc retrieve). Tất nhiên là AWS S3 sẽ tự động scale các request rates nhưng nó cần thời gian và trong lúc đó bạn có khả năng nhận về 503 response.<br>Ví dụ như sau: Ứng dụng có thể đạt được ít nhất 3500 PUT/COPY/POST/DELETE or 5,500 GET/HEAD trên giây trên prefix. Tức là nếu S3 bucket của bạn chỉ có 1 prefix thì request rate ban đầu sẽ như thế.<br>Số prefix trên S3 bucket là không giới hạn. Và việc dùng prefix cũng giúp cho việc read/write song song =&gt; best performance.<br>Vậy nếu bạn có 10 prefix thì bạn cứ x10 lên thôi. Tức là 55k GET/HEAD trên giây đó. Có 1 luồng song song (parallelizing reads). Tương tự với khả năng PUT/COPY/POST/DELETE nhé.</p>
+<p>Vậy, bạn hãy cố gắng thiết kế ứng dụng của mọi người để tăng số lượng prefix lên nhiều nhất có thể nhé.</p>
+<p>Tất nhiên trên thực tế thì mọi người còn kết hợp S3 với Cloudfront để GET Object nên vấn đề này không còn ảnh hưởng với việc GET nữa, còn về PUT/COPY/POST/DELETE nếu muốn cải thiện thì hãy sử dụng prefix nhé.</p>
+<p>Có 1 suggest cho các bạn về việc đặt prefix, nhất là các dữ liệu liên quan đến logs. Thì hãy đặt prefix theo kiểu sequential date-based: /yyyy/mm/dd/object. Nó sẽ giúp bạn phân vùng dữ liệu hiệu quả hơn đó. Có thể 1 số hướng dẫn cũ bạn có thể thấy các recommend như tạo prefix với 1 chuỗi hash (ví dụ datetime hoặc random) cho các dữ liệu lấy thường xuyên. Nhưng bây giờ thay thế với sequential date-based nhé.</p>
+<p>Một ví dụ nữa khiến bạn cần phân vùng dữ liêu (partition) với prefix. S3 có dữ liệu và bạn sử dụng Athena để SQL query dữ liệu trên S3 chẳng hạn. Việc phân vùng dữ liệu bằng sequential date-based  thực sự hiệu quả, tất nhiên bạn có thể kết hợp thêm vài cách phần vùng khác như ID, Group. Nói chung nó sẽ giúp Athena không phải scan tất cả S3 mà chỉ scan prefix cần scan thôi.  Mà cũng không chỉ riêng athena đâu, các Query engine khác cũng vậy.</p>
+<h3 id="2-Object-key"><a href="#2-Object-key" class="headerlink" title="2. Object key"></a>2. Object key</h3><p>Về cách đặt tên cho object. Quay về câu chuyển trước năm 2021, khi mà S3 chưa hỗ trợ strong consistency và chỉ hỗ trợ read after write consistency cho new object. Khi đó nếu bạn thực hiện Put overide 1 object key đã tồn tại, thì khả năng khi bạn get object về xem, có thể nó vẫn là object cũ. Căn nguyên thì là do việc S3 lưu dữ liệu trên nhiều Data center, việc chúng ta Put object cần thời gian đồng bộ giữa các data center, điều này gây ra khả năng vẫn lấy phải object cũ.<br>Vậy nên giải pháp của mình là không thực hiện put object overide lên object cũ nữa mà sẽ tạo new object với keyname khác. Thường thì mình sẽ hash datetime với 1 cái key id nào đó để được object name duy nhất.</p>
+<p>Từ 2021 thì AWS đã có Strong Consistency rồi nên bạn không cần phải lo lắng vấn đề này nữa.</p>
+<h3 id="3-Caching-for-Frequenly-Access-Content"><a href="#3-Caching-for-Frequenly-Access-Content" class="headerlink" title="3. Caching for Frequenly Access Content."></a>3. Caching for Frequenly Access Content.</h3><p>####3.1. Cloudfront<br>Với các dữ liệu ở S3 mà bị truy cập thường xuyên thì hãy sử dụng caching nhé. Thực ra thì với tất cả các static files của Web application thì mình đều sử dụng Cloudfront để caching nó ở Edge location. Mình thấy nó thật sự hiệu quả về latency nhất là các Global App. Ngoài ra thì người sử dụng cũng không thể biết chính xác S3 bucket của bạn là gì vì không truy cập trực tiếp mà.<br>Solution: <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html</a></p>
+<p>####3.2. Elasticache Redis<br>Cũng là 1 giải pháp để giúp low latency là sử dụng in memory cache. Thay vì phải get object từ S3 thì chỉ việc get từ Cache database thôi. Logic của bạn sẽ xử lý nhanh hơn. Tất nhiên bạn cũng sẽ phải xử lý vấn đề liên quan đến consistency data. Nhưng theo mình thấy không chỉ liên quan đến S3 mà tất cả những gì liên quan đến data (như database, server) thì cache database là 1 giải pháp tốt để low latency và giảm đáng kể chi phí tài nguyên.<br>Solution: <a href="https://aws.amazon.com/blogs/storage/turbocharge-amazon-s3-with-amazon-elasticache-for-redis/" target="_blank" rel="noopener">https://aws.amazon.com/blogs/storage/turbocharge-amazon-s3-with-amazon-elasticache-for-redis/</a></p>
+<p>###4. S3 Presign URL</p>
+<p>Việc PUT, GET object bạn có thể thay thế bằng việc sử dụng 1 Presign URL nhé.<br>GET object với Presign URL ưu điểm là bạn sẽ không cần public object và cung cấp 1 url có expire time<br>PUT object với Presign URL thì ưu điểm cũng giống GET OBJECT, ngoài ra việc sử dụng giúp cho chúng ta upload file luôn từ Client Side 1 cách bảo mật. Từ đó giảm gánh nặng cho Server nữa. Mà việc upload từ client side lên thẳng S3 cũng giúp cho thời gian upload rất là nhanh, không phải qua 1 bước trung gian là server nữa.<br>Cái này thì nhiều guide trên mạng lắm nên ae chịu khó search.</p>
+<p>###5. PUT/GET Large file</p>
+<p>####5.1. PUT<br>Với các large file, chỗ này AWS suggest là file &gt; 100MB, để tăng performance upload object với multiple parts upload nhé, sử dụng kết hợp presign url để upload từ client side cho hiệu quả, giảm gánh cho server.<br>Guide: <a href="https://dev.to/traindex/multipart-upload-for-large-files-using-pre-signed-urls-aws-4hg4?fbclid=IwAR1oMQ05O7ico_v3yn37ZDhFAAXMlLPTCQGkiTSOOwFFXhobV62q7SLEGg4" target="_blank" rel="noopener">https://dev.to/traindex/multipart-upload-for-large-files-using-pre-signed-urls-aws-4hg4?fbclid=IwAR1oMQ05O7ico_v3yn37ZDhFAAXMlLPTCQGkiTSOOwFFXhobV62q7SLEGg4</a><br>Thấy có source Github cũng đầy đủ lắm: <a href="https://github.com/prestonlimlianjie/aws-s3-multipart-presigned-upload?fbclid=IwAR3IS6Eu-iV7i1nb36i6oI1aCnHPBHbV06V5GoS9my-3vPxVScZgMZwvnvs" target="_blank" rel="noopener">https://github.com/prestonlimlianjie/aws-s3-multipart-presigned-upload?fbclid=IwAR3IS6Eu-iV7i1nb36i6oI1aCnHPBHbV06V5GoS9my-3vPxVScZgMZwvnvs</a> </p>
+<p>Bổ sung là chỗ này thì các bạn nên áp dụng lifecycle management để xoá những file incomplete nhé. Thực tế thì sẽ có rất nhiều đó, nếu để lại thì sẽ là tốn chi phí.</p>
+<p>####5.2 GET</p>
+<p>Cũng tương tự như upload thôi, thì khi GET mọi người cũng có thể Parallel Download được. Ở đây mình nói tới việc download từ S3 về EC2 nhé. Thật may trong các SDK thì có support luôn Transfer Manager đó. Tất nhiên là nó hỗ trợ cả việc:</p>
+<ul>
+<li>Parallel upload via multipart upload </li>
+<li>Parallel download via byte-range fetches</li>
+</ul>
+<p>Nhưng ở đây mình muốn tập chung nói về <code>Parallel download via byte-range fetches</code> . Vì <code>multipart upload</code> thì nên áp dụng với presign url để thao tác ở clientside hơn, nếu dùng cách này là phải thao tác với Server rồi.<br>Link ở dưới là Java SDK.<br><a href="https://aws.amazon.com/blogs/developer/introducing-amazon-s3-transfer-manager-in-the-aws-sdk-for-java-2-x/" target="_blank" rel="noopener">https://aws.amazon.com/blogs/developer/introducing-amazon-s3-transfer-manager-in-the-aws-sdk-for-java-2-x/</a></p>
+<h3 id="Ket"><a href="#Ket" class="headerlink" title="Kết"></a>Kết</h3><p>Cảm ơn mọi người đã đọc bài. Vui lòng đóng góp ý kiến giúp mình bổ sung và chỉnh sửa nội dung nhé.<br>Mong là sẽ update thêm nội dung cho bài này =&gt; Tức là áp dụng được nốt mấy cái S3 Performance Design Patterns còn lại :D </p>
 
 
         <hr>
-    
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/2021/07/30/File-type-validation/" data-toggle="tooltip" data-placement="top" title="File type validation">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
         
-    <!-- <h5>ARCHIVES</h5> -->
-    <h5><a href="/archives/">ARCHIVES</a></h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../07/">July 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../02/">February 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2020/04/">April 2020</a><span class="archive-list-count">1</span></li></ul>
-    </div>
+        <!-- tip start -->
+        <div class="tip">
+          <p>
+            Đây là Blog cá nhân của MinhHungTrinh, nơi mình chia sẻ, lưu giữ kiến thức. Nếu các bạn có góp ý, thắc mắc thì vui lòng comment bên dưới cho mình biết nhé. Kiến thức là biển sâu và mình luôn là người lắng nghe và ham học hỏi. Các vấn đề đặc biệt hoặc tế nhị mọi người có thể gửi email tới minhhungtrinhvn@gmail.com. Cảm ơn Mọi Người đã đọc Blog của mình. Yolo!
+          </p>
+        </div>
+        <!-- tip end -->
+        
 
-
-        <hr>
-    
-        <!-- Categories -->
-
-<!-- <h5>categories</h5> -->
-<h5><a href="/categories/">CATEGORIES</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#DevOps">
-      <li>DevOps</li>
-    </a>
-    
-    <a href="/categories/#Develop">
-      <li>Develop</li>
-    </a>
-    
-    <a href="/categories/#Development">
-      <li>Development</li>
-    </a>
-    
-    <a href="/categories/#Hexo-Theme-LiveMyLife">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a href="#"  class="social-share-icon icon-facebook">
+        <i class="fa fa-facebook fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:minhhungtrinhvn@gmail.com?subject=S3 Performance Design Patterns&body=Hi,I found this website and thought you might like it https://minhhungtrinh.github.io/2021/08/28/S3-Performance-Design-Patterns/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
   </ul>
 </div>
 
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
+        <!-- Sharing End -->
+        
         <hr>
-    
-</div>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+
+<!-- 2. gitment comment -->
+
+<!-- gitment start -->
+<!-- Docs:https://github.com/imsun/gitment -->
+
+<div id="blog_comments"></div>
+<!-- <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"> <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+
+<script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'gitment-container gitment-root-container'
+
+      // your custom component
+      container.appendChild(instance.renderSomething(state, instance))
+      container.appendChild(instance.renderHeader(state, instance))
+      container.appendChild(instance.renderEditor(state, instance))
+      container.appendChild(instance.renderComments(state, instance))
+      container.appendChild(instance.renderFooter(state, instance))
+      return container
+    },
+    renderSomething(state, instance) {
+      const container = document.createElement('div')
+      container.lang = "en-US"
+      container.className = 'hello_visitor'
+      if (state.user.login) {
+        container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+      }
+      return container
+    }
+  }
+
+  const gitment = new Gitment({
+    id: 'Sat Aug 28 2021 18:58:20 GMT+0700', // optional
+    owner: 'MinhHungTrinh',
+    repo: 'MinhHungTrinh.github.io',
+    oauth: {
+      client_id: 'f23a1a1a678355dff851',
+      client_secret: '5b4c1011ed3613893952bd69fbdab696b32bec3b'
+    },
+    desc: '',
+    perPage: '10',
+    maxCommentHeight: '250',
+    theme: myTheme,
+    // ... For more available options, check out the documentation below
+  })
+
+  gitment.render('blog_comments')
+  // or gitment.render(document.getElementById('comments')) or document.body.appendChild(gitment.render())
+</script>
+
+<!-- gitment end -->
+
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
     
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-Prefix"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Prefix</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-1-Prefix-vs-Folder"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">1.1. Prefix vs Folder</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Object-key"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">2. Object key</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-Caching-for-Frequenly-Access-Content"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">3. Caching for Frequenly Access Content.</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Ket"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Kết</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://minhhungtrinh.github.io/" target="_blank">HungTM</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 	<!-- Footer (contains ThemeColor、viewer) -->
