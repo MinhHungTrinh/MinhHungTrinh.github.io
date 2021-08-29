@@ -184,13 +184,6 @@
 
           
           <li>
-            <a href="/archive/">Archives</a>
-          </li>
-          
-          
-
-          
-          <li>
             <a href="/categories/">Categories</a>
           </li>
           
@@ -199,6 +192,13 @@
           
           <li>
             <a href="/tags/">Tags</a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a href="/archive/">Archives</a>
           </li>
           
           
@@ -339,25 +339,27 @@
         
         <a href="#AWS" title="AWS" rel="15">AWS</a>
         
-        <a href="#Optimize" title="Optimize" rel="1">Optimize</a>
-        
         <a href="#Billing" title="Billing" rel="1">Billing</a>
         
-        <a href="#Database" title="Database" rel="3">Database</a>
+        <a href="#Optimize" title="Optimize" rel="1">Optimize</a>
         
         <a href="#Security" title="Security" rel="3">Security</a>
         
         <a href="#Network" title="Network" rel="2">Network</a>
         
+        <a href="#Database" title="Database" rel="3">Database</a>
+        
+        <a href="#S3" title="S3" rel="2">S3</a>
+        
         <a href="#JWT" title="JWT" rel="1">JWT</a>
+        
+        <a href="#Log" title="Log" rel="2">Log</a>
         
         <a href="#File" title="File" rel="1">File</a>
         
         <a href="#Validation" title="Validation" rel="1">Validation</a>
         
-        <a href="#S3" title="S3" rel="2">S3</a>
-        
-        <a href="#Log" title="Log" rel="2">Log</a>
+        <a href="#Monitoring" title="Monitoring" rel="1">Monitoring</a>
         
         <a href="#Hexo" title="Hexo" rel="1">Hexo</a>
         
@@ -373,8 +375,6 @@
         
         <a href="#Mysql" title="Mysql" rel="1">Mysql</a>
         
-        <a href="#Monitoring" title="Monitoring" rel="1">Monitoring</a>
-        
         <a href="#Mail" title="Mail" rel="1">Mail</a>
         
       </div>
@@ -385,6 +385,21 @@
         <span class="fa fa-tag listing-seperator" id="AWS">
           <span class="tag-text">AWS</span>
         </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/01/14/AWS-Data-transfer-Billing/">
+            <h2 class="post-title">
+              AWS Data transfer Billing
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
         
         <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
@@ -406,9 +421,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2021/01/14/AWS-Data-transfer-Billing/">
+          <a href="/2021/05/22/AWS-Security-How-to-Block-an-IP-Address/">
             <h2 class="post-title">
-              AWS Data transfer Billing
+              [AWS Security] How to Block an IP Address
             </h2>
             
           </a>
@@ -451,21 +466,6 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2021/05/22/AWS-Security-How-to-Block-an-IP-Address/">
-            <h2 class="post-title">
-              [AWS Security] How to Block an IP Address
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
           <a href="/2021/05/17/AWS-Security-Network-Security/">
             <h2 class="post-title">
               [AWS Security] Network Security
@@ -496,9 +496,24 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2021/01/17/Dynamo-Time-To-Live-to-S3/">
+          <a href="/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/">
             <h2 class="post-title">
-              Dynamo Time To Live to S3
+              Collect application logs to AWS Cloudwatch Logs
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/">
+            <h2 class="post-title">
+              Installing node_exporter on an EC2 Amazon linux
             </h2>
             
           </a>
@@ -556,39 +571,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/">
+          <a href="/2021/01/17/Dynamo-Time-To-Live-to-S3/">
             <h2 class="post-title">
-              Installing node_exporter on an EC2 Amazon linux
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/">
-            <h2 class="post-title">
-              Collect application logs to AWS Cloudwatch Logs
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/08/28/S3-Performance-Design-Patterns/">
-            <h2 class="post-title">
-              S3 Performance Design Patterns
+              Dynamo Time To Live to S3
             </h2>
             
           </a>
@@ -611,21 +596,14 @@
         </div>
         <hr>
         
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Optimize">
-          <span class="tag-text">Optimize</span>
-        </span>
-        
         <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/">
+          <a href="/2021/08/28/S3-Performance-Design-Patterns/">
             <h2 class="post-title">
-              AWS Auto Scaling Group based on Queue (Custom metric)
+              S3 Performance Design Patterns
             </h2>
             
           </a>
@@ -658,8 +636,8 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Database">
-          <span class="tag-text">Database</span>
+        <span class="fa fa-tag listing-seperator" id="Optimize">
+          <span class="tag-text">Optimize</span>
         </span>
         
         <!-- <li class="listing-item">
@@ -667,39 +645,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2021/02/19/AWS-Database-Mo-bat-part-1/">
+          <a href="/2021/01/17/AWS-Auto-Scaling-Group-based-on-Queue-Custom-metric/">
             <h2 class="post-title">
-              [AWS Database] Mở bát (part 1)
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/02/20/AWS-Database-AWS-RDS-part-2/">
-            <h2 class="post-title">
-              [AWS Database] AWS RDS (part 2)
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Lam-viec-voi-Large-Data/">
-            <h2 class="post-title">
-              Làm việc với Large Data
+              AWS Auto Scaling Group based on Queue (Custom metric)
             </h2>
             
           </a>
@@ -799,6 +747,95 @@
       </div>
       
       <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="Database">
+          <span class="tag-text">Database</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/02/19/AWS-Database-Mo-bat-part-1/">
+            <h2 class="post-title">
+              [AWS Database] Mở bát (part 1)
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/02/20/AWS-Database-AWS-RDS-part-2/">
+            <h2 class="post-title">
+              [AWS Database] AWS RDS (part 2)
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/01/17/Lam-viec-voi-Large-Data/">
+            <h2 class="post-title">
+              Làm việc với Large Data
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="S3">
+          <span class="tag-text">S3</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/08/28/Amazon-S3-Access-Control-IAM-Policies-Bucket-Policies-and-ACLs/">
+            <h2 class="post-title">
+              Amazon S3 Access Control - IAM Policies, Bucket Policies and ACLs
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/08/28/S3-Performance-Design-Patterns/">
+            <h2 class="post-title">
+              S3 Performance Design Patterns
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="JWT">
           <span class="tag-text">JWT</span>
         </span>
@@ -811,6 +848,43 @@
           <a href="/2021/01/17/Cau-chuyen-JWT-va-Revoke-Token/">
             <h2 class="post-title">
               Câu chuyện JWT và Revoke Token
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="Log">
+          <span class="tag-text">Log</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/">
+            <h2 class="post-title">
+              Collect application logs to AWS Cloudwatch Logs
+            </h2>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/2021/01/17/Dynamo-Time-To-Live-to-S3/">
+            <h2 class="post-title">
+              Dynamo Time To Live to S3
             </h2>
             
           </a>
@@ -865,8 +939,8 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="S3">
-          <span class="tag-text">S3</span>
+        <span class="fa fa-tag listing-seperator" id="Monitoring">
+          <span class="tag-text">Monitoring</span>
         </span>
         
         <!-- <li class="listing-item">
@@ -874,61 +948,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/2021/08/28/Amazon-S3-Access-Control-IAM-Policies-Bucket-Policies-and-ACLs/">
+          <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/">
             <h2 class="post-title">
-              Amazon S3 Access Control - IAM Policies, Bucket Policies and ACLs
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/08/28/S3-Performance-Design-Patterns/">
-            <h2 class="post-title">
-              S3 Performance Design Patterns
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Log">
-          <span class="tag-text">Log</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/01/17/Dynamo-Time-To-Live-to-S3/">
-            <h2 class="post-title">
-              Dynamo Time To Live to S3
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/04/25/Collect-application-logs-to-AWS-Cloudwatch-Logs/">
-            <h2 class="post-title">
-              Collect application logs to AWS Cloudwatch Logs
+              Installing node_exporter on an EC2 Amazon linux
             </h2>
             
           </a>
@@ -1091,28 +1113,6 @@
           <a href="/2021/01/17/Replicate-AWS-MySQL-Aurora-to-External-Replica/">
             <h2 class="post-title">
               Replicate AWS MySQL Aurora to External Replica
-            </h2>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Monitoring">
-          <span class="tag-text">Monitoring</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/2021/02/02/Installing-node-exporter-on-an-EC2-Amazon-linux/">
-            <h2 class="post-title">
-              Installing node_exporter on an EC2 Amazon linux
             </h2>
             
           </a>
