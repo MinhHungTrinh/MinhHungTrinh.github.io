@@ -163,14 +163,14 @@
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/categories/index.html</loc>
+    <loc>https://minhhungtrinh.github.io/archive/index.html</loc>
     
     <lastmod>2021-01-13</lastmod>
     
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/archive/index.html</loc>
+    <loc>https://minhhungtrinh.github.io/categories/index.html</loc>
     
     <lastmod>2021-01-13</lastmod>
     
@@ -235,21 +235,14 @@
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/S3/</loc>
-    <lastmod>2021-10-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://minhhungtrinh.github.io/tags/JWT/</loc>
-    <lastmod>2021-10-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://minhhungtrinh.github.io/tags/Log/</loc>
+    <lastmod>2021-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/S3/</loc>
     <lastmod>2021-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -264,6 +257,13 @@
   
   <url>
     <loc>https://minhhungtrinh.github.io/tags/Validation/</loc>
+    <lastmod>2021-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/JWT/</loc>
     <lastmod>2021-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -305,13 +305,6 @@
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/tags/Mysql/</loc>
-    <lastmod>2021-10-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://minhhungtrinh.github.io/tags/DynamoDB/</loc>
     <lastmod>2021-10-29</lastmod>
     <changefreq>daily</changefreq>
@@ -320,6 +313,13 @@
   
   <url>
     <loc>https://minhhungtrinh.github.io/tags/MongoDB/</loc>
+    <lastmod>2021-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minhhungtrinh.github.io/tags/Mysql/</loc>
     <lastmod>2021-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -356,14 +356,14 @@
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/categories/Develop/</loc>
+    <loc>https://minhhungtrinh.github.io/categories/Development/</loc>
     <lastmod>2021-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://minhhungtrinh.github.io/categories/Development/</loc>
+    <loc>https://minhhungtrinh.github.io/categories/Develop/</loc>
     <lastmod>2021-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
